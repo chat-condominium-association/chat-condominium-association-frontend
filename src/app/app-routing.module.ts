@@ -8,6 +8,10 @@ const routes: Routes = [
     path: AppRoutes.START_PAGE_ROUTE,
     loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule),
   },
+  {
+    path: AppRoutes.ADMIN_BASE_ROUTE,
+    loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule),
+  },
   { path: '**', component: NotFoundPageComponent },
 ];
 

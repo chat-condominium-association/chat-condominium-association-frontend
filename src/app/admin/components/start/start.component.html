@@ -1,0 +1,21 @@
+<!-- <nav></nav> -->
+<div>Hello</div>
+<app-main-layout>
+  <ng-container nav>
+    <ul>
+      <li><a [routerLink]="['/admin/rooms']">ssssssssssssssssssssssssssssssss</a></li>
+      <li><a [routerLink]="['/admin/chats/ssss']">ssssssssssssssssssssssssssssssss</a></li>
+      <li><a href="/">ssssssssssssssssssssssssssssssss</a></li>
+    </ul>
+  </ng-container>
+  <ng-container aside>
+    <div *ngIf="showAdminControl; else adminRoomsControl">
+      <div>ADMIN</div>
+      sllslslslsllelle
+    </div>
+    <ng-template #adminRoomsControl>
+      <div>PAGES</div>
+    </ng-template>
+  </ng-container>
+</app-main-layout>
+<router-outlet></router-outlet>
