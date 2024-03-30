@@ -26,6 +26,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     this.subscribeToRouteChanges();
+    console.log('just test log');
   }
 
   private subscribeToRouteChanges(): void {
