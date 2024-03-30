@@ -1,21 +1,29 @@
-name: CI
+name: Angular Build and Deploy
 
-on: [push]
+on:
+  push:
+    branches:
+      - test
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - name: Use Node.js
-        uses: actions/setup-node@v2
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
         with:
-          node-version: 16
-      - name: Build and Deploy
-        uses: JamesIves/github-pages-deploy-action@releases/v2
-        env:
-          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-          BASE_BRANCH: test
-          BRANCH: gh-pages
-          FOLDER: dist/teamchallenge-chat
-          BUILD_SCRIPT: npm install && npm run build -- --prod
+          node-version: 20
+
+      - name: Build Angular app to prod
+        working-directory: teamchallenge-chat-frontend
+        run: npm install && npm run build:prod
+
+      - name: Deploy to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: dist/teamchallenge-chat-frontend/
+          branch: gh-pages
+          token: ${{ secrets.ACCESS_TOKEN }}
