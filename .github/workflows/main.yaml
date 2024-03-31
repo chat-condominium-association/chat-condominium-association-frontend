@@ -1,24 +1,33 @@
-name: Build and Deploy Script
+name: Angular Build and Deploy
 
 on:
   push:
     branches:
-      - test
+      - main
+      - develop
+  pull_request:
+    branches:
+      - main
+      - develop
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Repository
+      - name: Checkout code
         uses: actions/checkout@v2
-      - name: Adding Node.js
-        uses: actions/setup-node@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
         with:
-          node-version: 16
-      - name: Install Dependencies
-        run: npm install
-      - name: Build Angular App
-        run: npm run build
-      - name: Deploy to gh pages
-        run: |
-          npx angular-cli-ghpages --dir=dist/teamchallenge-chat
+          node-version: 20
+
+      - name: Build Angular app to prod
+        run: npm install && npm run build:prod
+
+      - name: Deploy to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: dist/
+          branch: gh-pages
+          token: ${{ secrets.ACCESS_TOKEN }}
