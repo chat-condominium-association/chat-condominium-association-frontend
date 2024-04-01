@@ -1,9 +1,13 @@
-import { Component, EventEmitter, Inject, Output, inject } from '@angular/core';
+/* eslint-disable @typescript-eslint/no-empty-function */
+import { Component, Inject, inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
 interface ModalData {
   showCloseBtn: boolean;
   showSubmitBtn: boolean;
+  headerMessage: string;
+  buttonText: string;
+  handleSubmit: () => void;
 }
 
 @Component({
@@ -13,17 +17,13 @@ interface ModalData {
 })
 export class ModalComponent {
   public dialogRef = inject(MatDialogRef<ModalComponent>);
+  public handleSubmit: () => void;
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data: Partial<ModalData>) {}
-
-  @Output() submitEvent = new EventEmitter();
+  constructor(@Inject(MAT_DIALOG_DATA) public data: Partial<ModalData>) {
+    this.handleSubmit = data.handleSubmit || this.closeDialog;
+  }
 
   closeDialog(): void {
     this.dialogRef.close(false);
-  }
-
-  handleSubmit(): void {
-    //this.dialogRef.close(false);
-    this.submitEvent.emit();
   }
 }
