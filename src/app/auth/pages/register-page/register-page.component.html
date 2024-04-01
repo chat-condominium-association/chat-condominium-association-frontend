@@ -2,7 +2,7 @@
   <div class="default-content-block">
     <div class="auth__form">
       <h1>Зареєструватись</h1>
-      <form [formGroup]="registerForm">
+      <form [formGroup]="registerForm" (ngSubmit)="adminAuthService.handleRegister(registerForm)">
         <app-form-control
           label="Пошта"
           name="email"

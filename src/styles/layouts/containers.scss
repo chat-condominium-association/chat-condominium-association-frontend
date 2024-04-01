@@ -5,6 +5,12 @@
   width: 50%;
 }
 
+.cols-layout-center-beetwen {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
 .container-top {
   top: 42%;
   left: 50%;
