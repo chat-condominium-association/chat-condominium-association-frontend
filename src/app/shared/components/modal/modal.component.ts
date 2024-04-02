@@ -1,16 +1,7 @@
 /* eslint-disable @typescript-eslint/no-empty-function */
 import { Component, Inject, inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { Icons } from '@shared/enums/icons.enum';
-
-interface ModalData {
-  showCloseBtn: boolean;
-  showSubmitBtn: boolean;
-  headerMessage: string;
-  buttonText: string;
-  handleSubmit: () => void;
-  icon: Icons;
-}
+import { ModalData } from '@shared/models/modal.interface';
 
 @Component({
   selector: 'app-modal',

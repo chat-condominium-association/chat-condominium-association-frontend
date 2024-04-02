@@ -1,18 +1,13 @@
 import { Injectable, inject } from '@angular/core';
 import { AdminAuthApiService } from './admin-auth-api.service';
 import { FormGroup } from '@angular/forms';
-import { BehaviorSubject, Observable, catchError, finalize, take, throwError } from 'rxjs';
+import { BehaviorSubject, finalize, take } from 'rxjs';
 import { Router } from '@angular/router';
 import { AppRoutes } from '@core/enums/routes.enum';
-import { MatDialog, MatDialogRef } from '@angular/material/dialog';
-import { ModalComponent } from '@shared/components/modal/modal.component';
+import { MatDialog } from '@angular/material/dialog';
 import { Icons } from '@shared/enums/icons.enum';
-
-interface ApiError {
-  error: {
-    detail: string;
-  };
-}
+import { ModalService } from '@shared/services/modal.service';
+import { ApiError } from '@core/models/api.inetrface';
 
 @Injectable({
   providedIn: 'root',
@@ -21,15 +16,44 @@ export class AdminAuthService {
   private adminAuthApiService = inject(AdminAuthApiService);
   private router = inject(Router);
   private dialog = inject(MatDialog);
-  public dialogRef = inject(MatDialogRef<ModalComponent>);
+  private modalService = inject(ModalService);
 
   public backendErrors$ = new BehaviorSubject<string[]>([]);
   public isLoading$ = new BehaviorSubject<boolean>(false);
 
   protected readonly LOGIN_PAGE_ROUTE = `/${AppRoutes.LOGIN_PAGE_ROUTE}`;
+  protected readonly ADMIN_PAGE_ROUTE = `/${AppRoutes.ADMIN_BASE_ROUTE}/${AppRoutes.ADMIN_ROOMS_ROUTE}`;
 
-  handleLogin(): void {
-    console.log('login');
+  handleLogin(loginForm: FormGroup): void {
+    const formData = loginForm.value;
+    const { email, password } = formData;
+
+    this.isLoading$.next(true);
+
+    this.adminAuthApiService
+      .signIn({ email, password })
+      .pipe(
+        take(1),
+        finalize(() => {
+          loginForm.reset();
+          this.isLoading$.next(false);
+        })
+      )
+      .subscribe({
+        next: () => {
+          this.modalService.openModal({
+            headerMessage: 'Вхід успішний',
+            buttonText: 'Почати роботу з Чатом',
+            showSubmitBtn: true,
+            handleSubmit: () => {
+              this.router.navigateByUrl(this.ADMIN_PAGE_ROUTE);
+              this.dialog.closeAll();
+            },
+            icon: Icons.succesIcon,
+          });
+        },
+        error: error => this.handleError(error, 'Спробувати ще раз'),
+      });
   }
 
   handleRegister(registerForm: FormGroup): void {
@@ -42,7 +66,6 @@ export class AdminAuthService {
       .signUp({ email, password })
       .pipe(
         take(1),
-        catchError(error => this.handleError(error, 'Спробувати ще раз')),
         finalize(() => {
           registerForm.reset();
           this.isLoading$.next(false);
@@ -50,20 +73,19 @@ export class AdminAuthService {
       )
       .subscribe({
         next: () => this.router.navigateByUrl(this.LOGIN_PAGE_ROUTE),
+        error: error => this.handleError(error, 'Спробувати ще раз'),
       });
   }
 
-  private handleError(error: ApiError, buttonText: string): Observable<never> {
+  private handleError(error: ApiError, buttonText: string): void {
     const errorMessage = error?.error?.detail || 'Виникла помилка';
     this.backendErrors$.next([errorMessage]);
-    this.dialog.open(ModalComponent, {
-      data: {
-        headerMessage: errorMessage,
-        buttonText,
-        showSubmitBtn: true,
-        icon: Icons.alertExclamationIcon,
-      },
+
+    this.modalService.openModal({
+      headerMessage: errorMessage,
+      buttonText,
+      showSubmitBtn: true,
+      icon: Icons.alertExclamationIcon,
     });
-    return throwError(() => error);
   }
 }

@@ -26,7 +26,12 @@
           type="password"
           [iconsUrl]="['assets/icons/eye-closed_icon.svg', 'assets/icons/eye-open_icon.svg']"
         ></app-form-control>
-        <app-button type="submit" [disabled]="registerForm.invalid"> Реєстрація </app-button>
+        <app-button
+          type="submit"
+          [disabled]="registerForm.invalid || !!(adminAuthService.isLoading$ | async)"
+        >
+          Реєстрація
+        </app-button>
       </form>
       <div>Вже є акаунт? <a class="auth-nav" [routerLink]="[LOGIN_PAGE_ROUTE]">Увійти</a></div>
     </div>
