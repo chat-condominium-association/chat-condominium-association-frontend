@@ -1,7 +1,8 @@
 <div class="modal-content">
   <div class="modal-header">
-    <div class="cols-layout-center-beetwen">
+    <div class="cols-layout-start-beetwen">
       <h3>{{ data.headerMessage }}</h3>
+      <img class="modal-icon" [src]="data.icon" alt="Modal Icon" />
     </div>
     <ng-content select="[modal-header]"></ng-content>
   </div>

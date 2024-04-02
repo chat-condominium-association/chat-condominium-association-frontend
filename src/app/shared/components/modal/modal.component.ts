@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-empty-function */
 import { Component, Inject, inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { Icons } from '@shared/enums/icons.enum';
 
 interface ModalData {
   showCloseBtn: boolean;
@@ -8,6 +9,7 @@ interface ModalData {
   headerMessage: string;
   buttonText: string;
   handleSubmit: () => void;
+  icon: Icons;
 }
 
 @Component({

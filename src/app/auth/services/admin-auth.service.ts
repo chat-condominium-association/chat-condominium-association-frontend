@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { AppRoutes } from '@core/enums/routes.enum';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { ModalComponent } from '@shared/components/modal/modal.component';
+import { Icons } from '@shared/enums/icons.enum';
 
 interface ApiError {
   error: {
@@ -41,7 +42,7 @@ export class AdminAuthService {
       .signUp({ email, password })
       .pipe(
         take(1),
-        catchError(error => this.handleError(error)),
+        catchError(error => this.handleError(error, 'Спробувати ще раз')),
         finalize(() => {
           registerForm.reset();
           this.isLoading$.next(false);
@@ -52,20 +53,17 @@ export class AdminAuthService {
       });
   }
 
-  private handleError(error: ApiError): Observable<never> {
+  private handleError(error: ApiError, buttonText: string): Observable<never> {
     const errorMessage = error?.error?.detail || 'Виникла помилка';
     this.backendErrors$.next([errorMessage]);
     this.dialog.open(ModalComponent, {
       data: {
         headerMessage: errorMessage,
-        buttonText: 'Спробувати ще раз',
+        buttonText,
         showSubmitBtn: true,
+        icon: Icons.alertExclamationIcon,
       },
     });
     return throwError(() => error);
-  }
-
-  handleCustomSubmitFunction(): void {
-    this.dialog.closeAll();
   }
 }
