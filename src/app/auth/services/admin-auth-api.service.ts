@@ -21,6 +21,6 @@ export class AdminAuthApiService {
 
   signIn(data: AuthInterface): Observable<null> {
     const url = `${this.ADMIN_API_URL}${this.ADMIN_LOGIN_ENDPOINT}`;
-    return this.http.post<null>(url, data);
+    return this.http.post<null>(url, data, { withCredentials: true });
   }
 }

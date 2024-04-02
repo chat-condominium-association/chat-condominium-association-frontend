@@ -1,6 +1,7 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { AppRoutes } from '@core/enums/routes.enum';
+import { AuthService } from '@core/services/auth.service';
 import { filter } from 'rxjs';
 
 @Component({
@@ -10,6 +11,7 @@ import { filter } from 'rxjs';
 })
 export class AppComponent implements OnInit {
   private router = inject(Router);
+  private authService = inject(AuthService);
 
   protected showBackground = false;
   protected showLogo = false;
@@ -25,6 +27,9 @@ export class AppComponent implements OnInit {
   ];
 
   ngOnInit(): void {
+    this.authService.getToken().subscribe(val => console.log(val));
+    this.authService.getUserInfo().subscribe(val => console.log(val));
+
     this.subscribeToRouteChanges();
   }
 

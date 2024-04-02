@@ -7,6 +7,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { httpCredentialsInterceptorProviders } from './interceptors/http-credentials.interceptor';
 
 @NgModule({
   declarations: [NotFoundPageComponent],
@@ -19,5 +20,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     FormsModule,
     BrowserAnimationsModule,
   ],
+  providers: [httpCredentialsInterceptorProviders],
 })
 export class CoreModule {}
