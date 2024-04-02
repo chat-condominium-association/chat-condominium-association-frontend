@@ -8,7 +8,6 @@ import { MatDialog } from '@angular/material/dialog';
 import { Icons } from '@shared/enums/icons.enum';
 import { ModalService } from '@shared/services/modal.service';
 import { ApiError } from '@core/models/api.inetrface';
-import { AuthService } from '@core/services/auth.service';
 
 @Injectable({
   providedIn: 'root',
@@ -18,7 +17,6 @@ export class AdminAuthService {
   private router = inject(Router);
   private dialog = inject(MatDialog);
   private modalService = inject(ModalService);
-  private authService = inject(AuthService);
 
   public backendErrors$ = new BehaviorSubject<string[]>([]);
   public isLoading$ = new BehaviorSubject<boolean>(false);
@@ -43,7 +41,6 @@ export class AdminAuthService {
       )
       .subscribe({
         next: () => {
-          // this.authService.getToken().subscribe(val => console.log(val));
           // this.authService.getUserInfo().subscribe(val => console.log(val));
           this.modalService.openModal({
             headerMessage: 'Вхід успішний',

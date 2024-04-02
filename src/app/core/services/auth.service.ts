@@ -1,27 +1,30 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
-import { UserApiInterface } from '@core/models/user.interface';
-import { environment } from '@environment/environment';
-import { Observable } from 'rxjs';
+import { Router } from '@angular/router';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  private http = inject(HttpClient);
+  private router = inject(Router);
+  isAdminLoggedIn = new BehaviorSubject(false);
+  isUserLoggedIn = new BehaviorSubject(false);
 
-  private readonly USER_API_URL = `${environment.apiUrl}user/`;
+  // this.authService.getToken().subscribe(val => console.log(val));
+  // this.authService.getUserInfo().subscribe(val => console.log(val));
 
-  private readonly USER_GET_TOKEN_URL = 'get_token';
-  private readonly USER_GET_INFO_URL = 'my_info';
-
-  getToken(): Observable<string> {
-    const url = `${this.USER_API_URL}${this.USER_GET_TOKEN_URL}`;
-    return this.http.get<string>(url);
+  handleAdminSignIn(): void {
+    //set data?
+    // this.localStorageService.set('userData', userData);
+    this.isAdminLoggedIn.next(true);
+    // this.router.navigate(['/']);
+    // this.getUserID();
   }
-
-  getUserInfo(): Observable<UserApiInterface> {
-    const url = `${this.USER_API_URL}${this.USER_GET_INFO_URL}`;
-    return this.http.get<UserApiInterface>(url);
+  handleUserSignIn(): void {
+    //set data?
+    // this.localStorageService.set('userData', userData);
+    this.isUserLoggedIn.next(true);
+    // this.router.navigate(['/']);
+    // this.getUserID();
   }
 }
