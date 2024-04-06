@@ -5,10 +5,23 @@ import { FormControlComponent } from './components/form-control/form-control.com
 import { ReactiveFormsModule } from '@angular/forms';
 import { ModalComponent } from './components/modal/modal.component';
 import { MainLayoutComponent } from './components/main-layout/main-layout.component';
+import { AsideComponent } from './components/aside/aside.component';
 
 @NgModule({
-  declarations: [ButtonComponent, FormControlComponent, ModalComponent, MainLayoutComponent],
-  exports: [ButtonComponent, FormControlComponent, ModalComponent, MainLayoutComponent],
+  declarations: [
+    ButtonComponent,
+    FormControlComponent,
+    ModalComponent,
+    MainLayoutComponent,
+    AsideComponent,
+  ],
+  exports: [
+    ButtonComponent,
+    FormControlComponent,
+    ModalComponent,
+    MainLayoutComponent,
+    AsideComponent,
+  ],
   imports: [CommonModule, ReactiveFormsModule],
 })
 export class SharedModule {}

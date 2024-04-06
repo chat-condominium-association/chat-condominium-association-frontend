@@ -1,21 +1,30 @@
-<!-- <nav></nav> -->
-<div>Hello</div>
 <app-main-layout>
   <ng-container nav>
-    <ul>
-      <li><a [routerLink]="['/admin/rooms']">ssssssssssssssssssssssssssssssss</a></li>
-      <li><a [routerLink]="['/admin/chats/ssss']">ssssssssssssssssssssssssssssssss</a></li>
-      <li><a href="/">ssssssssssssssssssssssssssssssss</a></li>
-    </ul>
+    <div class="nav-wrap">
+      <ul class="nav-list">
+        <li>
+          <img src="../../../../assets/icons/Personal_cabinet.svg" alt="Personal cabinet icon" />
+          <a [routerLink]="['/admin/rooms']"> Особистий кабінет</a>
+        </li>
+        <li>
+          <img src="../../../../assets/icons/Participants.svg" alt="Participants icon" />
+          <a [routerLink]="['/admin/chats/ssss']"> Учасники</a>
+        </li>
+        <li>
+          <img src="../../../../assets/icons/chat_icon.svg" alt="Chats icon" />
+          <a href="/"> Чати</a>
+        </li>
+      </ul>
+    </div>
   </ng-container>
+  <router-outlet main></router-outlet>
   <ng-container aside>
     <div *ngIf="showAdminControl; else adminRoomsControl">
-      <div>ADMIN</div>
-      sllslslslsllelle
+      <!-- <div>ADMIN</div> -->
+      <app-aside></app-aside>
     </div>
     <ng-template #adminRoomsControl>
       <div>PAGES</div>
     </ng-template>
   </ng-container>
 </app-main-layout>
-<router-outlet></router-outlet>

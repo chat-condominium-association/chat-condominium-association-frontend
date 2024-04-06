@@ -6,6 +6,7 @@ import { RouterModule } from '@angular/router';
 import { AdminRoutingModule } from './admin-routing.module';
 import { RoomsComponent } from './pages/rooms/rooms.component';
 import { ChatComponent } from './pages/chat/chat.component';
+import { AsideComponent } from '@shared/components/aside/aside.component';
 
 @NgModule({
   declarations: [StartComponent, RoomsComponent, ChatComponent],
