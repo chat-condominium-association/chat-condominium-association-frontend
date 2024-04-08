@@ -1,0 +1,27 @@
+<div class="main-layout-wrap">
+  <nav>
+    <ul class="nav-list">
+      <li>
+        <!-- <img src="/assets/icons/Personal_cabinet.svg" alt="Personal cabinet icon" /> -->
+        <a [routerLink]="['/profile']"> Особистий кабінет</a>
+      </li>
+      <!-- ngIf role == admin -->
+      <li>
+        <!-- <img src="/assets/icons/Participants.svg" alt="Participants icon" /> -->
+        <a [routerLink]="['/members']"> Учасники</a>
+      </li>
+      <li>
+        <img src="/assets/icons/chat_icon.svg" alt="Chats icon" />
+        <a [routerLink]="['/chats']"> Чати</a>
+      </li>
+    </ul>
+  </nav>
+  <main>
+    <div></div>
+    <router-outlet></router-outlet>
+  </main>
+  <aside></aside>
+</div>
+
+нейминг изображений имена коммитов вложенность стилей согласованость единиц измерения использоание
+глобальный scss переменныъ

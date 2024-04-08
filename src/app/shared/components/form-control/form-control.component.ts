@@ -5,6 +5,7 @@ import { Observable, map } from 'rxjs';
 import { InputType } from '@shared/models/input.interface';
 import { LengthErrorMessage, PatternErrorMessage } from '@shared/models/validator.interface';
 import { errorMessages } from '@shared/validators/validator-messages';
+import { Icons } from '@shared/enums/icons.enum';
 
 @Component({
   selector: 'app-form-control',
@@ -20,6 +21,8 @@ export class FormControlComponent implements InputType, OnInit {
   @Input() name!: string;
   @Input() isRequired = false;
   @Input() iconsUrl: InputType['icons'] = [];
+
+  icon = Icons;
 
   ngOnInit(): void {
     this.isInputFilled$ = this.control?.valueChanges.pipe(map(x => !!x));

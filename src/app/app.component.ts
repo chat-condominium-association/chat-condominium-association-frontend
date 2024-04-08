@@ -1,6 +1,7 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { AppRoutes } from '@core/enums/routes.enum';
+import { UserApiService } from '@core/services/user-api.service';
 import { filter } from 'rxjs';
 
 @Component({
@@ -10,6 +11,7 @@ import { filter } from 'rxjs';
 })
 export class AppComponent implements OnInit {
   private router = inject(Router);
+  private userApiService = inject(UserApiService);
 
   protected showBackground = false;
   protected showLogo = false;

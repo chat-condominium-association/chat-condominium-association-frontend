@@ -1,0 +1,38 @@
+.main-layout-wrap {
+  display: flex;
+}
+nav {
+  width: 20%;
+}
+main {
+  width: 50%;
+}
+aside {
+  width: 30%;
+}
+
+nav {
+  // width: 15%;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.nav-list {
+  text-decoration: none;
+  list-style: none;
+}
+.nav-list {
+  li {
+    display: flex;
+    align-items: center;
+    margin: 3rem;
+  }
+}
+.nav-list img {
+  padding-right: 1rem;
+}
+.nav-list a {
+  text-decoration: none;
+  color: black;
+}

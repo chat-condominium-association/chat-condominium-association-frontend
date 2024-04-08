@@ -20,15 +20,15 @@
     <ng-container *ngIf="isInvalid() && control?.errors?.['required']">
       <img
         class="input-icon input-icon-invalid"
-        src="assets/icons/alert-exclamation_icon.svg"
-        alt=""
+        [src]="icon.alertExclamationIcon"
+        alt="Alert Exclamation Icon"
       />
     </ng-container>
     <ng-container *ngIf="(isInputFilled$ | async) && isInvalid() && !control?.errors?.['required']">
       <img
         class="input-icon input-icon-invalid"
-        src="assets/icons/remove-error-icon.svg"
-        alt=""
+        [src]="icon.removeErrorIcon"
+        alt="Remove Error Icon"
         (click)="resetField()"
       />
     </ng-container>

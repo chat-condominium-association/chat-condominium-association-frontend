@@ -1,5 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { AdminAuthService } from '@auth/services/admin-auth.service';
 import { AppRoutes } from '@core/enums/routes.enum';
 import { matchValidator } from '@shared/validators/match.validator';
 
@@ -10,6 +11,7 @@ import { matchValidator } from '@shared/validators/match.validator';
 })
 export class RegisterPageComponent {
   private fb = inject(FormBuilder);
+  protected adminAuthService = inject(AdminAuthService);
 
   protected readonly LOGIN_PAGE_ROUTE = `/${AppRoutes.LOGIN_PAGE_ROUTE}`;
 

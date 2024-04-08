@@ -6,4 +6,10 @@ export enum AppRoutes {
   RESET_CODE_PAGE_ROUTE = 'resetcode',
   NEW_PASSWORD_PAGE_ROUTE = 'newpassword',
   SUCCESS_NEW_PASSWORD_PAGE_ROUTE = 'successnewpassword',
+  ADMIN_BASE_ROUTE = 'admin',
+  CHATS_PAGE_ROUTE = 'chats',
+  CHAT_PAGE_ROUTE = 'chats/:chatID',
+  COMMENTS_PAGE_ROUTE = 'chats/:chatID/:commentID',
+  MEMBERS_PAGE_ROUTE = 'members',
+  PROFILE_PAGE_ROUTE = 'profile',
 }
