@@ -6,5 +6,3 @@ export interface StoreState {
   admin: string;
   user: string;
 }
-
-//messages?

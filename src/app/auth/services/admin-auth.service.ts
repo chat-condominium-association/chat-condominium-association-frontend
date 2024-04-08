@@ -22,7 +22,7 @@ export class AdminAuthService {
   public isLoading$ = new BehaviorSubject<boolean>(false);
 
   protected readonly LOGIN_PAGE_ROUTE = `/${AppRoutes.LOGIN_PAGE_ROUTE}`;
-  protected readonly ADMIN_PAGE_ROUTE = `/${AppRoutes.ADMIN_BASE_ROUTE}/${AppRoutes.ADMIN_ROOMS_ROUTE}`;
+  protected readonly PROFILE_PAGE_ROUTE = `/${AppRoutes.PROFILE_PAGE_ROUTE}`;
 
   handleLogin(loginForm: FormGroup): void {
     const formData = loginForm.value;
@@ -47,7 +47,7 @@ export class AdminAuthService {
             buttonText: 'Почати роботу з Чатом',
             showSubmitBtn: true,
             handleSubmit: () => {
-              this.router.navigateByUrl(this.ADMIN_PAGE_ROUTE);
+              this.router.navigateByUrl(this.PROFILE_PAGE_ROUTE);
               this.dialog.closeAll();
             },
             icon: Icons.succesIcon,
