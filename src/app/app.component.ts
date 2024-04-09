@@ -2,6 +2,8 @@ import { Component, OnInit, inject } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { AppRoutes } from '@core/enums/routes.enum';
 import { UserApiService } from '@core/services/user-api.service';
+import { Store } from '@ngrx/store';
+import { loadUserAction } from '@store/entities/user/user.actions';
 import { filter } from 'rxjs';
 
 @Component({
@@ -12,7 +14,7 @@ import { filter } from 'rxjs';
 export class AppComponent implements OnInit {
   private router = inject(Router);
   private userApiService = inject(UserApiService);
-
+  private store = inject(Store);
   protected showBackground = false;
   protected showLogo = false;
 
@@ -28,6 +30,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     this.subscribeToRouteChanges();
+    this.store.dispatch(loadUserAction());
   }
 
   private subscribeToRouteChanges(): void {
