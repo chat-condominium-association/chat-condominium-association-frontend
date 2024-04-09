@@ -23,9 +23,6 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
     }),
   ],
   bootstrap: [AppComponent],
-  providers: [
-    { provide: MatDialogRef, useValue: {} },
-    { provide: LocationStrategy, useClass: HashLocationStrategy },
-  ],
+  providers: [{ provide: MatDialogRef, useValue: {} }],
 })
 export class AppModule {}
