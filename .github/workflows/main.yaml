@@ -21,5 +21,12 @@ jobs:
       - name: Build Angular app to prod
         run: npm install && npm run build:prod
 
+      - name: Copy and rename index.html to 404.html
+        run: cp dist/index.html dist/404.html
+
       - name: Deploy to GitHub Pages
-        run: npx ngh --dir=dist/
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: dist/
+          branch: gh-pages
+          token: ${{ secrets.ACCESS_TOKEN }}
