@@ -4,4 +4,6 @@ import { createSelector } from '@ngrx/store';
 
 const selectUser = (state: StoreState): UserState => state.entities.user;
 
-export const UserDataSelector = createSelector(selectUser, userState => userState.userData);
+export const userDataSelector = createSelector(selectUser, userState => userState.userData);
+export const userRoleSelector = createSelector(selectUser, userState => userState.role);
+export const userLoggedInSelector = createSelector(selectUser, userState => !!userState.userData);

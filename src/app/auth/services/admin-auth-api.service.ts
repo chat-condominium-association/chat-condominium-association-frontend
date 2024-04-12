@@ -1,4 +1,4 @@
-import { HttpBackend, HttpClient } from '@angular/common/http';
+import { HttpBackend, HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 import { AuthInterface } from '@auth/models/auth.interface';
 import { environment } from '@environment/environment';
@@ -13,7 +13,7 @@ export class AdminAuthApiService {
   private readonly ADMIN_REGISTER_ENDPOINT = 'register';
   private readonly ADMIN_LOGIN_ENDPOINT = 'login';
 
-  private http = new HttpClient(inject(HttpBackend));
+  private http = inject(HttpClient);
 
   signUp(data: AuthInterface): Observable<null> {
     const url = `${this.ADMIN_API_URL}${this.ADMIN_REGISTER_ENDPOINT}`;

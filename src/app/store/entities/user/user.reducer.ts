@@ -7,6 +7,7 @@ const initialState: UserState = {
   isLoading: false,
   error: null,
   userData: null,
+  role: UserRole.User,
 };
 
 const reducer = createReducer(
@@ -20,16 +21,16 @@ const reducer = createReducer(
     })
   ),
   on(loadUserActionSuccess, (state, action): UserState => {
-    const { email, username, image_id, isAdmin } = action.user;
-    const role = isAdmin ? UserRole.Admin : UserRole.User;
+    const { email, username, image_id, is_admin } = action.user;
+    const role = is_admin ? UserRole.Admin : UserRole.User;
     return {
       ...state,
       userData: {
         username,
         email,
         image_id,
-        role,
       },
+      role: UserRole.User,
       isLoading: false,
       error: null,
     };

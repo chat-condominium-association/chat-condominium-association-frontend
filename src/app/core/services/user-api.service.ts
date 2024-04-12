@@ -13,13 +13,8 @@ import { Observable } from 'rxjs';
 export class UserApiService {
   private http = inject(HttpClient);
   private modalService = inject(ModalService);
-  private httpBackend;
 
-  constructor(handler: HttpBackend) {
-    this.httpBackend = new HttpClient(handler);
-  }
   private readonly USER_API_URL = `${environment.apiUrl}user/`;
-
   private readonly USER_GET_TOKEN_URL = 'get_token';
   private readonly USER_GET_INFO_URL = 'my_info';
   private readonly USER_REFRESH_TOKEN_URL = 'refresh_token';

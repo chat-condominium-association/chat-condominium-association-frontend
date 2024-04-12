@@ -18,8 +18,8 @@ export class AdminAuthService {
   private adminAuthApiService = inject(AdminAuthApiService);
   private router = inject(Router);
   private dialog = inject(MatDialog);
-  private modalService = inject(ModalService);
   private store = inject(Store);
+  private modalService = inject(ModalService);
 
   public backendErrors$ = new BehaviorSubject<string[]>([]);
   public isLoading$ = new BehaviorSubject<boolean>(false);
