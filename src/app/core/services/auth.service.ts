@@ -1,11 +1,7 @@
 import { Injectable, inject } from '@angular/core';
-import { Router } from '@angular/router';
+import { UserApiService } from './user-api.service';
 
 @Injectable({
   providedIn: 'root',
 })
-export class AuthService {
-  private router = inject(Router);
-  // private currentRole$: Observable<UserRoles>;
-  // private isLoggedIn$: Observable<boolean>;
-}
+export class AuthService {}

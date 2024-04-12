@@ -6,6 +6,15 @@
   "overrides": [
     {
       "files": [
+        "*.effects.ts"
+      ],
+      "extends": ["@ngrx/recommended"],
+      "rules": {
+        "@ngrx/prefer-effect-callback-in-block-statement": "off"
+      }
+    },
+    {
+      "files": [
         "*.ts"
       ],
       "extends": [

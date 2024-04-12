@@ -8,6 +8,8 @@ import { MatDialog } from '@angular/material/dialog';
 import { Icons } from '@shared/enums/icons.enum';
 import { ModalService } from '@shared/services/modal.service';
 import { ApiError } from '@core/models/api.inetrface';
+import { Store } from '@ngrx/store';
+import { loadUserAction } from '@store/entities/user/user.actions';
 
 @Injectable({
   providedIn: 'root',
@@ -17,6 +19,7 @@ export class AdminAuthService {
   private router = inject(Router);
   private dialog = inject(MatDialog);
   private modalService = inject(ModalService);
+  private store = inject(Store);
 
   public backendErrors$ = new BehaviorSubject<string[]>([]);
   public isLoading$ = new BehaviorSubject<boolean>(false);
@@ -41,7 +44,6 @@ export class AdminAuthService {
       )
       .subscribe({
         next: () => {
-          // this.authService.getUserInfo().subscribe(val => console.log(val));
           this.modalService.openModal({
             headerMessage: 'Вхід успішний',
             buttonText: 'Почати роботу з Чатом',
@@ -52,6 +54,7 @@ export class AdminAuthService {
             },
             icon: Icons.succesIcon,
           });
+          this.store.dispatch(loadUserAction());
         },
         error: error => this.handleError(error, 'Спробувати ще раз'),
       });
