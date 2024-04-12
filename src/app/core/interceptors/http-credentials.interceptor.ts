@@ -7,7 +7,7 @@ import {
   HTTP_INTERCEPTORS,
   HttpErrorResponse,
 } from '@angular/common/http';
-import { EMPTY, Observable, catchError, switchMap, throwError } from 'rxjs';
+import { EMPTY, Observable, catchError, switchMap, tap, throwError } from 'rxjs';
 import { UserApiService } from '@core/services/user-api.service';
 import { Router } from '@angular/router';
 
@@ -15,6 +15,7 @@ import { Router } from '@angular/router';
 export class HttpCredentialsInterceptor implements HttpInterceptor {
   private userApiService = inject(UserApiService);
   private router = inject(Router);
+  private refreshingToken = false;
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
     const modifiedRequest = request.clone({ withCredentials: true });
@@ -23,9 +24,6 @@ export class HttpCredentialsInterceptor implements HttpInterceptor {
       catchError((error: HttpErrorResponse) => {
         if (error.status === 401) {
           return this.handle401Error(modifiedRequest, next);
-        } else if (error.status === 0) {
-          this.router.navigate(['/']);
-          return EMPTY;
         } else {
           return throwError(() => error);
         }
@@ -37,21 +35,29 @@ export class HttpCredentialsInterceptor implements HttpInterceptor {
     request: HttpRequest<unknown>,
     next: HttpHandler
   ): Observable<HttpEvent<unknown>> {
-    return this.userApiService.refreshAccessToken().pipe(
-      switchMap(response => {
-        if (response === null) {
-          return next.handle(request);
-        } else {
+    if (!this.refreshingToken) {
+      this.refreshingToken = true;
+      return this.userApiService.refreshAccessToken().pipe(
+        switchMap(response => {
+          if (response === null) {
+            return next.handle(request);
+          } else {
+            return EMPTY;
+          }
+        }),
+        catchError((error: HttpErrorResponse) => {
+          console.error(error);
           this.router.navigate(['/']);
-          return EMPTY;
-        }
-      }),
-      catchError((error: HttpErrorResponse) => {
-        console.error('Error refreshing token:', error);
-        this.router.navigate(['/']);
-        return EMPTY;
-      })
-    );
+          return throwError(() => error);
+        }),
+        tap(() => {
+          this.refreshingToken = false;
+        })
+      );
+    } else {
+      this.router.navigate(['/']);
+      return throwError(() => 'Error refreshing token');
+    }
   }
 }
 
