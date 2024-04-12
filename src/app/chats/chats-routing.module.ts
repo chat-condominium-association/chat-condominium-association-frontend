@@ -7,6 +7,7 @@ import { ChatsPageComponent } from './pages/chats-page/chats-page.component';
 import { MembersPageComponent } from './pages/members-page/members-page.component';
 import { ChatPageComponent } from './pages/chat-page/chat-page.component';
 import { CommentsPageComponent } from './pages/comments-page/comments-page.component';
+import { adminRoleGuard } from '@core/guards/admin-role.guard';
 
 const routes: Routes = [
   {
@@ -22,8 +23,8 @@ const routes: Routes = [
         component: ChatsPageComponent,
       },
       {
-        //canLoad: userRole == admin
         path: AppRoutes.MEMBERS_PAGE_ROUTE,
+        canActivate: [adminRoleGuard],
         component: MembersPageComponent,
       },
       {
