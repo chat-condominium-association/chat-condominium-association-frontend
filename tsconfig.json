@@ -26,7 +26,8 @@
       "@shared/*": ["./src/app/shared/*"],
       "@core/*": ["./src/app/core/*"],
       "@auth/*": ["./src/app/auth/*"],
-      "@chats/*": ["./src/app/chats/*"]
+      "@chats/*": ["./src/app/chats/*"],
+      "@store/*": ["./src/app/store/*"]
 
     }
   },

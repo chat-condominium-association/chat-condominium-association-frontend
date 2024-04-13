@@ -7,62 +7,57 @@ import {
   HTTP_INTERCEPTORS,
   HttpErrorResponse,
 } from '@angular/common/http';
-import { Observable, catchError, switchMap, throwError } from 'rxjs';
+import { EMPTY, Observable, catchError, switchMap, tap, throwError } from 'rxjs';
 import { UserApiService } from '@core/services/user-api.service';
 import { Router } from '@angular/router';
-import { AppRoutes } from '@core/enums/routes.enum';
-import { environment } from '@environment/environment';
 
 @Injectable()
 export class HttpCredentialsInterceptor implements HttpInterceptor {
   private userApiService = inject(UserApiService);
   private router = inject(Router);
-
-  private readonly LOGIN_PAGE_ROUTE = `${AppRoutes.ADMIN_BASE_ROUTE}/${AppRoutes.LOGIN_PAGE_ROUTE}`;
-  private readonly ADMIN_API_URL = `${environment.apiUrl}admin/`;
-  private readonly ADMIN_LOGIN_ENDPOINT = 'login';
+  private refreshingToken = false;
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
-    const apiLoginUrl = `${this.ADMIN_API_URL}${this.ADMIN_LOGIN_ENDPOINT}`;
+    const modifiedRequest = request.clone({ withCredentials: true });
 
-    request = this.addCredentials(request);
-
-    return next.handle(request).pipe(
-      catchError(error => {
-        if (
-          error instanceof HttpErrorResponse &&
-          !request.url.includes(apiLoginUrl) &&
-          error.status === 401
-        ) {
-          return this.handleTokenExpired(request, next);
+    return next.handle(modifiedRequest).pipe(
+      catchError((error: HttpErrorResponse) => {
+        if (error.status === 401) {
+          return this.handle401Error(modifiedRequest, next);
+        } else {
+          return throwError(() => error);
         }
-        return throwError(() => error);
       })
     );
   }
 
-  private addCredentials(request: HttpRequest<unknown>): HttpRequest<unknown> {
-    return request.clone({
-      withCredentials: true,
-    });
-  }
-
-  private handleTokenExpired(
+  private handle401Error(
     request: HttpRequest<unknown>,
     next: HttpHandler
   ): Observable<HttpEvent<unknown>> {
-    return this.userApiService.refreshAccessToken().pipe(
-      switchMap(() => {
-        return next.handle(this.addCredentials(request));
-      }),
-      catchError(error => {
-        /* handle two options in future
-          1. If admin rediect to admin auth
-          2. If no admin redirect ... */
-        this.router.navigateByUrl(this.LOGIN_PAGE_ROUTE);
-        return throwError(() => error);
-      })
-    );
+    if (!this.refreshingToken) {
+      this.refreshingToken = true;
+      return this.userApiService.refreshAccessToken().pipe(
+        switchMap(response => {
+          if (response === null) {
+            return next.handle(request);
+          } else {
+            return EMPTY;
+          }
+        }),
+        catchError((error: HttpErrorResponse) => {
+          console.error(error);
+          this.router.navigate(['/']);
+          return throwError(() => error);
+        }),
+        tap(() => {
+          this.refreshingToken = false;
+        })
+      );
+    } else {
+      this.router.navigate(['/']);
+      return throwError(() => 'Error refreshing token');
+    }
   }
 }
 

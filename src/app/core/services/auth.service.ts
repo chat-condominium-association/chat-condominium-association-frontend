@@ -1,30 +1,28 @@
 import { Injectable, inject } from '@angular/core';
-import { Router } from '@angular/router';
-import { BehaviorSubject } from 'rxjs';
+import { UserApiService } from './user-api.service';
+import { Observable, filter, map } from 'rxjs';
+import { Store, select } from '@ngrx/store';
+import { UserRole } from '@core/enums/user.roles.enum';
+import { userLoggedInSelector, userRoleSelector } from '@store/entities/user/user.selectors';
+import { StoreState } from '@store/app.state.interface';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  private router = inject(Router);
-  isAdminLoggedIn = new BehaviorSubject(false);
-  isUserLoggedIn = new BehaviorSubject(false);
+  private currentRole$: Observable<UserRole>;
+  private isLoggedIn$: Observable<boolean>;
 
-  // this.authService.getToken().subscribe(val => console.log(val));
-  // this.authService.getUserInfo().subscribe(val => console.log(val));
-
-  handleAdminSignIn(): void {
-    //set data?
-    // this.localStorageService.set('userData', userData);
-    this.isAdminLoggedIn.next(true);
-    // this.router.navigate(['/']);
-    // this.getUserID();
+  constructor(private store: Store<StoreState>) {
+    this.currentRole$ = this.store.pipe(select(userRoleSelector));
+    this.isLoggedIn$ = this.store.pipe(select(userLoggedInSelector));
   }
-  handleUserSignIn(): void {
-    //set data?
-    // this.localStorageService.set('userData', userData);
-    this.isUserLoggedIn.next(true);
-    // this.router.navigate(['/']);
-    // this.getUserID();
+
+  getCurrentRole(): Observable<UserRole> {
+    return this.currentRole$;
+  }
+
+  isLoggedIn(): Observable<boolean> {
+    return this.isLoggedIn$;
   }
 }
