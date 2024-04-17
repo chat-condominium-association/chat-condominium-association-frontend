@@ -1,38 +1,73 @@
+@import 'variables';
 .main-layout-wrap {
   display: flex;
+  align-items: center;
+  padding: 12px 40px 12px 48px;
 }
-nav {
-  width: 20%;
-}
+
 main {
   width: 50%;
 }
+
 aside {
   width: 30%;
 }
 
-nav {
-  // width: 15%;
+#app-nav {
+  width: 20%;
   min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-}
-.nav-list {
-  text-decoration: none;
-  list-style: none;
-}
-.nav-list {
+
+  ul {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    text-decoration: none;
+    list-style: none;
+  }
+
   li {
     display: flex;
     align-items: center;
-    margin: 3rem;
+    margin-bottom: 40px;
+    column-gap: 12px;
+
+    .nav-icon {
+      width: 20px;
+      height: 20px;
+    }
+
+    .nav-icon:has(+ a.is-active) {
+      svg path {
+        fill: $accentColor;
+      }
+    }
+
+    a.is-active {
+      color: $primaryFontColor;
+      font-weight: bold;
+    }
+
+    &:hover > a {
+      color: $accentColor;
+    }
+
+    &:last-of-type {
+      .nav-icon:has(+ a.is-active) {
+        svg path {
+          stroke: $accentColor;
+          fill: none !important;
+        }
+      }
+    }
   }
 }
-.nav-list img {
-  padding-right: 1rem;
-}
-.nav-list a {
-  text-decoration: none;
-  color: black;
+
+nav {
+  a {
+    text-decoration: none;
+    color: black;
+  }
 }

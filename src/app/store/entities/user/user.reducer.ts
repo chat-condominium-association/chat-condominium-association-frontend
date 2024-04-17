@@ -30,7 +30,7 @@ const reducer = createReducer(
         email,
         image_id,
       },
-      role: UserRole.User,
+      role,
       isLoading: false,
       error: null,
     };

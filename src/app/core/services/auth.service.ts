@@ -1,6 +1,5 @@
-import { Injectable, inject } from '@angular/core';
-import { UserApiService } from './user-api.service';
-import { Observable, filter, map } from 'rxjs';
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import { Store, select } from '@ngrx/store';
 import { UserRole } from '@core/enums/user.roles.enum';
 import { userLoggedInSelector, userRoleSelector } from '@store/entities/user/user.selectors';

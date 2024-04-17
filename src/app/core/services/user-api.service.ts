@@ -1,4 +1,4 @@
-import { HttpBackend, HttpClient } from '@angular/common/http';
+import { HttpBackend, HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 import { ApiError } from '@core/models/api.inetrface';
 import { UserApiInterface } from '@core/models/user.interface';
@@ -12,7 +12,6 @@ import { Observable } from 'rxjs';
 })
 export class UserApiService {
   private http = inject(HttpClient);
-  private modalService = inject(ModalService);
 
   private readonly USER_API_URL = `${environment.apiUrl}user/`;
   private readonly USER_GET_TOKEN_URL = 'get_token';
@@ -32,16 +31,5 @@ export class UserApiService {
   getUserInfo(): Observable<UserApiInterface> {
     const url = `${this.USER_API_URL}${this.USER_GET_INFO_URL}`;
     return this.http.get<UserApiInterface>(url);
-  }
-
-  handleError(error: ApiError, buttonText: string): void {
-    const errorMessage = error?.error?.detail || 'Виникла помилка';
-
-    this.modalService.openModal({
-      headerMessage: errorMessage,
-      buttonText,
-      showSubmitBtn: true,
-      icon: Icons.alertExclamationIcon,
-    });
   }
 }
