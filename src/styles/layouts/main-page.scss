@@ -1,0 +1,27 @@
+@import 'variables';
+
+.page-title {
+  font-size: 20px;
+  color: $primaryDarkColor;
+  font-weight: 700;
+  text-wrap: wrap;
+}
+
+.page-content {
+  padding-left: 5%;
+  padding-top: 40px;
+}
+
+.nav-title {
+  position: absolute;
+  top: 35%;
+  left: 0;
+  border-left: 10px solid $accentColor;
+  height: 10%;
+  display: flex;
+  align-items: center;
+
+  .page-title {
+    padding-left: 31px;
+  }
+}

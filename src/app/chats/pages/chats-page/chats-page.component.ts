@@ -6,3 +6,4 @@ import { Component } from '@angular/core';
   styleUrls: ['./chats-page.component.scss'],
 })
 export class ChatsPageComponent {}
+//redirect on first page

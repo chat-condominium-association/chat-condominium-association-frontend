@@ -8,7 +8,7 @@ export interface UserState {
   role: UserRole;
 }
 
-interface UserData {
+export interface UserData {
   username: string | null;
   email: string | null;
   image_id: number | null;

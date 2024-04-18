@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Store, select } from '@ngrx/store';
 import { UserRole } from '@core/enums/user.roles.enum';
@@ -11,8 +11,8 @@ import { StoreState } from '@store/app.state.interface';
 export class AuthService {
   private currentRole$: Observable<UserRole>;
   private isLoggedIn$: Observable<boolean>;
-
-  constructor(private store: Store<StoreState>) {
+  private store = inject(Store<StoreState>);
+  constructor() {
     this.currentRole$ = this.store.pipe(select(userRoleSelector));
     this.isLoggedIn$ = this.store.pipe(select(userLoggedInSelector));
   }
