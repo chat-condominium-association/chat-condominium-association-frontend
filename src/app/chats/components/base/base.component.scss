@@ -8,26 +8,33 @@
   box-sizing: border-box;
 }
 
+.hidden {
+  display: none !important;
+}
+
 .aside {
   padding: 40px 20px;
   display: flex;
   box-sizing: border-box;
   align-items: center;
-  gap: 50px;
+  gap: 40px;
   justify-content: flex-start;
   flex-direction: column;
   text-align: center;
   min-width: 200px;
+  max-width: 400px;
   width: 25%;
 
   h4 {
     font-size: 20px;
-    max-width: 200px;
   }
 
-  .aside-user-control {
+  .aside-control {
+    width: 100%;
     button {
+      margin: 0 auto;
       min-width: 170px;
+      max-width: 260px;
       width: 100%;
       gap: 20px;
       background-color: transparent;
@@ -60,6 +67,7 @@
 
 main {
   width: 60%;
+  flex: 1;
   position: relative;
   .container {
     width: 100%;
