@@ -14,8 +14,6 @@ import { Observable } from 'rxjs';
   styleUrls: ['./base.component.scss'],
 })
 export class BaseComponent {
-  protected authService = inject(AuthService);
-  protected UserRole = UserRole;
   protected avatars = avatars;
 
   private store = inject(Store<StoreState>);

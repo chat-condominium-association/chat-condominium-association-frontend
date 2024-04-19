@@ -55,6 +55,7 @@ body {
   margin: 0;
   padding: 0;
   background-color: $primaryDarkColor;
+  scrollbar-gutter: stable;
 }
 
 h1,
@@ -85,6 +86,14 @@ button {
 
 a {
   font-size: 16px;
+}
+
+nav {
+  a {
+    font-size: 18px;
+    text-decoration: none;
+    color: black;
+  }
 }
 
 ul {

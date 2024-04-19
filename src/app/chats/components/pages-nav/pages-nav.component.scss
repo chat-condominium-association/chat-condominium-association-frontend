@@ -1,0 +1,52 @@
+@import 'variables';
+
+:host {
+  width: 15%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+ul {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  text-decoration: none;
+  list-style: none;
+}
+
+li {
+  display: flex;
+  align-items: center;
+  margin-bottom: 40px;
+  column-gap: 12px;
+
+  .nav-icon {
+    width: 20px;
+    height: 20px;
+  }
+
+  .nav-icon:has(+ a.is-active) {
+    svg path {
+      fill: $accentColor;
+    }
+  }
+
+  a.is-active {
+    color: $primaryFontColor;
+    font-weight: bold;
+  }
+
+  &:hover > a {
+    color: $accentColor;
+  }
+
+  &:last-of-type {
+    .nav-icon:has(+ a.is-active) {
+      svg path {
+        stroke: $accentColor;
+        fill: none !important;
+      }
+    }
+  }
+}

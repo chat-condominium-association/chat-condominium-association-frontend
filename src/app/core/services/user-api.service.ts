@@ -25,7 +25,7 @@ export class UserApiService {
 
   refreshAccessToken(): Observable<null> {
     const url = `${this.USER_API_URL}${this.USER_REFRESH_TOKEN_URL}`;
-    return this.http.post<null>(url, {});
+    return this.http.post<null>(url, null);
   }
 
   getUserInfo(): Observable<UserApiInterface> {

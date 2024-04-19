@@ -8,6 +8,9 @@ import { MembersPageComponent } from './pages/members-page/members-page.componen
 import { ProfilePageComponent } from './pages/profile-page/profile-page.component';
 import { CommentsPageComponent } from './pages/comments-page/comments-page.component';
 import { BaseComponent } from './components/base/base.component';
+import { PagesNavComponent } from './components/pages-nav/pages-nav.component';
+import { UserInfoComponent } from './components/user-info/user-info.component';
+import { MainInfoNavComponent } from './components/main-info-nav/main-info-nav.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +20,9 @@ import { BaseComponent } from './components/base/base.component';
     ProfilePageComponent,
     CommentsPageComponent,
     BaseComponent,
+    PagesNavComponent,
+    UserInfoComponent,
+    MainInfoNavComponent,
   ],
   imports: [CommonModule, ChatsRoutingModule],
 })
