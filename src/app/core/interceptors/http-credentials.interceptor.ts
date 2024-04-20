@@ -10,6 +10,7 @@ import {
 import { EMPTY, Observable, catchError, switchMap, tap, throwError } from 'rxjs';
 import { UserApiService } from '@core/services/user-api.service';
 import { Router } from '@angular/router';
+import { ApiError } from '@core/models/api.inetrface';
 
 @Injectable()
 export class HttpCredentialsInterceptor implements HttpInterceptor {
@@ -46,7 +47,6 @@ export class HttpCredentialsInterceptor implements HttpInterceptor {
           }
         }),
         catchError((error: HttpErrorResponse) => {
-          console.error(error);
           this.router.navigate(['/']);
           return throwError(() => error);
         }),
@@ -56,7 +56,7 @@ export class HttpCredentialsInterceptor implements HttpInterceptor {
       );
     } else {
       this.router.navigate(['/']);
-      return throwError(() => 'Error refreshing token');
+      return throwError(() => new Error('Error refreshing token'));
     }
   }
 }

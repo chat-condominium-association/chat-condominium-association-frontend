@@ -8,63 +8,6 @@
   box-sizing: border-box;
 }
 
-.hidden {
-  display: none !important;
-}
-
-.aside {
-  padding: 40px 20px;
-  display: flex;
-  box-sizing: border-box;
-  align-items: center;
-  gap: 40px;
-  justify-content: flex-start;
-  flex-direction: column;
-  text-align: center;
-  min-width: 200px;
-  max-width: 400px;
-  width: 25%;
-
-  h4 {
-    font-size: 20px;
-  }
-
-  .aside-control {
-    width: 100%;
-    button {
-      margin: 0 auto;
-      min-width: 170px;
-      max-width: 260px;
-      width: 100%;
-      gap: 20px;
-      background-color: transparent;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 35px;
-      font-size: 14px;
-
-      &:hover {
-        svg path {
-          fill: $accentColor;
-        }
-      }
-    }
-  }
-
-  .aside-user-info {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 35px;
-
-    h3 {
-      font-size: 16px;
-    }
-  }
-}
-
 main {
   width: 60%;
   flex: 1;

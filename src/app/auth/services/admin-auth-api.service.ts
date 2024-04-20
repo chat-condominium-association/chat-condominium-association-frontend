@@ -13,7 +13,7 @@ export class AdminAuthApiService {
   private readonly ADMIN_REGISTER_ENDPOINT = 'register';
   private readonly ADMIN_LOGIN_ENDPOINT = 'login';
 
-  private http = inject(HttpClient);
+  private http = new HttpClient(inject(HttpBackend));
 
   signUp(data: AuthInterface): Observable<null> {
     const url = `${this.ADMIN_API_URL}${this.ADMIN_REGISTER_ENDPOINT}`;
@@ -22,6 +22,6 @@ export class AdminAuthApiService {
 
   signIn(data: AuthInterface): Observable<null> {
     const url = `${this.ADMIN_API_URL}${this.ADMIN_LOGIN_ENDPOINT}`;
-    return this.http.post<null>(url, data);
+    return this.http.post<null>(url, data, { withCredentials: true });
   }
 }

@@ -16,22 +16,4 @@ import { Observable } from 'rxjs';
   templateUrl: './base.component.html',
   styleUrls: ['./base.component.scss'],
 })
-export class BaseComponent {
-  protected avatars = avatars;
-  protected chatsImages = chats;
-  protected AsidePanel = AsidePanel;
-
-  private store = inject(Store<StoreState>);
-  protected userData$: Observable<UserData | null>;
-  protected asideState$: Observable<AsidePanel>;
-
-  constructor() {
-    this.asideState$ = this.store.pipe(select(asideStateSelector));
-    this.userData$ = this.store.select(userDataSelector);
-  }
-
-  getAvatarSrc(userData: UserData | null): string {
-    const id = userData?.image_id || 0;
-    return this.avatars[id as keyof typeof avatars];
-  }
-}
+export class BaseComponent {}

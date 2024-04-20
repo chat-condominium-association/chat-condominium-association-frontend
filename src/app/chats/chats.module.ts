@@ -10,7 +10,10 @@ import { CommentsPageComponent } from './pages/comments-page/comments-page.compo
 import { BaseComponent } from './components/base/base.component';
 import { PagesNavComponent } from './components/pages-nav/pages-nav.component';
 import { UserInfoComponent } from './components/user-info/user-info.component';
-import { MainInfoNavComponent } from './components/main-info-nav/main-info-nav.component';
+import { MainInfoNavComponent } from './components/main-chats-nav/main-chats-nav.component';
+import { AsideControlComponent } from './components/aside-control/aside-control.component';
+import { SharedModule } from '@shared/shared.module';
+import { PagesLayoutComponent } from './components/pages-layout/pages-layout.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +26,9 @@ import { MainInfoNavComponent } from './components/main-info-nav/main-info-nav.c
     PagesNavComponent,
     UserInfoComponent,
     MainInfoNavComponent,
+    AsideControlComponent,
+    PagesLayoutComponent,
   ],
-  imports: [CommonModule, ChatsRoutingModule],
+  imports: [CommonModule, ChatsRoutingModule, SharedModule],
 })
 export class ChatsModule {}
