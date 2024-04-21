@@ -1,3 +1,4 @@
+import { RommsByIDState } from './entities/roomsByID/roomsByID.interface';
 import { UserState } from './entities/user/user.interface';
 import { ComponetsState } from './ui/components/components.interface';
 
@@ -12,6 +13,7 @@ export interface StoreState {
 
 export interface EntitiesState {
   user: UserState;
+  rommsByID: RommsByIDState;
 }
 
 export interface UIState {

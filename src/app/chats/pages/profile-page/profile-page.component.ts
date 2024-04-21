@@ -1,17 +1,22 @@
 import { Component, OnInit, inject } from '@angular/core';
-import { Store } from '@ngrx/store';
+import { RoomInfo } from '@chats/model/rooms.interface';
+import { Store, select } from '@ngrx/store';
 import { AsidePanel } from '@shared/enums/aside-panel-states.enum';
+import { StoreState } from '@store/app.state.interface';
+import { roomsInfoSelector } from '@store/entities/roomsByID/roomsByID.selectors';
 import { setAsideStateAction } from '@store/ui/components/components.actions';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-profile-page',
   templateUrl: './profile-page.component.html',
   styleUrls: ['./profile-page.component.scss'],
 })
-export class ProfilePageComponent implements OnInit {
-  private store = inject(Store);
+export class ProfilePageComponent {
+  private store = inject(Store<StoreState>);
+  protected roomsInfo$: Observable<RoomInfo[]>;
 
-  ngOnInit(): void {
-    // this.store.dispatch(setAsideStateAction({ state: AsidePanel.Profile }));
+  constructor() {
+    this.roomsInfo$ = this.store.pipe(select(roomsInfoSelector));
   }
 }

@@ -3,17 +3,8 @@
 </div>
 <nav id="chats-nav">
   <ul>
-    <li>
-      <a routerLink="/chats/{{ 1 }}" routerLinkActive="is-active">Управління будинком</a>
-    </li>
-    <li>
-      <a routerLink="/chats/{{ 2 }}" routerLinkActive="is-active">Управління будинком</a>
-    </li>
-    <li>
-      <a routerLink="/chats/{{ 3 }}" routerLinkActive="is-active">Управління будинком</a>
-    </li>
-    <li>
-      <a routerLink="/chats/{{ 4 }}" routerLinkActive="is-active">Управління будинком</a>
+    <li *ngFor="let room of roomsInfo$ | async">
+      <a [routerLink]="['/chats', room.id]" routerLinkActive="is-active">{{ room.name }}</a>
     </li>
   </ul>
 </nav>
