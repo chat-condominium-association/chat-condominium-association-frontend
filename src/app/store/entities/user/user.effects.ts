@@ -1,6 +1,6 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
-import { UserApiService } from '@core/services/user-api.service';
+import { UserApiService } from '@chats/services/user-api.service';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { switchMap, map, catchError, of } from 'rxjs';
 import { loadUserAction, loadUserActionFailed, loadUserActionSuccess } from './user.actions';
