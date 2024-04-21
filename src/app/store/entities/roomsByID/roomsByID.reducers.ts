@@ -29,6 +29,7 @@ const reducer = createReducer(
 
     rooms.forEach(room => {
       transformedRooms[room.id] = {
+        membersQuantity: 0,
         name: room.name,
         posts: [],
         messagesByPostID: [],

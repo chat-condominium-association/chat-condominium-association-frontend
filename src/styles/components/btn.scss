@@ -1,0 +1,9 @@
+.icon-btn {
+  background-color: transparent;
+
+  &:hover {
+    svg path {
+      fill: $accentColor;
+    }
+  }
+}

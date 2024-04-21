@@ -34,18 +34,11 @@ aside {
       max-width: 260px;
       width: 100%;
       gap: 20px;
-      background-color: transparent;
       display: flex;
       justify-content: space-between;
       align-items: center;
       margin-bottom: 35px;
       font-size: 14px;
-
-      &:hover {
-        svg path {
-          fill: $accentColor;
-        }
-      }
     }
   }
 

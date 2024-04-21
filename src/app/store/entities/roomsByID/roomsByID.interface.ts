@@ -12,6 +12,7 @@ export interface RommsByIDState {
 export type Rooms = Record<number, RoomsByID>;
 
 export interface RoomsByID {
+  membersQuantity: number;
   posts: string[];
   isLoading: boolean;
   error: ApiError | null;

@@ -12,10 +12,6 @@
   box-sizing: border-box;
   height: 100%;
 
-  .scroll-content-body {
-    padding-right: 10px;
-  }
-
   &::-webkit-scrollbar {
     width: 12px;
     position: sticky;
@@ -36,8 +32,12 @@
 
 .page-content {
   box-sizing: border-box;
-  padding: 40px 12px 40px 5%;
+  padding: 40px 0 40px 5%;
   height: 100%;
+}
+
+.page-content-header {
+  margin-bottom: 40px;
 }
 
 .nav-title {

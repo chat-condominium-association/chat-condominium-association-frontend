@@ -1,0 +1,23 @@
+@import 'variables';
+
+.card {
+  border-radius: $mainBorderRadius 0 0 $mainBorderRadius;
+  padding: 16px 32px;
+  box-sizing: border-box;
+  box-shadow: $boxShadowDark;
+  background-color: $primaryDarkColor;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+h3 {
+  font-size: 20px;
+  margin-bottom: 5px;
+}
+
+p {
+  font-size: 14px;
+  color: $secondaryFontAndBlocksColor;
+}
