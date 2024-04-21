@@ -39,6 +39,8 @@ $teamchallenge-chat-theme: mat.define-light-theme(
 @import './styles/components/blocks.scss';
 @import './styles/components/auth.scss';
 @import './styles/layouts/containers.scss';
+@import './styles/layouts/main-page.scss';
+
 @import 'variables';
 
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap');
@@ -53,6 +55,7 @@ body {
   margin: 0;
   padding: 0;
   background-color: $primaryDarkColor;
+  scrollbar-gutter: stable;
 }
 
 h1,
@@ -83,6 +86,23 @@ button {
 
 a {
   font-size: 16px;
+}
+
+nav {
+  a {
+    font-size: 18px;
+    text-decoration: none;
+    color: black;
+  }
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  list-style: none;
 }
 
 .logo {

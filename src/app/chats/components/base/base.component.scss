@@ -1,38 +1,27 @@
+@import 'variables';
 .main-layout-wrap {
   display: flex;
-}
-nav {
-  width: 20%;
-}
-main {
-  width: 50%;
-}
-aside {
-  width: 30%;
+  align-items: stretch;
+  padding: 12px 40px 12px 48px;
+  column-gap: 20px;
+  height: 100%;
+  box-sizing: border-box;
 }
 
-nav {
-  // width: 15%;
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.nav-list {
-  text-decoration: none;
-  list-style: none;
-}
-.nav-list {
-  li {
-    display: flex;
-    align-items: center;
-    margin: 3rem;
+main {
+  width: 60%;
+  flex: 1;
+  position: relative;
+  .container {
+    width: 100%;
+    box-sizing: border-box;
+    padding-left: max(25%, 170px);
+    top: 0;
+    right: 0;
+    background-color: $secondaryFontAndBlocksColor;
+    position: absolute;
+    box-shadow: $boxShadowDark;
+    height: 100%;
+    border-radius: $mainBorderRadius;
   }
-}
-.nav-list img {
-  padding-right: 1rem;
-}
-.nav-list a {
-  text-decoration: none;
-  color: black;
 }

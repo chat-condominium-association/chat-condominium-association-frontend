@@ -1,4 +1,5 @@
 import { UserState } from './entities/user/user.interface';
+import { ComponetsState } from './ui/components/components.interface';
 
 export interface AppState {
   appState: StoreState;
@@ -6,7 +7,7 @@ export interface AppState {
 
 export interface StoreState {
   entities: EntitiesState;
-  // ui: UIState;
+  ui: UIState;
 }
 
 export interface EntitiesState {
@@ -14,6 +15,5 @@ export interface EntitiesState {
 }
 
 export interface UIState {
-  pages: string;
-  components: string;
+  components: ComponetsState;
 }

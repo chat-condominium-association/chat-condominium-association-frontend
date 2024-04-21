@@ -1,0 +1,55 @@
+@import 'variables';
+
+.page-title {
+  font-size: 20px;
+  color: $primaryDarkColor;
+  font-weight: 700;
+  text-wrap: wrap;
+}
+
+.scroll-content {
+  overflow-y: auto;
+  box-sizing: border-box;
+  height: 100%;
+
+  .scroll-content-body {
+    padding-right: 10px;
+  }
+
+  &::-webkit-scrollbar {
+    width: 12px;
+    position: sticky;
+  }
+
+  &::-webkit-scrollbar-track {
+    background-color: $primaryLightColor;
+    border-radius: $mainBorderRadius;
+    margin-inline: 20px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border-radius: $mainBorderRadius;
+    height: 32px;
+    background-color: $accentColorDark;
+  }
+}
+
+.page-content {
+  box-sizing: border-box;
+  padding: 40px 12px 40px 5%;
+  height: 100%;
+}
+
+.nav-title {
+  position: absolute;
+  top: 35%;
+  left: 0;
+  border-left: 10px solid $accentColor;
+  height: 10%;
+  display: flex;
+  align-items: center;
+
+  .page-title {
+    padding-left: 31px;
+  }
+}

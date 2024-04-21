@@ -23,14 +23,15 @@ const reducer = createReducer(
   on(loadUserActionSuccess, (state, action): UserState => {
     const { email, username, image_id, is_admin } = action.user;
     const role = is_admin ? UserRole.Admin : UserRole.User;
+    const name = username.charAt(0).toUpperCase() + username.slice(1);
     return {
       ...state,
       userData: {
-        username,
+        username: name,
         email,
         image_id,
       },
-      role: UserRole.User,
+      role,
       isLoading: false,
       error: null,
     };

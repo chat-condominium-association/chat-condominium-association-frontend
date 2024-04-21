@@ -1,25 +1,29 @@
 @import 'variables';
 
 .default-content-block {
-  border-radius: 40px;
-  margin: 0 auto;
-  padding: 48px;
   max-width: 440px;
-  width: 100%;
-  box-sizing: border-box;
-  box-shadow: $boxShadowDark;
-  background-color: $primaryLightColor;
+  padding: 48px;
+  margin: 0 auto;
 
   h1 {
     margin-bottom: 32px;
   }
 }
 
+.content-block,
+.default-content-block {
+  border-radius: $mainBorderRadius;
+  width: 100%;
+  box-sizing: border-box;
+  box-shadow: $boxShadowDark;
+  background-color: $primaryLightColor;
+}
+
 .mat-mdc-dialog-container .mdc-dialog__container {
   position: relative !important;
 }
 .mat-mdc-dialog-container .mdc-dialog__surface {
-  border-radius: 40px !important;
+  border-radius: $mainBorderRadius !important;
   margin: 0 auto;
   max-width: 440px !important;
   min-width: 440px !important;

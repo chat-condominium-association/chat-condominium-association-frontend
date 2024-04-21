@@ -1,11 +1,11 @@
-<ng-container *ngIf="showBackground">
+<ng-container *ngIf="routerService.showBackground$ | async">
   <img
     class="skyscraper-background"
     src="assets/images/skyscraper_both.png"
     alt="Skyscrapers background"
   />
 </ng-container>
-<ng-container *ngIf="showLogo">
+<ng-container *ngIf="routerService.showLogo$ | async">
   <a [routerLink]="['/']">
     <img class="logo" src="assets/icons/logo.svg" alt="Logo" />
   </a>
