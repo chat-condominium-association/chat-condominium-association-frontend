@@ -2,12 +2,12 @@
   <ng-container pageTitle>Чатики</ng-container>
   <h2 pageHeader class="page-title">Кімнати для обговорень</h2>
   <div pageBody>
-    <div *ngFor="let room of roomsInfo$ | async">
+    <div *ngFor="let room of roomsData$ | async | toArray; let i = index">
       <app-management-card>
-        <ng-container title>{{ room.name }}</ng-container>
+        <ng-container title>{{ i + 1 }}.{{ room.name }}</ng-container>
         <ng-container subTitle>{{ room.membersQuantity || 0 }} мешканців</ng-container>
         <ng-container additional *ngIf="(authService.getCurrentRole() | async) === UserRole.Admin">
-          <button class="icon-btn">
+          <button class="icon-btn" (click)="openEditRoomDialog(modal, room.id)">
             <svg
               width="20"
               height="19"
@@ -26,3 +26,28 @@
     </div>
   </div>
 </app-pages-layout>
+
+<ng-template #modal>
+  <app-modal>
+    <ng-container modal-body class="modal">
+      <form [formGroup]="editRoomForm"></form>
+      <app-form-control
+        label="Введіть нову назву"
+        name="name"
+        [control]="editRoomForm.get('name')"
+        [isRequired]="true"
+        type="text"
+        placeholder="Нова назва"
+      ></app-form-control>
+      <app-error-message [error]="roomError" *ngIf="roomError"></app-error-message>
+    </ng-container>
+    <ng-container modal-bottom class="modal">
+      <app-button
+        type="submit"
+        [disabled]="editRoomForm.invalid"
+        (buttonClick)="handleEditRoomSubmit()"
+        >Змінити</app-button
+      >
+    </ng-container>
+  </app-modal>
+</ng-template>

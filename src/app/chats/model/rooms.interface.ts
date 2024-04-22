@@ -3,3 +3,5 @@ export interface RoomInfo {
   name: string;
   membersQuantity: number;
 }
+
+export type EditRoom = Pick<RoomInfo, 'name'>;

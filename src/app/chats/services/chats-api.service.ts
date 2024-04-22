@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
-import { RoomInfo } from '@chats/model/rooms.interface';
+import { EditRoom, RoomInfo } from '@chats/model/rooms.interface';
 import { environment } from '@environment/environment';
 import { Observable } from 'rxjs';
 
@@ -19,5 +19,10 @@ export class ChatsApiService {
   getRooms(): Observable<RoomInfo[]> {
     const url = `${this.ROOMS_API_URL}${this.ROOMS_INFO_URL}`;
     return this.http.get<RoomInfo[]>(url);
+  }
+
+  editRoom(roomID: number, editData: EditRoom): Observable<RoomInfo> {
+    const url = `${this.ROOMS_API_URL}${this.ROOM_EDIT_URL}${roomID}`;
+    return this.http.put<RoomInfo>(url, editData);
   }
 }

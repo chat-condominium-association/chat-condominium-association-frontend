@@ -1,6 +1,9 @@
 import { Action, ActionReducer, createReducer, on } from '@ngrx/store';
-import { RoomsByID, RommsByIDState } from './roomsByID.interface';
+import { RoomByID, RommsByIDState } from './roomsByID.interface';
 import {
+  editRoomAction,
+  editRoomActionFailed,
+  editRoomActionSuccess,
   loadRoomsInfoAction,
   loadRoomsInfoActionFailed,
   loadRoomsInfoActionSuccess,
@@ -10,7 +13,6 @@ const initialState: RommsByIDState = {
   isLoading: false,
   error: null,
   roomsByID: {},
-  roomsInfo: [],
 };
 
 const reducer = createReducer(
@@ -23,12 +25,28 @@ const reducer = createReducer(
       error: null,
     })
   ),
+  on(editRoomAction, (state, action): RommsByIDState => {
+    const { roomID } = action;
+    const updatedRoomsByID = {
+      ...state.roomsByID,
+      [roomID]: {
+        ...state.roomsByID[roomID],
+        isLoading: true,
+        error: null,
+      },
+    };
+    return {
+      ...state,
+      roomsByID: updatedRoomsByID,
+    };
+  }),
   on(loadRoomsInfoActionSuccess, (state, action): RommsByIDState => {
     const { rooms } = action;
-    const transformedRooms: Record<string, RoomsByID> = {};
+    const transformedRooms: Record<string, RoomByID> = {};
 
     rooms.forEach(room => {
       transformedRooms[room.id] = {
+        id: room.id,
         membersQuantity: 0,
         name: room.name,
         posts: [],
@@ -42,11 +60,42 @@ const reducer = createReducer(
       ...state,
       isLoading: false,
       error: null,
-      roomsInfo: rooms,
       roomsByID: transformedRooms,
     };
   }),
-  on(loadRoomsInfoActionFailed, (state, action): RommsByIDState => {
+  on(editRoomActionSuccess, (state, action): RommsByIDState => {
+    const { room } = action;
+    const updatedRoomsByID = {
+      ...state.roomsByID,
+      [room.id]: {
+        ...state.roomsByID[room.id],
+        name: room.name,
+        isLoading: false,
+        error: null,
+      },
+    };
+
+    return {
+      ...state,
+      roomsByID: updatedRoomsByID,
+    };
+  }),
+  on(editRoomActionFailed, (state, action): RommsByIDState => {
+    const { roomID } = action;
+    const updatedRoomsByID = {
+      ...state.roomsByID,
+      [roomID]: {
+        ...state.roomsByID[roomID],
+        isLoading: false,
+        error: action.error,
+      },
+    };
+    return {
+      ...state,
+      roomsByID: updatedRoomsByID,
+    };
+  }),
+  on(loadRoomsInfoActionFailed, editRoomActionFailed, (state, action): RommsByIDState => {
     return {
       ...state,
       isLoading: false,

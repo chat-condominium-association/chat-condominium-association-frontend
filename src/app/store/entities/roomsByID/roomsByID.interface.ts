@@ -6,12 +6,12 @@ export interface RommsByIDState {
   isLoading: boolean;
   error: ApiError | null;
   roomsByID: Rooms;
-  roomsInfo: RoomInfo[];
 }
 
-export type Rooms = Record<number, RoomsByID>;
+export type Rooms = Record<number, RoomByID>;
 
-export interface RoomsByID {
+export interface RoomByID {
+  id: number;
   membersQuantity: number;
   posts: string[];
   isLoading: boolean;

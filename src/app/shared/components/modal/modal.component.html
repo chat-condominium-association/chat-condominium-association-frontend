@@ -1,16 +1,19 @@
 <div class="modal-content">
   <div class="modal-header">
     <div class="cols-layout-start-beetwen">
-      <h3>{{ data.headerMessage }}</h3>
-      <img class="modal-icon" [src]="data.icon" alt="Modal Icon" />
+      <h3 *ngIf="data.headerMessage">{{ data.headerMessage }}</h3>
+      <img *ngIf="data.icon" class="modal-icon" [src]="data.icon" alt="Modal Icon" />
     </div>
     <ng-content select="[modal-header]"></ng-content>
   </div>
   <div class="modal-body">
     <ng-content select="[modal-body]"></ng-content>
   </div>
-  <div class="modal-bottom" *ngIf="data?.showSubmitBtn">
-    <app-button (buttonClick)="handleSubmit()"> {{ data.buttonText }}</app-button>
+  <div class="modal-bottom">
+    <ng-content select="[modal-bottom]"></ng-content>
+    <app-button *ngIf="data.showSubmitBtn" (buttonClick)="handleSubmit()">
+      {{ data.buttonText }}</app-button
+    >
   </div>
 </div>
 <div class="modal-close" *ngIf="data?.showCloseBtn">
