@@ -10,7 +10,6 @@ export class ModalService {
   private dialog = inject(MatDialog);
 
   openModal(data: Partial<ModalData>): void {
-    // const { headerMessage, buttonText, handleSubmit, icon, showSubmitBtn } = data;
     this.dialog.open(ModalComponent, {
       data,
     });

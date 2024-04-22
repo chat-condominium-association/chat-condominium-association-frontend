@@ -6,12 +6,12 @@
     </div>
     <ng-content select="[modal-header]"></ng-content>
   </div>
-  <div class="modal-body">
-    <ng-content select="[modal-body]"></ng-content>
+  <div>
+    <ng-content class="modal-body" select="[modal-body]"></ng-content>
   </div>
-  <div class="modal-bottom">
-    <ng-content select="[modal-bottom]"></ng-content>
-    <app-button *ngIf="data.showSubmitBtn" (buttonClick)="handleSubmit()">
+  <div>
+    <ng-content class="modal-bottom" select="[modal-bottom]"></ng-content>
+    <app-button class="modal-bottom" *ngIf="data.showSubmitBtn" (buttonClick)="handleSubmit()">
       {{ data.buttonText }}</app-button
     >
   </div>

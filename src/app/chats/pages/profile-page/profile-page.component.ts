@@ -2,9 +2,11 @@ import { Component, TemplateRef, inject } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { RoomsService } from '@chats/services/rooms.service';
-import { ErrorMessages } from '@core/enums/error.enum';
+import { ApiMessages } from '@core/enums/api-messages.enum';
 import { UserRole } from '@core/enums/user.roles.enum';
+import { ApiHandleService } from '@core/services/api-handle.service';
 import { AuthService } from '@core/services/auth.service';
+import { ModalService } from '@shared/services/modal.service';
 import { Rooms } from '@store/entities/roomsByID/roomsByID.interface';
 import { Observable, Subject, takeUntil, take, withLatestFrom } from 'rxjs';
 
@@ -17,6 +19,7 @@ export class ProfilePageComponent {
   private dialog = inject(MatDialog);
   protected authService = inject(AuthService);
   private roomsService = inject(RoomsService);
+  private apiHandleService = inject(ApiHandleService);
 
   private modalDestroyed = new Subject<void>();
   protected roomsData$: Observable<Rooms> = this.roomsService.roomsData$;
@@ -70,8 +73,9 @@ export class ProfilePageComponent {
             this.dialog.closeAll();
             this.selectedRoomId = null;
             this.roomError = null;
+            this.apiHandleService.handleSuccess(ApiMessages.SuccesSavedtText);
           } else if (!isLoading && error) {
-            this.roomError = error?.error?.detail || ErrorMessages.DefaultText;
+            this.roomError = error?.error?.detail || ApiMessages.ErrorDefaultText;
           }
         });
     }

@@ -7,7 +7,7 @@
         <ng-container title>{{ i + 1 }}.{{ room.name }}</ng-container>
         <ng-container subTitle>{{ room.membersQuantity || 0 }} мешканців</ng-container>
         <ng-container additional *ngIf="(authService.getCurrentRole() | async) === UserRole.Admin">
-          <button class="icon-btn" (click)="openEditRoomDialog(modal, room.id)">
+          <button class="icon-btn" (click)="openEditRoomDialog(editRoomModal, room.id)">
             <svg
               width="20"
               height="19"
@@ -27,7 +27,7 @@
   </div>
 </app-pages-layout>
 
-<ng-template #modal>
+<ng-template #editRoomModal>
   <app-modal>
     <ng-container modal-body class="modal">
       <form [formGroup]="editRoomForm"></form>
