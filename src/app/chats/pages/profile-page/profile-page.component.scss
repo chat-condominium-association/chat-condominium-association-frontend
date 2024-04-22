@@ -1,9 +1,6 @@
-.modal {
-  .modal-header {
-    margin-bottom: 40px;
-  }
-}
-
-form {
+.modal-form {
   margin-top: 24px;
+  app-button {
+    margin-top: 8px;
+  }
 }

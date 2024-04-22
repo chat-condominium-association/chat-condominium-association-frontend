@@ -30,24 +30,18 @@
 <ng-template #editRoomModal>
   <app-modal>
     <ng-container modal-body class="modal">
-      <form [formGroup]="editRoomForm"></form>
-      <app-form-control
-        label="Введіть нову назву"
-        name="name"
-        [control]="editRoomForm.get('name')"
-        [isRequired]="true"
-        type="text"
-        placeholder="Нова назва"
-      ></app-form-control>
-      <app-error-message [error]="roomError" *ngIf="roomError"></app-error-message>
-    </ng-container>
-    <ng-container modal-bottom class="modal">
-      <app-button
-        type="submit"
-        [disabled]="editRoomForm.invalid"
-        (buttonClick)="handleEditRoomSubmit()"
-        >Змінити</app-button
-      >
+      <form [formGroup]="editRoomForm" class="modal-form" (ngSubmit)="handleEditRoomSubmit()">
+        <app-form-control
+          label="Введіть нову назву"
+          name="name"
+          [control]="editRoomForm.get('name')"
+          [isRequired]="true"
+          type="text"
+          placeholder="Нова назва"
+        ></app-form-control>
+        <app-error-message [error]="roomError" *ngIf="roomError"></app-error-message>
+        <app-button type="submit" [disabled]="editRoomForm.invalid">Змінити</app-button>
+      </form>
     </ng-container>
   </app-modal>
 </ng-template>
