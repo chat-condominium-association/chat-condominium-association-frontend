@@ -29,13 +29,14 @@
   width: 24px;
 }
 
+app-button.modal-bottom,
+.modal-bottom {
+  margin-top: 32px;
+}
 h3 {
   font-size: 18px;
   font-weight: 700;
 }
 .modal-content {
   padding: 48px;
-}
-.modal-bottom {
-  margin-top: 32px;
 }

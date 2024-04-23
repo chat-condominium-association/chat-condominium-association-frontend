@@ -9,10 +9,11 @@
   box-sizing: border-box;
   box-shadow: $boxShadowDark;
   background-color: $primaryLightColor;
-}
 
-.hidden {
-  display: none !important;
+  &.hidden {
+    width: 0;
+    display: none !important;
+  }
 }
 
 aside {

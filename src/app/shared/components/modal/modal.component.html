@@ -11,9 +11,9 @@
   </div>
   <div>
     <ng-content class="modal-bottom" select="[modal-bottom]"></ng-content>
-    <app-button class="modal-bottom" *ngIf="data.showSubmitBtn" (buttonClick)="handleSubmit()">
-      {{ data.buttonText }}</app-button
-    >
+    <div class="modal-bottom" *ngIf="data.showSubmitBtn">
+      <app-button (buttonClick)="handleSubmit()"> {{ data.buttonText }}</app-button>
+    </div>
   </div>
 </div>
 <div class="modal-close" *ngIf="data?.showCloseBtn">

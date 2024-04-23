@@ -1,4 +1,4 @@
-<aside [class.hidden]="(asideState$ | async) === AsidePanel.Hidden">
+<aside>
   <ng-container *ngIf="asideState$ | async as asideState">
     <ng-container [ngSwitch]="asideState">
       <ng-container *ngSwitchCase="AsidePanel.Profile">
