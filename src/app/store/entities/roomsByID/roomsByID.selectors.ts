@@ -4,10 +4,9 @@ import { RommsByIDState, RoomByID, Rooms } from './roomsByID.interface';
 
 const selectRooms = (state: StoreState): RommsByIDState => state.entities.rommsByID;
 
-export const firstRoomIDSelector = createSelector(
-  selectRooms,
-  rommsByIDState => rommsByIDState.roomsByID[0].id
-);
+export const firstRoomIDSelector = createSelector(selectRooms, (rooms: RommsByIDState) => {
+  return Object.values(rooms.roomsByID)[0].id;
+});
 
 export const roomsDataSelector = createSelector(
   selectRooms,
