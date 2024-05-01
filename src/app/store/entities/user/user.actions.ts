@@ -11,3 +11,10 @@ export const loadUserActionFailed = createAction(
   '[User] Load User Failed',
   props<{ error: ApiError }>()
 );
+
+export const logoutUserAction = createAction('[User] Logout');
+export const logoutUserActionSuccess = createAction('[User] Logout Success');
+export const logoutUserActionFailed = createAction(
+  '[User] Logout Failed',
+  props<{ error: ApiError }>()
+);

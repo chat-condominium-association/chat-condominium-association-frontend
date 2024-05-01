@@ -10,7 +10,6 @@ import {
 import { EMPTY, Observable, catchError, switchMap, tap, throwError } from 'rxjs';
 import { UserApiService } from '@chats/services/user-api.service';
 import { Router } from '@angular/router';
-import { ApiError } from '@core/models/api.inetrface';
 
 @Injectable()
 export class HttpCredentialsInterceptor implements HttpInterceptor {
