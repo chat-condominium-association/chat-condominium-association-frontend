@@ -8,6 +8,7 @@ import {
   firstRoomIDSelector,
   roomsDataLoadingSelector,
 } from '@store/entities/roomsByID/roomsByID.selectors';
+import { setAsideStateAction } from '@store/ui/components/components.actions';
 import { Observable, combineLatest, filter, switchMap, take, withLatestFrom } from 'rxjs';
 
 @Component({

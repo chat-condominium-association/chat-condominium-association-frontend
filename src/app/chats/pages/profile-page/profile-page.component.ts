@@ -6,8 +6,11 @@ import { ApiMessages } from '@core/enums/api-messages.enum';
 import { UserRole } from '@core/enums/user.roles.enum';
 import { ApiHandleService } from '@core/services/api-handle.service';
 import { AuthService } from '@core/services/auth.service';
+import { Store } from '@ngrx/store';
+import { AsidePanel } from '@shared/enums/aside-panel-states.enum';
 import { ModalService } from '@shared/services/modal.service';
 import { Rooms } from '@store/entities/roomsByID/roomsByID.interface';
+import { setAsideStateAction } from '@store/ui/components/components.actions';
 import { Observable, Subject, takeUntil, take, withLatestFrom } from 'rxjs';
 
 @Component({
@@ -20,6 +23,7 @@ export class ProfilePageComponent {
   protected authService = inject(AuthService);
   private roomsService = inject(RoomsService);
   private apiHandleService = inject(ApiHandleService);
+  private store = inject(Store);
 
   private modalDestroyed = new Subject<void>();
   protected roomsData$: Observable<Rooms> = this.roomsService.roomsData$;
@@ -31,6 +35,8 @@ export class ProfilePageComponent {
   protected editRoomForm: FormGroup;
 
   constructor() {
+    this.store.dispatch(setAsideStateAction({ state: AsidePanel.Profile }));
+
     this.editRoomForm = this.roomsService.buildEditRoomForm();
   }
 
