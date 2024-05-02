@@ -7,6 +7,7 @@ import { ModalComponent } from './components/modal/modal.component';
 import { ManagementCardComponent } from './components/management-card/management-card.component';
 import { ToArrayPipe } from './pipes/to-array.pipe';
 import { ErrorMessageComponent } from './components/error-message/error-message.component';
+import { CarouselComponent } from './components/carousel/carousel.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { ErrorMessageComponent } from './components/error-message/error-message.
     ManagementCardComponent,
     ToArrayPipe,
     ErrorMessageComponent,
+    CarouselComponent,
   ],
   exports: [
     ButtonComponent,
@@ -24,6 +26,7 @@ import { ErrorMessageComponent } from './components/error-message/error-message.
     ManagementCardComponent,
     ToArrayPipe,
     ErrorMessageComponent,
+    CarouselComponent,
   ],
   imports: [CommonModule, ReactiveFormsModule],
 })

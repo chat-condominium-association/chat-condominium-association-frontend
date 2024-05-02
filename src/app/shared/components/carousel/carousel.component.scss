@@ -1,0 +1,82 @@
+@import 'variables';
+
+:host {
+  flex: 1;
+}
+
+.carousel {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.parent {
+  width: 300px;
+}
+.slides-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 32px;
+  box-sizing: border-box;
+}
+
+.slide {
+  width: 64px;
+  height: 64px;
+  object-fit: cover;
+  border-radius: 50%;
+  box-sizing: border-box;
+
+  &.active {
+    border: 5px solid $successColor;
+  }
+}
+
+.control {
+  border: none;
+  background-color: transparent;
+  outline: 0;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+
+  &:disabled {
+    filter: blur(2px);
+    pointer-events: none;
+  }
+
+  &:hover,
+  &:focus {
+    .arrow {
+      border-color: $accentColor;
+    }
+  }
+
+  &.next {
+    right: 0;
+  }
+  &.prev {
+    left: 0;
+  }
+}
+
+.arrow {
+  display: block;
+  border-left: 2px solid black;
+  border-bottom: 2px solid black;
+  width: 12px;
+  height: 12px;
+
+  &.left {
+    transform: rotate(45deg);
+  }
+  &.right {
+    transform: rotate(225deg);
+  }
+}

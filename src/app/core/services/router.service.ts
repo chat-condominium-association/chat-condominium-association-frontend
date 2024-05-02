@@ -1,7 +1,6 @@
 import { Injectable, inject } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { AppRoutes } from '@core/enums/routes.enum';
-import { Store } from '@ngrx/store';
 import { BehaviorSubject, filter } from 'rxjs';
 
 @Injectable({
