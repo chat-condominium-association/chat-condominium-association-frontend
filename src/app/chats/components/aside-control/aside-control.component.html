@@ -6,7 +6,7 @@
         <app-user-info fontsize="16px"></app-user-info>
         <div class="aside-control">
           <div class="control-btns">
-            <button class="icon-btn">
+            <button class="icon-btn" (click)="openEditProfile(editPofileModal)">
               <div>Редагувати</div>
               <div>
                 <svg
@@ -108,3 +108,25 @@
     </ng-container>
   </ng-container>
 </aside>
+
+<ng-template #editPofileModal>
+  <app-modal>
+    <ng-container modal-body>
+      <div class="modal-body">
+        <p>Оберіть аватар</p>
+        <app-carousel class="carousel" [images]="images"></app-carousel>
+        <form [formGroup]="editUserNameForm" class="modal-form">
+          <app-form-control
+            label="Новий нікнейм"
+            name="username"
+            [control]="editUserNameForm.get('username')"
+            type="text"
+            placeholder="нікнейм"
+          ></app-form-control>
+          <!-- <app-error-message [error]="roomError" *ngIf="roomError"></app-error-message> -->
+          <app-button type="submit" [disabled]="editUserNameForm.invalid">Зберегти</app-button>
+        </form>
+      </div>
+    </ng-container>
+  </app-modal>
+</ng-template>

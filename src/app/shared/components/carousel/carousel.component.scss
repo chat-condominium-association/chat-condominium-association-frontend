@@ -51,8 +51,7 @@
     pointer-events: none;
   }
 
-  &:hover,
-  &:focus {
+  &:hover {
     .arrow {
       border-color: $accentColor;
     }
