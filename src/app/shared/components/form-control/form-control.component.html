@@ -18,19 +18,14 @@
       />
     </ng-container>
     <ng-container *ngIf="isInvalid() && control?.errors?.['required']">
-      <img
-        class="input-icon input-icon-invalid"
-        [src]="icon.alertExclamationIcon"
-        alt="Alert Exclamation Icon"
-      />
+      <app-svg-icon class="input-icon-invalid" [iconId]="icon.AlertExclamation"></app-svg-icon>
     </ng-container>
     <ng-container *ngIf="(isInputFilled$ | async) && isInvalid() && !control?.errors?.['required']">
-      <img
-        class="input-icon input-icon-invalid"
-        [src]="icon.removeErrorIcon"
-        alt="Remove Error Icon"
+      <app-svg-icon
+        class="input-icon-invalid"
         (click)="resetField()"
-      />
+        [iconId]="icon.RemoveError"
+      ></app-svg-icon>
     </ng-container>
   </div>
   <ng-container *ngIf="isInvalid()">

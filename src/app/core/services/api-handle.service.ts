@@ -17,14 +17,14 @@ export class ApiHandleService {
       headerMessage: errorMessage,
       buttonText,
       showSubmitBtn: true,
-      icon: Icons.alertExclamationIcon,
+      icon: Icons.AlertExclamation,
     });
   }
 
   handleSuccess(headerMessage: string): void {
     this.modalService.openModal({
       headerMessage,
-      icon: Icons.succesIcon,
+      icon: Icons.Success,
       showCloseBtn: true,
     });
   }

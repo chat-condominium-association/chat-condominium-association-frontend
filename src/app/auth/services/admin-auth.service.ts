@@ -52,7 +52,7 @@ export class AdminAuthService {
               this.router.navigateByUrl(this.PROFILE_PAGE_ROUTE);
               this.dialog.closeAll();
             },
-            icon: Icons.succesIcon,
+            icon: Icons.Success,
           });
           this.store.dispatch(loadUserAction());
         },
@@ -89,7 +89,7 @@ export class AdminAuthService {
       headerMessage: errorMessage,
       buttonText,
       showSubmitBtn: true,
-      icon: Icons.alertExclamationIcon,
+      icon: Icons.AlertExclamation,
     });
   }
 }

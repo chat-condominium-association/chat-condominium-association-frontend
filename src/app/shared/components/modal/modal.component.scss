@@ -9,6 +9,10 @@
   right: 24px;
 }
 
+.modal-close:hover ::ng-deep .icon {
+  fill: red !important;
+}
+
 .modal-body {
   font-size: 14px;
   margin-top: 20px;
@@ -22,11 +26,6 @@
   justify-content: center;
   align-items: center;
   text-align: center;
-}
-
-.modal-icon {
-  height: 24px;
-  width: 24px;
 }
 
 app-button.modal-bottom,

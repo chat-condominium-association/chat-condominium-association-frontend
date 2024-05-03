@@ -1,0 +1,27 @@
+@import 'variables';
+$icons: (
+  profile: #f6f6f6,
+  members: #f6f6f6,
+  chat: none,
+  add: #0f0,
+);
+$iconsStroke: (
+  chat: #f6f6f6,
+);
+
+.icon {
+  width: 24px;
+  height: 24px;
+}
+
+@each $name, $color in $icons {
+  .icon-#{$name} {
+    fill: $color;
+
+    @if map-has-key($iconsStroke, $name) {
+      stroke: map-get($iconsStroke, $name);
+      stroke-width: 2;
+      stroke-linejoin: round;
+    }
+  }
+}

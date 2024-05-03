@@ -8,6 +8,7 @@ import { ManagementCardComponent } from './components/management-card/management
 import { ToArrayPipe } from './pipes/to-array.pipe';
 import { ErrorMessageComponent } from './components/error-message/error-message.component';
 import { CarouselComponent } from './components/carousel/carousel.component';
+import { SvgIconComponent } from './components/svg-icon/svg-icon.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { CarouselComponent } from './components/carousel/carousel.component';
     ToArrayPipe,
     ErrorMessageComponent,
     CarouselComponent,
+    SvgIconComponent,
   ],
   exports: [
     ButtonComponent,
@@ -27,6 +29,7 @@ import { CarouselComponent } from './components/carousel/carousel.component';
     ToArrayPipe,
     ErrorMessageComponent,
     CarouselComponent,
+    SvgIconComponent,
   ],
   imports: [CommonModule, ReactiveFormsModule],
 })
