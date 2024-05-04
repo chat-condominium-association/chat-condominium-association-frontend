@@ -10,20 +10,12 @@
               <div>Редагувати</div>
               <app-svg-icon [iconId]="icons.Edit"></app-svg-icon>
             </app-button>
-            <!-- <button class="icon-btn" (click)="openEditProfile(editPofileModal)">
-              <div>Редагувати</div>
-              <app-svg-icon [iconId]="icons.Edit"></app-svg-icon>
-            </button> -->
-            <button class="icon-btn">
-              <div>Видалити</div>
-              <app-svg-icon [iconId]="icons.Basket"></app-svg-icon>
-            </button>
           </div>
           <div class="logout">
-            <button class="icon-btn" (click)="logout()">
+            <app-button customClass="icon-btn-not-fill" (buttonClick)="logout()">
               <div>Вийти з акаунта</div>
               <app-svg-icon [iconId]="icons.Logout"></app-svg-icon>
-            </button>
+            </app-button>
           </div>
         </div>
       </ng-container>
@@ -31,14 +23,16 @@
         <img [src]="ChatsImages['1']" alt="Chat Icon" />
         <h4 class="aside-title">В кімнаті “Управління будинком”</h4>
         <div class="aside-control">
-          <button class="icon-btn">
-            <div>Вирішені питання</div>
-            <app-svg-icon [iconId]="icons.Filter"></app-svg-icon>
-          </button>
-          <button class="icon-btn">
-            <div>Питання на розгляді</div>
-            <app-svg-icon [iconId]="icons.Filter"></app-svg-icon>
-          </button>
+          <div class="control-btns">
+            <app-button customClass="icon-btn">
+              <div>Вирішені питання</div>
+              <app-svg-icon [iconId]="icons.Filter"></app-svg-icon>
+            </app-button>
+            <app-button customClass="icon-btn">
+              <div>Питання на розгляді</div>
+              <app-svg-icon [iconId]="icons.Filter"></app-svg-icon>
+            </app-button>
+          </div>
         </div>
       </ng-container>
     </ng-container>

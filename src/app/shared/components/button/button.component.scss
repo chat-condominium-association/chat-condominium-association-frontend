@@ -33,7 +33,8 @@ button:focus-visible {
   outline: none;
 }
 
-.icon-btn {
+.icon-btn,
+.icon-btn-not-fill {
   margin: 0 auto;
   min-width: 170px;
   max-width: 260px;
@@ -42,9 +43,15 @@ button:focus-visible {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 35px;
   font-size: 14px;
-  &:hover ::ng-deep .icon {
-    fill: $accentColor;
-  }
+  background-color: transparent;
+}
+
+.icon-btn:hover ::ng-deep .icon {
+  fill: $accentColor;
+}
+
+.icon-btn-not-fill:hover ::ng-deep .icon {
+  fill: none;
+  stroke: $accentColor;
 }

@@ -38,15 +38,10 @@ aside {
       flex: 1;
       display: flex;
       align-items: flex-end;
+    }
 
-      button {
-        margin-bottom: 0;
-        color: $accentColorDark;
-        &:hover ::ng-deep .icon {
-          fill: none;
-          stroke: $accentColor;
-        }
-      }
+    .control-btns ::ng-deep button {
+      margin-bottom: 30px;
     }
   }
 
