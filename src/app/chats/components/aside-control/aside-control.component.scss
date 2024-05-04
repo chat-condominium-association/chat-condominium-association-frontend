@@ -9,10 +9,11 @@
   box-sizing: border-box;
   box-shadow: $boxShadowDark;
   background-color: $primaryLightColor;
-}
 
-.hidden {
-  display: none !important;
+  &.hidden {
+    width: 0;
+    display: none !important;
+  }
 }
 
 aside {
@@ -21,6 +22,7 @@ aside {
   gap: 40px;
   justify-content: flex-start;
   flex-direction: column;
+  height: 100%;
 
   h4 {
     font-size: 20px;
@@ -28,22 +30,21 @@ aside {
 
   .aside-control {
     width: 100%;
-    button {
-      margin: 0 auto;
-      min-width: 170px;
-      max-width: 260px;
-      width: 100%;
-      gap: 20px;
-      background-color: transparent;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 35px;
-      font-size: 14px;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
 
-      &:hover {
-        svg path {
-          fill: $accentColor;
+    .logout {
+      flex: 1;
+      display: flex;
+      align-items: flex-end;
+
+      button {
+        margin-bottom: 0;
+        color: $accentColorDark;
+        &:hover ::ng-deep .icon {
+          fill: none;
+          stroke: $accentColor;
         }
       }
     }
@@ -59,5 +60,18 @@ aside {
     h3 {
       font-size: 16px;
     }
+  }
+}
+
+.modal-body {
+  margin-top: 32px;
+  p {
+    font-weight: 400;
+    font-size: 16px;
+    margin-bottom: 32px;
+  }
+
+  .modal-form {
+    margin-top: 32px;
   }
 }

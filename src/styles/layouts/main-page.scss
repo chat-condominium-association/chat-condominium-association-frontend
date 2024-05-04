@@ -5,20 +5,19 @@
   color: $primaryDarkColor;
   font-weight: 700;
   text-wrap: wrap;
+  white-space: nowrap;
 }
 
 .scroll-content {
   overflow-y: auto;
   box-sizing: border-box;
-  height: 100%;
-
-  .scroll-content-body {
-    padding-right: 10px;
-  }
+  flex-grow: 1;
+  min-height: 0;
+  width: calc(100% + 16px);
+  padding-right: 16px;
 
   &::-webkit-scrollbar {
     width: 12px;
-    position: sticky;
   }
 
   &::-webkit-scrollbar-track {
@@ -36,8 +35,14 @@
 
 .page-content {
   box-sizing: border-box;
-  padding: 40px 12px 40px 5%;
+  padding: 40px 0 0 5%;
   height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.page-content-header {
+  margin-bottom: 40px;
 }
 
 .nav-title {

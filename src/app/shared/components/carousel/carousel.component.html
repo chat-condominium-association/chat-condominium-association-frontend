@@ -1,0 +1,22 @@
+<div class="carousel">
+  <ng-container *ngFor="let slideGroup of slides; let index = index">
+    <div *ngIf="index === currentSlideIndex" class="slides-container">
+      <ng-container *ngFor="let imagePair of slideGroup">
+        <img
+          [src]="imagePair[1]"
+          alt="Avatar"
+          class="slide"
+          [@slideAnimation]="animationType"
+          [class.active]="activeImageID === imagePair[0]"
+        />
+      </ng-container>
+    </div>
+  </ng-container>
+
+  <button class="control prev" (click)="onPreviousClick()" [disabled]="isFirstSlide()">
+    <span class="arrow left"></span>
+  </button>
+  <button class="control next" (click)="onNextClick()" [disabled]="isLastSlide()">
+    <span class="arrow right"></span>
+  </button>
+</div>

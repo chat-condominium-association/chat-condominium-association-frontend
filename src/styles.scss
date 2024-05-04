@@ -35,11 +35,14 @@ $teamchallenge-chat-theme: mat.define-light-theme(
 @include mat.all-component-themes($teamchallenge-chat-theme);
 
 @import './styles/normalize.scss';
+@import './styles/abstracts/icons.scss';
+
 @import './styles/components/link.scss';
 @import './styles/components/blocks.scss';
 @import './styles/components/auth.scss';
 @import './styles/layouts/containers.scss';
 @import './styles/layouts/main-page.scss';
+@import './styles/components/btn.scss';
 
 @import 'variables';
 
@@ -64,6 +67,10 @@ h3,
 h4,
 h5,
 h6 {
+  margin: 0;
+}
+
+p {
   margin: 0;
 }
 

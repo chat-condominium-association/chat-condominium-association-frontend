@@ -1,7 +1,13 @@
 import { UserRole } from '@core/enums/user.roles.enum';
 import { UserState } from './user.interface';
 import { Action, ActionReducer, createReducer, on } from '@ngrx/store';
-import { loadUserAction, loadUserActionFailed, loadUserActionSuccess } from './user.actions';
+import {
+  loadUserAction,
+  loadUserActionFailed,
+  loadUserActionSuccess,
+  logoutUserAction,
+  logoutUserActionSuccess,
+} from './user.actions';
 
 const initialState: UserState = {
   isLoading: false,
@@ -14,6 +20,7 @@ const reducer = createReducer(
   initialState,
   on(
     loadUserAction,
+    logoutUserAction,
     (state): UserState => ({
       ...state,
       isLoading: true,
@@ -36,7 +43,16 @@ const reducer = createReducer(
       error: null,
     };
   }),
-  on(loadUserActionFailed, (state, action): UserState => {
+  on(logoutUserActionSuccess, (state): UserState => {
+    return {
+      ...state,
+      userData: null,
+      role: UserRole.User,
+      isLoading: false,
+      error: null,
+    };
+  }),
+  on(loadUserActionFailed, loadUserActionFailed, (state, action): UserState => {
     return {
       ...state,
       isLoading: false,

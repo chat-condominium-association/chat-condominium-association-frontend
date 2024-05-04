@@ -1,8 +1,7 @@
 import { Component, OnInit, inject } from '@angular/core';
-import { Router } from '@angular/router';
-import { AppRoutes } from '@core/enums/routes.enum';
 import { Store } from '@ngrx/store';
 import { AsidePanel } from '@shared/enums/aside-panel-states.enum';
+import { StoreState } from '@store/app.state.interface';
 import { setAsideStateAction } from '@store/ui/components/components.actions';
 
 @Component({
@@ -10,10 +9,10 @@ import { setAsideStateAction } from '@store/ui/components/components.actions';
   templateUrl: './chat-page.component.html',
   styleUrls: ['./chat-page.component.scss'],
 })
-export class ChatPageComponent implements OnInit {
-  private store = inject(Store);
+export class ChatPageComponent {
+  private store = inject(Store<StoreState>);
 
-  ngOnInit(): void {
-    // this.store.dispatch(setAsideStateAction({ state: AsidePanel.Chat }));
+  constructor() {
+    this.store.dispatch(setAsideStateAction({ state: AsidePanel.Chat }));
   }
 }

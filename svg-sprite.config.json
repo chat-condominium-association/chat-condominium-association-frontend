@@ -1,0 +1,19 @@
+{
+  "mode": {
+    "symbol": {
+      "sprite": "sprite.svg",
+      "example": false,
+      "dest": "."
+    }
+  },
+  "shape": {
+    "id": {
+      "generator": "icon-%s"
+    },
+    "transform": [
+      {
+        "svgo": {}
+      }
+    ]
+  }
+}

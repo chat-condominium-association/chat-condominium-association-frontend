@@ -5,13 +5,16 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
-    "build:prod": "ng build --configuration production --base-href=/teamchallenge-chat-frontend/",
+    "build:prod": "ng build --configuration production --base-href=/chat-condominium-association-frontend/",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "lint": "ng lint",
     "lint:fix": "ng lint --fix",
     "prettier": "npx prettier --write .",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "generate:sprite": "svg-sprite --config=svg-sprite.config.json --dest=./src/assets src/assets/icons/*.svg src/assets/iconsWithoutFill/*.svg",
+    "optimize-svg": "svgo src/assets/iconsWithoutFill/ --config svgo.config.mjs"
+
   },
   "lint-staged": {
     "*.{ts,scss,html}": [
@@ -62,6 +65,7 @@
     "lint-staged": "^15.2.2",
     "prettier": "^3.2.5",
     "prettier-eslint": "^16.3.0",
+    "svgo": "^3.2.0",
     "typescript": "~5.1.3"
   }
 }

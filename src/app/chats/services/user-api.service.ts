@@ -1,10 +1,7 @@
-import { HttpBackend, HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
-import { ApiError } from '@core/models/api.inetrface';
-import { UserApiInterface } from '@core/models/user.interface';
+import { UserApiInterface } from '@chats/model/user.interface';
 import { environment } from '@environment/environment';
-import { Icons } from '@shared/enums/icons.enum';
-import { ModalService } from '@shared/services/modal.service';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -17,6 +14,7 @@ export class UserApiService {
   private readonly USER_GET_TOKEN_URL = 'get_token';
   private readonly USER_GET_INFO_URL = 'my_info';
   private readonly USER_REFRESH_TOKEN_URL = 'refresh_token';
+  private readonly USER_LOGOUT_URL = 'logout';
 
   getToken(): Observable<string> {
     const url = `${this.USER_API_URL}${this.USER_GET_TOKEN_URL}`;
@@ -31,5 +29,10 @@ export class UserApiService {
   getUserInfo(): Observable<UserApiInterface> {
     const url = `${this.USER_API_URL}${this.USER_GET_INFO_URL}`;
     return this.http.get<UserApiInterface>(url);
+  }
+
+  logout(): Observable<null> {
+    const url = `${this.USER_API_URL}${this.USER_LOGOUT_URL}`;
+    return this.http.post<null>(url, {});
   }
 }

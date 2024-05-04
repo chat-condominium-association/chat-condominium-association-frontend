@@ -26,10 +26,8 @@ li {
     height: 20px;
   }
 
-  .nav-icon:has(+ a.is-active) {
-    svg path {
-      fill: $accentColor;
-    }
+  .nav-icon:has(+ a.is-active) ::ng-deep .icon {
+    fill: $accentColor;
   }
 
   a.is-active {
@@ -42,11 +40,9 @@ li {
   }
 
   &:last-of-type {
-    .nav-icon:has(+ a.is-active) {
-      svg path {
-        stroke: $accentColor;
-        fill: none !important;
-      }
+    .nav-icon:has(+ a.is-active) ::ng-deep .icon {
+      stroke: $accentColor;
+      fill: none;
     }
   }
 }

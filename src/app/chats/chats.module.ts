@@ -14,6 +14,7 @@ import { MainInfoNavComponent } from './components/main-chats-nav/main-chats-nav
 import { AsideControlComponent } from './components/aside-control/aside-control.component';
 import { SharedModule } from '@shared/shared.module';
 import { PagesLayoutComponent } from './components/pages-layout/pages-layout.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,6 @@ import { PagesLayoutComponent } from './components/pages-layout/pages-layout.com
     AsideControlComponent,
     PagesLayoutComponent,
   ],
-  imports: [CommonModule, ChatsRoutingModule, SharedModule],
+  imports: [CommonModule, ChatsRoutingModule, SharedModule, ReactiveFormsModule],
 })
 export class ChatsModule {}

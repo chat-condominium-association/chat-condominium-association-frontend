@@ -35,9 +35,9 @@
   color: $errorColor;
 }
 
-.input-icon-invalid {
-  width: 16px !important;
-  height: 16px !important;
+.input-icon-invalid ::ng-deep .icon {
+  width: 18px !important;
+  height: 18px !important;
 }
 
 input {
