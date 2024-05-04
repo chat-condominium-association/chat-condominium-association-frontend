@@ -4,6 +4,9 @@ import { UserApiService } from '@chats/services/user-api.service';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { switchMap, map, catchError, of } from 'rxjs';
 import {
+  changeAvatarActionFailed,
+  changeAvatarUserAction,
+  changeAvatarUserActionSuccess,
   loadUserAction,
   loadUserActionFailed,
   loadUserActionSuccess,
@@ -48,6 +51,24 @@ export class UserEffects {
           }),
           catchError((error: HttpErrorResponse) => {
             return of(logoutUserActionFailed({ error: error.error }));
+          })
+        );
+      })
+    )
+  );
+
+  changeAvatar$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(changeAvatarUserAction),
+      switchMap(({ avatarID }) => {
+        return this.userApiService.changeAvatar(avatarID).pipe(
+          map(response => {
+            return changeAvatarUserActionSuccess({
+              user: response,
+            });
+          }),
+          catchError((error: HttpErrorResponse) => {
+            return of(changeAvatarActionFailed({ error: error.error }));
           })
         );
       })

@@ -44,7 +44,12 @@
     <ng-container modal-body>
       <div class="modal-body">
         <p>Оберіть аватар</p>
-        <app-carousel class="carousel" [images]="images"></app-carousel>
+        <app-carousel
+          [activeImageID]="userAvatarID$ | async"
+          class="carousel"
+          [images]="images"
+          (imageClicked)="handleImageClick($event)"
+        ></app-carousel>
         <form [formGroup]="editUserNameForm" class="modal-form">
           <app-form-control
             label="Новий нікнейм"

@@ -14,9 +14,10 @@ import { chats } from '@shared/data/chats.imges';
 import { AsidePanel } from '@shared/enums/aside-panel-states.enum';
 import { Icons } from '@shared/enums/icons.enum';
 import { StoreState } from '@store/app.state.interface';
-import { logoutUserAction } from '@store/entities/user/user.actions';
+import { changeAvatarUserAction, logoutUserAction } from '@store/entities/user/user.actions';
+import { userAvatarIDSelector } from '@store/entities/user/user.selectors';
 import { asideStateSelector } from '@store/ui/components/components.selectors';
-import { Observable, Subject, takeUntil } from 'rxjs';
+import { BehaviorSubject, Observable, Subject, takeUntil } from 'rxjs';
 
 @Component({
   selector: 'app-aside-control',
@@ -30,9 +31,9 @@ export class AsideControlComponent implements OnDestroy {
   private destroy$ = new Subject<void>();
   private store = inject(Store<StoreState>);
   protected asideState$: Observable<AsidePanel>;
+  protected userAvatarID$: Observable<string>;
   private dialog = inject(MatDialog);
   protected icons = Icons;
-
   private fb = inject(FormBuilder);
 
   protected editUserNameForm = this.fb.group({
@@ -45,9 +46,14 @@ export class AsideControlComponent implements OnDestroy {
 
   constructor() {
     this.asideState$ = this.store.pipe(select(asideStateSelector));
+    this.userAvatarID$ = this.store.pipe(select(userAvatarIDSelector));
     this.asideState$.pipe(takeUntil(this.destroy$)).subscribe(state => {
       this.isAsideHidden = state === AsidePanel.Hidden;
     });
+  }
+
+  handleImageClick(avatarID: string): void {
+    this.store.dispatch(changeAvatarUserAction({ avatarID }));
   }
 
   logout(): void {

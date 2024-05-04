@@ -18,3 +18,16 @@ export const logoutUserActionFailed = createAction(
   '[User] Logout Failed',
   props<{ error: ApiError }>()
 );
+
+export const changeAvatarUserAction = createAction(
+  '[User] Change Avatar',
+  props<{ avatarID: string }>()
+);
+export const changeAvatarUserActionSuccess = createAction(
+  '[User] Change Avatar Success',
+  props<{ user: UserApiInterface }>()
+);
+export const changeAvatarActionFailed = createAction(
+  '[User] Change Avatar Failed',
+  props<{ error: ApiError }>()
+);

@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { avatars } from '@shared/data/avatars.images';
 import { trigger, transition, useAnimation } from '@angular/animations';
 import { AnimationType, slideIn, slideOut } from './carousel.animations';
@@ -16,14 +16,19 @@ import { AnimationType, slideIn, slideOut } from './carousel.animations';
 export class CarouselComponent implements OnInit {
   @Input() images: [string, string][] = []; // first el of images is imageID, second imageUrl
   @Input() slidesChunkSize = 3;
-  @Input() activeImageID = '1';
+  @Input() activeImageID: null | string = '1'; // set first image as a default
+  @Output() imageClicked = new EventEmitter<string>();
 
   animationType = AnimationType.Slide;
   currentSlideIndex = 0;
   slides: [string, string][][] = [];
 
   ngOnInit() {
-    this.slides = this.chunkSlides();
+    this.slides = this.chunkSlides(); //generate slodes chunks, f.e 3 images in one slide
+  }
+
+  onImageClick(imageId: string): void {
+    this.imageClicked.emit(imageId);
   }
 
   onPreviousClick() {
