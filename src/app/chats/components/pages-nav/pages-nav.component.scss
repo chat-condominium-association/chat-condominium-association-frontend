@@ -27,7 +27,7 @@ li {
   }
 
   .nav-icon:has(+ a.is-active) ::ng-deep .icon {
-    fill: $accentColor !important;
+    fill: $accentColor;
   }
 
   a.is-active {
@@ -41,8 +41,8 @@ li {
 
   &:last-of-type {
     .nav-icon:has(+ a.is-active) ::ng-deep .icon {
-      stroke: $accentColor !important;
-      fill: none !important;
+      stroke: $accentColor;
+      fill: none;
     }
   }
 }

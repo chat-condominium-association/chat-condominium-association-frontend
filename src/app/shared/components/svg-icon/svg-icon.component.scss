@@ -1,17 +1,63 @@
 @import 'variables';
+
+$default-icon-size: 24px;
+
 $icons: (
   profile: #f6f6f6,
   members: #f6f6f6,
   chat: none,
-  add: #0f0,
+  logout: none,
 );
+
+$iconsDimensions: (
+  edit: (
+    width: 20px,
+    height: 20px,
+  ),
+  basket: (
+    width: 20px,
+    height: 20px,
+  ),
+  members: (
+    width: 22px,
+    height: 22px,
+  ),
+  profile: (
+    width: 22px,
+    height: 22px,
+  ),
+  chat: (
+    width: 22px,
+    height: 22px,
+  ),
+);
+
 $iconsStroke: (
-  chat: #f6f6f6,
+  chat: (
+    color: #f6f6f6,
+    width: 2,
+    linecap: round,
+    linejoin: round,
+  ),
+  logout: (
+    color: $primaryFontColor,
+    width: 1.5,
+    linecap: round,
+    linejoin: round,
+  ),
 );
 
 .icon {
-  width: 24px;
-  height: 24px;
+  transition: none;
+  width: $default-icon-size;
+  height: $default-icon-size;
+}
+
+@each $name, $dimensions in $iconsDimensions {
+  .icon-#{$name} {
+    width: map-get($dimensions, width);
+    height: map-get($dimensions, height);
+  }
 }
 
 @each $name, $color in $icons {
@@ -19,9 +65,11 @@ $iconsStroke: (
     fill: $color;
 
     @if map-has-key($iconsStroke, $name) {
-      stroke: map-get($iconsStroke, $name);
-      stroke-width: 2;
-      stroke-linejoin: round;
+      $stroke-properties: map-get($iconsStroke, $name);
+      stroke: map-get($stroke-properties, color);
+      stroke-width: map-get($stroke-properties, width);
+      stroke-linecap: map-get($stroke-properties, linecap);
+      stroke-linejoin: map-get($stroke-properties, linejoin);
     }
   }
 }

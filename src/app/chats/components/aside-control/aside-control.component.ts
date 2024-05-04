@@ -12,6 +12,7 @@ import { Store, select } from '@ngrx/store';
 import { avatars } from '@shared/data/avatars.images';
 import { chats } from '@shared/data/chats.imges';
 import { AsidePanel } from '@shared/enums/aside-panel-states.enum';
+import { Icons } from '@shared/enums/icons.enum';
 import { StoreState } from '@store/app.state.interface';
 import { logoutUserAction } from '@store/entities/user/user.actions';
 import { asideStateSelector } from '@store/ui/components/components.selectors';
@@ -30,6 +31,7 @@ export class AsideControlComponent implements OnDestroy {
   private store = inject(Store<StoreState>);
   protected asideState$: Observable<AsidePanel>;
   private dialog = inject(MatDialog);
+  protected icons = Icons;
 
   private fb = inject(FormBuilder);
 

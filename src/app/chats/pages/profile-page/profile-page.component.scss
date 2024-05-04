@@ -1,6 +1,13 @@
+@import 'variables';
 .modal-form {
   margin-top: 24px;
   app-button {
     margin-top: 8px;
+  }
+}
+
+.icon-btn {
+  &:hover ::ng-deep .icon {
+    fill: $accentColor;
   }
 }

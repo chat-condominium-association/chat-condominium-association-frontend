@@ -8,6 +8,7 @@ import { ApiHandleService } from '@core/services/api-handle.service';
 import { AuthService } from '@core/services/auth.service';
 import { Store } from '@ngrx/store';
 import { AsidePanel } from '@shared/enums/aside-panel-states.enum';
+import { Icons } from '@shared/enums/icons.enum';
 import { ModalService } from '@shared/services/modal.service';
 import { Rooms } from '@store/entities/roomsByID/roomsByID.interface';
 import { setAsideStateAction } from '@store/ui/components/components.actions';
@@ -24,6 +25,7 @@ export class ProfilePageComponent {
   private roomsService = inject(RoomsService);
   private apiHandleService = inject(ApiHandleService);
   private store = inject(Store);
+  protected icons = Icons;
 
   private modalDestroyed = new Subject<void>();
   protected roomsData$: Observable<Rooms> = this.roomsService.roomsData$;
