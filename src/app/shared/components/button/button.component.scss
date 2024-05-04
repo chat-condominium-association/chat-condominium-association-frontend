@@ -1,0 +1,50 @@
+@import 'variables';
+:host {
+  width: 100%;
+}
+
+.default-btn {
+  border-radius: $mainBorderRadius;
+  padding: 16px 0px;
+  height: 46px;
+  font-weight: 700;
+  text-align: center;
+  width: 100%;
+  background-color: $accentColorDark;
+  color: $secondaryFontAndBlocksColor;
+
+  &:disabled {
+    filter: blur(2px);
+    pointer-events: none;
+  }
+
+  &:hover {
+    background-color: $accentColor;
+    color: $primaryFontColor;
+  }
+}
+
+.close__btn {
+  background-color: transparent;
+}
+
+button:focus,
+button:focus-visible {
+  outline: none;
+}
+
+.icon-btn {
+  margin: 0 auto;
+  min-width: 170px;
+  max-width: 260px;
+  width: 100%;
+  gap: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 35px;
+  font-size: 14px;
+  &:hover ::ng-deep .icon {
+    fill: $accentColor;
+  }
+}

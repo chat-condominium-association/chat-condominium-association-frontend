@@ -1,0 +1,37 @@
+<div class="container-center">
+  <div class="default-content-block">
+    <div class="auth__form">
+      <h1>Увійти</h1>
+      <form [formGroup]="loginForm" (ngSubmit)="adminAuthService.handleLogin(loginForm)">
+        <app-form-control
+          label="Пошта"
+          name="email"
+          [control]="loginForm.get('email')"
+          [isRequired]="true"
+          type="email"
+        ></app-form-control>
+        <app-form-control
+          label="Пароль"
+          name="password"
+          [control]="loginForm.get('password')"
+          [isRequired]="true"
+          type="password"
+          [iconsUrl]="['assets/icons/eye-closed.svg', 'assets/icons/eye-open.svg']"
+        ></app-form-control>
+        <div class="forgot-password">
+          <a class="auth-nav" [routerLink]="[FORGOT_PASSWORD_PAGE_ROUTE]"> Забули пароль</a>
+        </div>
+        <app-button
+          type="submit"
+          [disabled]="loginForm.invalid || !!(adminAuthService.isLoading$ | async)"
+        >
+          Вхід
+        </app-button>
+      </form>
+      <div>
+        Не маєте акаунту?
+        <a class="auth-nav" [routerLink]="[REGISTRATION_PAGE_ROUTE]">Зареєструватись</a>
+      </div>
+    </div>
+  </div>
+</div>

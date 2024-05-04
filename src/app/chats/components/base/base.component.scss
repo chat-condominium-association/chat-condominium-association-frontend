@@ -1,0 +1,33 @@
+@import 'variables';
+.main-layout-wrap {
+  display: flex;
+  align-items: stretch;
+  padding: 12px 40px 12px 48px;
+  column-gap: 20px;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+.car {
+  width: 400px;
+  height: 300px;
+}
+
+main {
+  width: 60%;
+  flex: 1;
+  position: relative;
+
+  .container {
+    width: 100%;
+    box-sizing: border-box;
+    padding-left: max(25%, 170px);
+    top: 0;
+    right: 0;
+    background-color: $secondaryFontAndBlocksColor;
+    position: absolute;
+    box-shadow: $boxShadowDark;
+    height: 100%;
+    border-radius: $mainBorderRadius;
+  }
+}

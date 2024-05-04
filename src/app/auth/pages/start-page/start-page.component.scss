@@ -1,0 +1,30 @@
+@import 'variables';
+
+img {
+  display: block;
+  margin: 0 auto 40px;
+}
+
+.nav-btns {
+  margin: 0 auto;
+  max-width: 210px;
+
+  a {
+    background-color: $secondaryFontAndBlocksColor;
+    color: $primaryFontColor;
+    margin-bottom: 20px;
+
+    &:last-of-type {
+      border: 1px solid $primaryFontColor;
+    }
+  }
+}
+
+.container-top {
+  align-items: center;
+  top: 42%;
+  left: 50%;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  width: 50%;
+}

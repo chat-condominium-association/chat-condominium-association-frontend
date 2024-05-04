@@ -1,0 +1,19 @@
+.skyscraper-background {
+  mix-blend-mode: soft-light;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  max-width: 900px;
+  max-height: 580px;
+  width: 100%;
+  user-select: none;
+}
+
+.logo {
+  position: absolute;
+  left: 40px;
+  top: 40px;
+  width: 95px;
+  height: 38px;
+}

@@ -1,0 +1,23 @@
+<div class="modal-content">
+  <div class="modal-header">
+    <div class="cols-layout-start-beetwen">
+      <h3 *ngIf="data.headerMessage">{{ data.headerMessage }}</h3>
+      <app-svg-icon *ngIf="data.icon" [iconId]="data.icon"></app-svg-icon>
+    </div>
+    <ng-content select="[modal-header]"></ng-content>
+  </div>
+  <div>
+    <ng-content class="modal-body" select="[modal-body]"></ng-content>
+  </div>
+  <div>
+    <ng-content class="modal-bottom" select="[modal-bottom]"></ng-content>
+    <div class="modal-bottom" *ngIf="data.showSubmitBtn">
+      <app-button (buttonClick)="handleSubmit()"> {{ data.buttonText }}</app-button>
+    </div>
+  </div>
+</div>
+<div class="modal-close" *ngIf="data?.showCloseBtn">
+  <app-button customClass="close__btn" (buttonClick)="closeDialog()">
+    <app-svg-icon [iconId]="icon.Close"></app-svg-icon>
+  </app-button>
+</div>

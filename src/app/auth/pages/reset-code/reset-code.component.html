@@ -1,0 +1,22 @@
+<div class="container-center">
+  <div class="default-content-block">
+    <div class="auth__form">
+      <h1>Введіть в поле код, що був відправленний на вашу електронну адресу</h1>
+      <form [formGroup]="resetCodeForm" (ngSubmit)="onSubmit()">
+        <app-form-control
+          label="Код"
+          name="code"
+          [control]="resetCodeForm.get('code')"
+          [isRequired]="true"
+          type="text"
+          placeholder="Код"
+        >
+        </app-form-control>
+
+        <app-button type="submit" title="submit" [disabled]="resetCodeForm.invalid">
+          Далі
+        </app-button>
+      </form>
+    </div>
+  </div>
+</div>

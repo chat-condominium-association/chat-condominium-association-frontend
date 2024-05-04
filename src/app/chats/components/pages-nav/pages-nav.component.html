@@ -1,0 +1,22 @@
+<nav>
+  <ul>
+    <li>
+      <div class="nav-icon">
+        <app-svg-icon [iconId]="icons.Profile"></app-svg-icon>
+      </div>
+      <a [routerLink]="['/profile']" routerLinkActive="is-active"> Особистий кабінет</a>
+    </li>
+    <li *ngIf="(authService.getCurrentRole() | async) === UserRole.Admin">
+      <div class="nav-icon">
+        <app-svg-icon [iconId]="icons.Members"></app-svg-icon>
+      </div>
+      <a [routerLink]="['/members']" routerLinkActive="is-active"> Учасники</a>
+    </li>
+    <li>
+      <div class="nav-icon">
+        <app-svg-icon [iconId]="icons.Chat"></app-svg-icon>
+      </div>
+      <a routerLink="/chats" routerLinkActive="is-active"> Чати</a>
+    </li>
+  </ul>
+</nav>

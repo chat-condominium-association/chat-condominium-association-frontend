@@ -1,0 +1,15 @@
+<div class="nav-title">
+  <h2 class="page-title">
+    <ng-content select="[pageTitle]"></ng-content>
+  </h2>
+</div>
+<div class="page-content">
+  <div class="page-content-header">
+    <ng-content select="[pageHeader]"></ng-content>
+  </div>
+  <div class="scroll-content">
+    <div class="scroll-content-body">
+      <ng-content select="[pageBody]"></ng-content>
+    </div>
+  </div>
+</div>

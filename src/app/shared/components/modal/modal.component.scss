@@ -1,0 +1,41 @@
+@import 'variables';
+:host {
+  position: relative;
+}
+
+.modal-close {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+}
+
+.modal-close:hover ::ng-deep .icon {
+  fill: red !important;
+}
+
+.modal-body {
+  font-size: 14px;
+  margin-top: 20px;
+
+  color: $secondaryFontColorDark;
+}
+
+.modal-header {
+  display: flex;
+  column-gap: 10px;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+app-button.modal-bottom,
+.modal-bottom {
+  margin-top: 32px;
+}
+h3 {
+  font-size: 18px;
+  font-weight: 700;
+}
+.modal-content {
+  padding: 48px;
+}

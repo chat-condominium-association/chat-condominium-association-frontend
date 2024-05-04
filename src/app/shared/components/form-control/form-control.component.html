@@ -1,0 +1,34 @@
+<div [class]="css">
+  <label [for]="name" *ngIf="label">{{ label }}</label>
+  <div class="input-container" [ngClass]="{ filled: isInputFilled$ | async, invalid: isInvalid() }">
+    <input
+      [type]="type"
+      [id]="name"
+      [name]="name"
+      [formControl]="$any(control)"
+      [placeholder]="placeholder"
+      autocomplete="on"
+    />
+    <ng-container *ngIf="!isInvalid() && iconsUrl && iconsUrl.length > 0">
+      <img
+        class="input-icon"
+        (click)="togglePassVisibility()"
+        [src]="iconsUrl[currentIconIndex]"
+        alt=""
+      />
+    </ng-container>
+    <ng-container *ngIf="isInvalid() && control?.errors?.['required']">
+      <app-svg-icon class="input-icon-invalid" [iconId]="icon.AlertExclamation"></app-svg-icon>
+    </ng-container>
+    <ng-container *ngIf="(isInputFilled$ | async) && isInvalid() && !control?.errors?.['required']">
+      <app-svg-icon
+        class="input-icon-invalid"
+        (click)="resetField()"
+        [iconId]="icon.RemoveError"
+      ></app-svg-icon>
+    </ng-container>
+  </div>
+  <ng-container *ngIf="isInvalid()">
+    <div class="error-text" *ngFor="let error of errors">{{ error }}</div>
+  </ng-container>
+</div>

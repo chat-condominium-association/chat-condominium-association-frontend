@@ -1,0 +1,39 @@
+<div class="container-center">
+  <div class="default-content-block">
+    <div class="auth__form">
+      <h1>Зареєструватись</h1>
+      <form [formGroup]="registerForm" (ngSubmit)="adminAuthService.handleRegister(registerForm)">
+        <app-form-control
+          label="Пошта"
+          name="email"
+          [control]="registerForm.get('email')"
+          [isRequired]="true"
+          type="email"
+        ></app-form-control>
+        <app-form-control
+          label="Пароль"
+          name="password"
+          [control]="registerForm.get('password')"
+          [isRequired]="true"
+          type="password"
+          [iconsUrl]="['assets/icons/eye-closed.svg', 'assets/icons/eye-open.svg']"
+        ></app-form-control>
+        <app-form-control
+          label="Повторити пароль"
+          name="confirmPassword"
+          [control]="registerForm.get('confirmPassword')"
+          [isRequired]="true"
+          type="password"
+          [iconsUrl]="['assets/icons/eye-closed.svg', 'assets/icons/eye-open.svg']"
+        ></app-form-control>
+        <app-button
+          type="submit"
+          [disabled]="registerForm.invalid || !!(adminAuthService.isLoading$ | async)"
+        >
+          Реєстрація
+        </app-button>
+      </form>
+      <div>Вже є акаунт? <a class="auth-nav" [routerLink]="[LOGIN_PAGE_ROUTE]">Увійти</a></div>
+    </div>
+  </div>
+</div>

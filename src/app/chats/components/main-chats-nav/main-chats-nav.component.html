@@ -1,0 +1,10 @@
+<div class="user-info">
+  <app-user-info></app-user-info>
+</div>
+<nav id="chats-nav">
+  <ul>
+    <li *ngFor="let room of roomsData$ | async | toArray">
+      <a [routerLink]="['/chats', room.id]" routerLinkActive="is-active">{{ room.name }}</a>
+    </li>
+  </ul>
+</nav>
