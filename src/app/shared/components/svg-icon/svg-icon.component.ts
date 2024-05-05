@@ -8,6 +8,6 @@ import { Component, Input } from '@angular/core';
 export class SvgIconComponent {
   @Input() iconId!: string;
   get iconPath(): string {
-    return `${window.location.origin}/assets/sprite.svg#${this.iconId}`;
+    return `${window.location.origin}/chat-condominium-association-frontend/assets/sprite.svg#${this.iconId}`;
   }
 }
