@@ -2,6 +2,12 @@ import { UserRole } from '@core/enums/user.roles.enum';
 import { UserState } from './user.interface';
 import { Action, ActionReducer, createReducer, on } from '@ngrx/store';
 import {
+  changeAvatarActionFailed,
+  changeAvatarUserAction,
+  changeAvatarUserActionSuccess,
+  changeUserNameAction,
+  changeUserNameActionSuccess,
+  changeUserNameFailed,
   loadUserAction,
   loadUserActionFailed,
   loadUserActionSuccess,
@@ -11,7 +17,9 @@ import {
 
 const initialState: UserState = {
   isLoading: false,
+  isUserNameLoading: false,
   error: null,
+  userNameError: null,
   userData: null,
   role: UserRole.User,
 };
@@ -21,9 +29,19 @@ const reducer = createReducer(
   on(
     loadUserAction,
     logoutUserAction,
+    changeAvatarUserAction,
+    changeUserNameAction,
     (state): UserState => ({
       ...state,
       isLoading: true,
+      error: null,
+    })
+  ),
+  on(
+    changeUserNameAction,
+    (state): UserState => ({
+      ...state,
+      isUserNameLoading: true,
       error: null,
     })
   ),
@@ -43,6 +61,30 @@ const reducer = createReducer(
       error: null,
     };
   }),
+  on(changeAvatarUserActionSuccess, (state, action): UserState => {
+    const { image_id } = action.user;
+    return {
+      ...state,
+      userData: state.userData && {
+        ...state.userData,
+        image_id,
+      },
+      isLoading: false,
+      error: null,
+    };
+  }),
+  on(changeUserNameActionSuccess, (state, action): UserState => {
+    const { username } = action.user;
+    return {
+      ...state,
+      userData: state.userData && {
+        ...state.userData,
+        username,
+      },
+      isUserNameLoading: false,
+      userNameError: null,
+    };
+  }),
   on(logoutUserActionSuccess, (state): UserState => {
     return {
       ...state,
@@ -52,11 +94,23 @@ const reducer = createReducer(
       error: null,
     };
   }),
-  on(loadUserActionFailed, loadUserActionFailed, (state, action): UserState => {
+  on(
+    loadUserActionFailed,
+    loadUserActionFailed,
+    changeAvatarActionFailed,
+    (state, action): UserState => {
+      return {
+        ...state,
+        isLoading: false,
+        error: action.error,
+      };
+    }
+  ),
+  on(changeUserNameFailed, (state, action): UserState => {
     return {
       ...state,
-      isLoading: false,
-      error: action.error,
+      isUserNameLoading: false,
+      userNameError: action.error,
     };
   })
 );

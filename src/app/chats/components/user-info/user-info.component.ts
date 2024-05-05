@@ -1,9 +1,7 @@
 import { ChangeDetectionStrategy, Component, Input, inject } from '@angular/core';
 import { ImagesService } from '@chats/services/images.service';
-import { Store } from '@ngrx/store';
-import { StoreState } from '@store/app.state.interface';
+import { UserService } from '@chats/services/user.service';
 import { UserData } from '@store/entities/user/user.interface';
-import { userDataSelector } from '@store/entities/user/user.selectors';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -14,12 +12,8 @@ import { Observable } from 'rxjs';
 })
 export class UserInfoComponent {
   @Input() fontsize = '18px';
-  private store = inject(Store<StoreState>);
+  private userServise = inject(UserService);
   protected imagesService = inject(ImagesService);
 
-  protected userData$: Observable<UserData | null>;
-
-  constructor() {
-    this.userData$ = this.store.select(userDataSelector);
-  }
+  protected userData$: Observable<UserData | null> = this.userServise.userData$;
 }
