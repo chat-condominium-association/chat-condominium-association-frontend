@@ -10,3 +10,15 @@ export const userAvatarIDSelector = createSelector(selectUser, userState =>
 );
 export const userRoleSelector = createSelector(selectUser, userState => userState.role);
 export const userLoggedInSelector = createSelector(selectUser, userState => !!userState.userData);
+
+export const userErrorSelector = createSelector(selectUser, userState => userState.error);
+export const isUserLoadingSelector = createSelector(selectUser, userState => userState.isLoading);
+export const isUserNameSelector = createSelector(
+  selectUser,
+  userState => userState.isUserNameLoading
+);
+
+export const userNameErrorSelector = createSelector(
+  selectUser,
+  userState => userState.userNameError
+);

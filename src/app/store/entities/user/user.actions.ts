@@ -31,3 +31,16 @@ export const changeAvatarActionFailed = createAction(
   '[User] Change Avatar Failed',
   props<{ error: ApiError }>()
 );
+
+export const changeUserNameAction = createAction(
+  '[User] Change Username',
+  props<{ username: string }>()
+);
+export const changeUserNameActionSuccess = createAction(
+  '[User] Change Username Success',
+  props<{ user: UserApiInterface }>()
+);
+export const changeUserNameFailed = createAction(
+  '[User] Change Username Failed',
+  props<{ error: ApiError }>()
+);

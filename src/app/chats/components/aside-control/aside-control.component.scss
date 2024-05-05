@@ -38,6 +38,10 @@ aside {
       flex: 1;
       display: flex;
       align-items: flex-end;
+
+      ::ng-deep button {
+        color: $accentColorDark;
+      }
     }
 
     .control-btns ::ng-deep button {

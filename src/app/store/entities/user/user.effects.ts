@@ -7,6 +7,9 @@ import {
   changeAvatarActionFailed,
   changeAvatarUserAction,
   changeAvatarUserActionSuccess,
+  changeUserNameAction,
+  changeUserNameActionSuccess,
+  changeUserNameFailed,
   loadUserAction,
   loadUserActionFailed,
   loadUserActionSuccess,
@@ -69,6 +72,24 @@ export class UserEffects {
           }),
           catchError((error: HttpErrorResponse) => {
             return of(changeAvatarActionFailed({ error: error.error }));
+          })
+        );
+      })
+    )
+  );
+
+  changeUserName$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(changeUserNameAction),
+      switchMap(({ username }) => {
+        return this.userApiService.changeUsername(username).pipe(
+          map(response => {
+            return changeUserNameActionSuccess({
+              user: response,
+            });
+          }),
+          catchError((error: HttpErrorResponse) => {
+            return of(changeUserNameFailed({ error: error.error }));
           })
         );
       })

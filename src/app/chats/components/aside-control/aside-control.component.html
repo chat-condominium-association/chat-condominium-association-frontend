@@ -12,7 +12,7 @@
             </app-button>
           </div>
           <div class="logout">
-            <app-button customClass="icon-btn-not-fill" (buttonClick)="logout()">
+            <app-button customClass="icon-btn-not-fill" (buttonClick)="userServise.logout()">
               <div>Вийти з акаунта</div>
               <app-svg-icon [iconId]="icons.Logout"></app-svg-icon>
             </app-button>
@@ -48,9 +48,13 @@
           [activeImageID]="userAvatarID$ | async"
           class="carousel"
           [images]="images"
-          (imageClicked)="handleImageClick($event)"
+          (imageClicked)="userServise.handleImageClick($event)"
         ></app-carousel>
-        <form [formGroup]="editUserNameForm" class="modal-form">
+        <form
+          [formGroup]="editUserNameForm"
+          class="modal-form"
+          (ngSubmit)="handleUsernameEditSubmit()"
+        >
           <app-form-control
             label="Новий нікнейм"
             name="username"
@@ -58,7 +62,7 @@
             type="text"
             placeholder="нікнейм"
           ></app-form-control>
-          <!-- <app-error-message [error]="roomError" *ngIf="roomError"></app-error-message> -->
+          <app-error-message [error]="userError" *ngIf="userError"></app-error-message>
           <app-button type="submit" [disabled]="editUserNameForm.invalid">Зберегти</app-button>
         </form>
       </div>
