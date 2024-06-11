@@ -44,7 +44,7 @@ export class UserApiService {
   }
 
   changeUsername(usernmae: string): Observable<UserApiInterface> {
-    const url = `${this.USER_API_URL}${this.USER_CHANGE_AVATAR_URL}/${usernmae}`;
+    const url = `${this.USER_API_URL}${this.USER_CHANGE_USERNAME_URL}/${usernmae}`;
     return this.http.patch<UserApiInterface>(url, {});
   }
 }
