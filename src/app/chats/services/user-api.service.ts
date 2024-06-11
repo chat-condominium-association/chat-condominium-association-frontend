@@ -15,6 +15,8 @@ export class UserApiService {
   private readonly USER_GET_INFO_URL = 'my_info';
   private readonly USER_REFRESH_TOKEN_URL = 'refresh_token';
   private readonly USER_LOGOUT_URL = 'logout';
+  private readonly USER_CHANGE_AVATAR_URL = 'change_image';
+  private readonly USER_CHANGE_USERNAME_URL = 'change_username';
 
   getToken(): Observable<string> {
     const url = `${this.USER_API_URL}${this.USER_GET_TOKEN_URL}`;
@@ -34,5 +36,15 @@ export class UserApiService {
   logout(): Observable<null> {
     const url = `${this.USER_API_URL}${this.USER_LOGOUT_URL}`;
     return this.http.post<null>(url, {});
+  }
+
+  changeAvatar(avatarID: string): Observable<UserApiInterface> {
+    const url = `${this.USER_API_URL}${this.USER_CHANGE_AVATAR_URL}/${Number(avatarID)}`;
+    return this.http.patch<UserApiInterface>(url, {});
+  }
+
+  changeUsername(usernmae: string): Observable<UserApiInterface> {
+    const url = `${this.USER_API_URL}${this.USER_CHANGE_USERNAME_URL}/${usernmae}`;
+    return this.http.patch<UserApiInterface>(url, {});
   }
 }

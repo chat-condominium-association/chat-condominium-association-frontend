@@ -8,6 +8,7 @@
           class="slide"
           [@slideAnimation]="animationType"
           [class.active]="activeImageID === imagePair[0]"
+          (click)="onImageClick(imagePair[0])"
         />
       </ng-container>
     </div>

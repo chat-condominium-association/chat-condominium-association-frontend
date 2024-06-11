@@ -39,14 +39,13 @@ aside {
       display: flex;
       align-items: flex-end;
 
-      button {
-        margin-bottom: 0;
+      ::ng-deep button {
         color: $accentColorDark;
-        &:hover ::ng-deep .icon {
-          fill: none;
-          stroke: $accentColor;
-        }
       }
+    }
+
+    .control-btns ::ng-deep button {
+      margin-bottom: 30px;
     }
   }
 

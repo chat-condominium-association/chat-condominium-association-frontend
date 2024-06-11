@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { environment } from '@environment/environment';
 
 @Component({
   selector: 'app-svg-icon',
@@ -8,6 +9,6 @@ import { Component, Input } from '@angular/core';
 export class SvgIconComponent {
   @Input() iconId!: string;
   get iconPath(): string {
-    return `/assets/sprite.svg#${this.iconId}`;
+    return `${environment.svgSpriteUrl}/assets/sprite.svg#${this.iconId}`;
   }
 }
