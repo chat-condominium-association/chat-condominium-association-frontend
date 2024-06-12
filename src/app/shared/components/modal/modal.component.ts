@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-empty-function */
-import { Component, Inject, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Inject, inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Icons } from '@shared/enums/icons.enum';
 import { ModalData } from '@shared/models/modal.interface';
@@ -8,6 +8,7 @@ import { ModalData } from '@shared/models/modal.interface';
   selector: 'app-modal',
   templateUrl: './modal.component.html',
   styleUrls: ['./modal.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ModalComponent {
   public dialogRef = inject(MatDialogRef<ModalComponent>);

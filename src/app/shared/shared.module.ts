@@ -9,6 +9,7 @@ import { ToArrayPipe } from './pipes/to-array.pipe';
 import { ErrorMessageComponent } from './components/error-message/error-message.component';
 import { CarouselComponent } from './components/carousel/carousel.component';
 import { SvgIconComponent } from './components/svg-icon/svg-icon.component';
+import { GetImageUrlPipe } from './pipes/get-image-url.pipe';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { SvgIconComponent } from './components/svg-icon/svg-icon.component';
     ErrorMessageComponent,
     CarouselComponent,
     SvgIconComponent,
+    GetImageUrlPipe,
   ],
   exports: [
     ButtonComponent,
@@ -30,6 +32,7 @@ import { SvgIconComponent } from './components/svg-icon/svg-icon.component';
     ErrorMessageComponent,
     CarouselComponent,
     SvgIconComponent,
+    GetImageUrlPipe,
   ],
   imports: [CommonModule, ReactiveFormsModule],
 })

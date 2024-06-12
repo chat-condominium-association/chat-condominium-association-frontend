@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, Input, inject } from '@angular/core';
-import { ImagesService } from '@chats/services/images.service';
 import { UserService } from '@chats/services/user.service';
+import { avatars } from '@shared/data/avatars.images';
 import { UserData } from '@store/entities/user/user.interface';
 import { Observable } from 'rxjs';
 
@@ -13,7 +13,7 @@ import { Observable } from 'rxjs';
 export class UserInfoComponent {
   @Input() fontsize = '18px';
   private userServise = inject(UserService);
-  protected imagesService = inject(ImagesService);
+  protected userAvatars = avatars;
 
   protected userData$: Observable<UserData | null> = this.userServise.userData$;
 }
