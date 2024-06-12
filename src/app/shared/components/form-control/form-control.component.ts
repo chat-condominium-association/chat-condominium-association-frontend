@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { Component, Input, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
 import { AbstractControl } from '@angular/forms';
 import { Observable, map } from 'rxjs';
 import { InputType } from '@shared/models/input.interface';
@@ -11,6 +11,7 @@ import { Icons } from '@shared/enums/icons.enum';
   selector: 'app-form-control',
   templateUrl: './form-control.component.html',
   styleUrls: ['./form-control.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FormControlComponent implements InputType, OnInit {
   @Input() type = '';
@@ -57,6 +58,7 @@ export class FormControlComponent implements InputType, OnInit {
     if (this.control?.errors) {
       Object.entries(this.control.errors).forEach(([key, value]) => {
         const errorMessage = this.getErrorMessage(key, value);
+        console.log(errorMessage);
         errorMessages.push(errorMessage);
       });
     }
