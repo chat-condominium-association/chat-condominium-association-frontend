@@ -1,4 +1,4 @@
 <ng-container *ngIf="userData$ | async as userData">
-  <img [src]="imagesService.getAvatarSrc(userData.image_id) | async" alt="User Avatar" />
+  <img [src]="userData.image_id | getImageUrl: userAvatars" alt="User Avatar" />
   <h3 class="user-name" [style.fontSize]="fontsize">{{ userData.username }}</h3>
 </ng-container>
