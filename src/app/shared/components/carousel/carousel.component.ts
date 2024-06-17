@@ -1,11 +1,18 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { avatars } from '@shared/data/avatars.images';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  Input,
+  OnInit,
+  Output,
+} from '@angular/core';
 import { trigger, transition, useAnimation } from '@angular/animations';
 import { AnimationType, slideIn, slideOut } from './carousel.animations';
 @Component({
   selector: 'app-carousel',
   templateUrl: './carousel.component.html',
   styleUrls: ['./carousel.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   animations: [
     trigger('slideAnimation', [
       transition('void => slide', [useAnimation(slideIn, { params: { time: '500ms' } })]),

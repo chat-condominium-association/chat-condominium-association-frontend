@@ -14,9 +14,14 @@ export const errorMessages = (name: string): ErrorMessages => {
     email: () => `Поле має бути в форматі mail@mail.com`,
     mismatch: () =>
       name === 'confirmPassword' ? `Паролі не співпадають.` : `Поля не співпадають.`,
-    pattern: message =>
-      name === 'password'
-        ? `Пароль має містити одну велику, одну маленьку букву, цифру та спеціальний символ.`
-        : (message as PatternErrorMessage),
+    pattern: message => {
+      if (name === 'password') {
+        return `Пароль має містити одну велику, одну маленьку букву, цифру та спеціальний символ.`;
+      } else if (name === 'email') {
+        return `Поле має бути в форматі mail@mail.com`;
+      } else {
+        return 'Невірний формат поля';
+      }
+    },
   };
 };
