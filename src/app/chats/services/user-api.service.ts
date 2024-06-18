@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable, inject } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { UserApiInterface } from '@chats/model/user.interface';
 import { environment } from '@environment/environment';
 import { Observable } from 'rxjs';

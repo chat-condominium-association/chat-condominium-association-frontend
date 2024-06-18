@@ -6,6 +6,7 @@ type Button = 'button' | 'submit' | 'reset';
   selector: 'app-button',
   templateUrl: './button.component.html',
   styleUrls: ['./button.component.scss'],
+  standalone: true,
 })
 export class ButtonComponent {
   @Input() customClass = 'default-btn';

@@ -1,6 +1,6 @@
 import { UserRole } from '@core/enums/user.roles.enum';
 import { UserState } from './user.interface';
-import { Action, ActionReducer, createReducer, on } from '@ngrx/store';
+import { ActionReducer, createReducer, on } from '@ngrx/store';
 import {
   changeAvatarActionFailed,
   changeAvatarUserAction,
@@ -115,5 +115,5 @@ const reducer = createReducer(
   })
 );
 
-export const userReducer: ActionReducer<UserState, Action> = (state, action) =>
+export const userReducer: ActionReducer<UserState> = (state, action) =>
   reducer(state, action);

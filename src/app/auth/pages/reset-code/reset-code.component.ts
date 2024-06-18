@@ -1,11 +1,19 @@
 import { Component, inject } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { AppRoutes } from '@core/enums/routes.enum';
+import { FormControlComponent } from '@shared/components/form-control/form-control.component';
+import { ButtonComponent } from '@shared/components/button/button.component';
 
 @Component({
   selector: 'app-reset-code',
   templateUrl: './reset-code.component.html',
   styleUrls: ['./reset-code.component.scss'],
+  standalone: true,
+  imports: [
+    ReactiveFormsModule,
+    FormControlComponent,
+    ButtonComponent,
+  ],
 })
 export class ResetCodeComponent {
   private fb = inject(FormBuilder);

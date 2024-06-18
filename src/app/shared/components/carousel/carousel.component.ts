@@ -1,13 +1,8 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  EventEmitter,
-  Input,
-  OnInit,
-  Output,
-} from '@angular/core';
-import { trigger, transition, useAnimation } from '@angular/animations';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { transition, trigger, useAnimation } from '@angular/animations';
 import { AnimationType, slideIn, slideOut } from './carousel.animations';
+import { NgForOf, NgIf } from '@angular/common';
+
 @Component({
   selector: 'app-carousel',
   templateUrl: './carousel.component.html',
@@ -18,6 +13,11 @@ import { AnimationType, slideIn, slideOut } from './carousel.animations';
       transition('void => slide', [useAnimation(slideIn, { params: { time: '500ms' } })]),
       transition('slide => void', [useAnimation(slideOut, { params: { time: '500ms' } })]),
     ]),
+  ],
+  standalone: true,
+  imports: [
+    NgForOf,
+    NgIf,
   ],
 })
 export class CarouselComponent implements OnInit {

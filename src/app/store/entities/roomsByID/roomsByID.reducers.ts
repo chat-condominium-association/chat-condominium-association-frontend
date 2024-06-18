@@ -1,5 +1,5 @@
-import { Action, ActionReducer, createReducer, on } from '@ngrx/store';
-import { RoomByID, RommsByIDState } from './roomsByID.interface';
+import { ActionReducer, createReducer, on } from '@ngrx/store';
+import { RommsByIDState, RoomByID } from './roomsByID.interface';
 import {
   editRoomAction,
   editRoomActionFailed,
@@ -104,5 +104,5 @@ const reducer = createReducer(
   })
 );
 
-export const rommsByIDReducer: ActionReducer<RommsByIDState, Action> = (state, action) =>
+export const rommsByIDReducer: ActionReducer<RommsByIDState> = (state, action) =>
   reducer(state, action);

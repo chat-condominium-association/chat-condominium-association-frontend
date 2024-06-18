@@ -1,5 +1,5 @@
-import { Component, TemplateRef, inject } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { Component, inject, TemplateRef } from '@angular/core';
+import { FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { RoomsService } from '@chats/services/rooms.service';
 import { ApiMessages } from '@core/enums/api-messages.enum';
@@ -11,12 +11,36 @@ import { AsidePanel } from '@shared/enums/aside-panel-states.enum';
 import { Icons } from '@shared/enums/icons.enum';
 import { Rooms } from '@store/entities/roomsByID/roomsByID.interface';
 import { setAsideStateAction } from '@store/ui/components/components.actions';
-import { Observable, Subject, takeUntil, take, withLatestFrom } from 'rxjs';
+import { Observable, Subject, take, takeUntil, withLatestFrom } from 'rxjs';
+import { ManagementCardComponent } from '@shared/components/management-card/management-card.component';
+import { PagesLayoutComponent } from '@chats/components/pages-layout/pages-layout.component';
+import { AsyncPipe, NgForOf, NgIf } from '@angular/common';
+import { ToArrayPipe } from '@shared/pipes/to-array.pipe';
+import { SvgIconComponent } from '@shared/components/svg-icon/svg-icon.component';
+import { ModalComponent } from '@shared/components/modal/modal.component';
+import { FormControlComponent } from '@shared/components/form-control/form-control.component';
+import { ErrorMessageComponent } from '@shared/components/error-message/error-message.component';
+import { ButtonComponent } from '@shared/components/button/button.component';
 
 @Component({
   selector: 'app-profile-page',
   templateUrl: './profile-page.component.html',
   styleUrls: ['./profile-page.component.scss'],
+  standalone: true,
+  imports: [
+    ManagementCardComponent,
+    PagesLayoutComponent,
+    AsyncPipe,
+    ToArrayPipe,
+    SvgIconComponent,
+    ModalComponent,
+    ReactiveFormsModule,
+    FormControlComponent,
+    ErrorMessageComponent,
+    ButtonComponent,
+    NgForOf,
+    NgIf,
+  ],
 })
 export class ProfilePageComponent {
   private dialog = inject(MatDialog);

@@ -3,12 +3,21 @@ import { ChangeDetectionStrategy, Component, Inject, inject } from '@angular/cor
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Icons } from '@shared/enums/icons.enum';
 import { ModalData } from '@shared/models/modal.interface';
+import { SvgIconComponent } from '@shared/components/svg-icon/svg-icon.component';
+import { ButtonComponent } from '@shared/components/button/button.component';
+import { NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-modal',
   templateUrl: './modal.component.html',
   styleUrls: ['./modal.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [
+    SvgIconComponent,
+    ButtonComponent,
+    NgIf,
+  ],
 })
 export class ModalComponent {
   public dialogRef = inject(MatDialogRef<ModalComponent>);

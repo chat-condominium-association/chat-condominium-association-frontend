@@ -1,7 +1,6 @@
-import { RoomInfo } from '@chats/model/rooms.interface';
 import { ApiError } from '@core/models/api.inetrface';
 
-//change posts and messages inetrfaces in he furute
+// TODO: change posts and messages interfaces in the future
 export interface RommsByIDState {
   isLoading: boolean;
   error: ApiError | null;
