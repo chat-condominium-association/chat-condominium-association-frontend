@@ -15,6 +15,7 @@ import { AsideControlComponent } from './components/aside-control/aside-control.
 import { SharedModule } from '@shared/shared.module';
 import { PagesLayoutComponent } from './components/pages-layout/pages-layout.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ProgressBarComponent } from '@shared/components/progress-bar/progress-bar.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,12 @@ import { ReactiveFormsModule } from '@angular/forms';
     AsideControlComponent,
     PagesLayoutComponent,
   ],
-  imports: [CommonModule, ChatsRoutingModule, SharedModule, ReactiveFormsModule],
+  imports: [
+    CommonModule,
+    ChatsRoutingModule,
+    SharedModule,
+    ReactiveFormsModule,
+    ProgressBarComponent,
+  ],
 })
 export class ChatsModule {}

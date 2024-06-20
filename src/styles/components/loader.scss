@@ -1,0 +1,27 @@
+@import 'variables';
+.mdc-linear-progress {
+  position: fixed !important;
+  top: 0;
+  left: 0;
+}
+.mat-mdc-progress-bar .mdc-linear-progress__buffer-bar {
+  background-color: #fff !important;
+  border-radius: 20px !important;
+}
+.mdc-linear-progress__bar-inner {
+  position: relative;
+  border: 2px solid transparent !important;
+  z-index: 1;
+}
+
+.mdc-linear-progress__bar-inner::after {
+  content: '';
+  position: absolute;
+  border-radius: 20px !important;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(90deg, #006c65 0%, #4aada7 60.42%, #c5f1ef 95.01%) !important;
+  z-index: -1;
+}

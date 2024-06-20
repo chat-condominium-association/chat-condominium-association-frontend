@@ -31,7 +31,7 @@ export class RoomsService {
     this.store.dispatch(editRoomAction({ roomID, editData: { name } }));
   }
 
-  getLoadingState(roomID: number): Observable<boolean> {
+  getRoomLoadingState(roomID: number): Observable<boolean> {
     return this.store.pipe(select(roomLoadingByIDSelector(roomID)));
   }
 

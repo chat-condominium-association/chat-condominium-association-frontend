@@ -33,6 +33,7 @@ export class ProfilePageComponent {
 
   private selectedRoomId: number | null = null;
   protected roomError: string | null = null;
+  protected isRoomLoading = false;
 
   protected editRoomForm: FormGroup;
 
@@ -69,17 +70,19 @@ export class ProfilePageComponent {
     if (name && roomID !== null) {
       this.roomsService.editRoom(roomID, name);
 
-      const roomLoading$ = this.roomsService.getLoadingState(roomID);
+      const roomLoading$ = this.roomsService.getRoomLoadingState(roomID);
       const roomError$ = this.roomsService.getErrorState(roomID);
 
       roomLoading$
         .pipe(withLatestFrom(roomError$), takeUntil(this.modalDestroyed))
         .subscribe(([isLoading, error]) => {
+          this.isRoomLoading = true;
           if (!isLoading && !error) {
             this.editRoomForm.reset();
             this.dialog.closeAll();
             this.selectedRoomId = null;
             this.roomError = null;
+            this.isRoomLoading = false;
             this.apiHandleService.handleSuccess(ApiMessages.SuccesSavedtText);
           } else if (!isLoading && error) {
             this.roomError = error?.error?.detail || ApiMessages.ErrorDefaultText;

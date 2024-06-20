@@ -30,7 +30,6 @@ const reducer = createReducer(
     loadUserAction,
     logoutUserAction,
     changeAvatarUserAction,
-    changeUserNameAction,
     (state): UserState => ({
       ...state,
       isLoading: true,
@@ -94,18 +93,13 @@ const reducer = createReducer(
       error: null,
     };
   }),
-  on(
-    loadUserActionFailed,
-    loadUserActionFailed,
-    changeAvatarActionFailed,
-    (state, action): UserState => {
-      return {
-        ...state,
-        isLoading: false,
-        error: action.error,
-      };
-    }
-  ),
+  on(loadUserActionFailed, changeAvatarActionFailed, (state, action): UserState => {
+    return {
+      ...state,
+      isLoading: false,
+      error: action.error,
+    };
+  }),
   on(changeUserNameFailed, (state, action): UserState => {
     return {
       ...state,
