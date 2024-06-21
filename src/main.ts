@@ -12,7 +12,6 @@ import { HTTP_INTERCEPTORS, provideHttpClient } from '@angular/common/http';
 import { entitiesReducer } from '@store/entities/entities.reducer';
 import { HttpCredentialsInterceptor } from '@core/interceptors/http-credentials.interceptor';
 
-
 bootstrapApplication(AppComponent, {
   providers: [
     provideRouter(routeConfig),
@@ -22,4 +21,4 @@ bootstrapApplication(AppComponent, {
     provideHttpClient(),
     { provide: HTTP_INTERCEPTORS, useClass: HttpCredentialsInterceptor, multi: true },
   ],
-}).catch((err) => console.error(err));
+}).catch(err => console.error(err));

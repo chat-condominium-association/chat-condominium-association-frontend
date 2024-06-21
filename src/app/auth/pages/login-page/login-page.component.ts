@@ -12,13 +12,7 @@ import { AsyncPipe } from '@angular/common';
   templateUrl: './login-page.component.html',
   styleUrls: ['./login-page.component.scss'],
   standalone: true,
-  imports: [
-    ReactiveFormsModule,
-    FormControlComponent,
-    RouterLink,
-    ButtonComponent,
-    AsyncPipe,
-  ],
+  imports: [ReactiveFormsModule, FormControlComponent, RouterLink, ButtonComponent, AsyncPipe],
 })
 export class LoginPageComponent {
   private fb = inject(FormBuilder);

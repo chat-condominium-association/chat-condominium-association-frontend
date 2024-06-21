@@ -10,12 +10,7 @@ import { RouterLink, RouterOutlet } from '@angular/router';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
   standalone: true,
-  imports: [
-    AsyncPipe,
-    RouterLink,
-    RouterOutlet,
-    NgIf,
-  ],
+  imports: [AsyncPipe, RouterLink, RouterOutlet, NgIf],
 })
 export class AppComponent implements OnInit {
   private store: Store = inject(Store);

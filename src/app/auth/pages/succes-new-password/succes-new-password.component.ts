@@ -6,8 +6,6 @@ import { ButtonComponent } from '@shared/components/button/button.component';
   templateUrl: './succes-new-password.component.html',
   styleUrls: ['./succes-new-password.component.scss'],
   standalone: true,
-  imports: [
-    ButtonComponent,
-  ],
+  imports: [ButtonComponent],
 })
 export class SuccesNewPasswordComponent {}

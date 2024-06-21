@@ -12,13 +12,7 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
   styleUrls: ['./pages-nav.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
-  imports: [
-    SvgIconComponent,
-    AsyncPipe,
-    NgIf,
-    RouterLink,
-    RouterLinkActive,
-  ],
+  imports: [SvgIconComponent, AsyncPipe, NgIf, RouterLink, RouterLinkActive],
 })
 export class PagesNavComponent {
   protected authService = inject(AuthService);

@@ -12,11 +12,7 @@ import { GetImageUrlPipe } from '@shared/pipes/get-image-url.pipe';
   styleUrls: ['./user-info.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
-  imports: [
-    AsyncPipe,
-    GetImageUrlPipe,
-    NgIf,
-  ],
+  imports: [AsyncPipe, GetImageUrlPipe, NgIf],
 })
 export class UserInfoComponent {
   @Input() fontsize = '18px';

@@ -13,11 +13,7 @@ import { NgIf } from '@angular/common';
   styleUrls: ['./modal.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
-  imports: [
-    SvgIconComponent,
-    ButtonComponent,
-    NgIf,
-  ],
+  imports: [SvgIconComponent, ButtonComponent, NgIf],
 })
 export class ModalComponent {
   public dialogRef = inject(MatDialogRef<ModalComponent>);

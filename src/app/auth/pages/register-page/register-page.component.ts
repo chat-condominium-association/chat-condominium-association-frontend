@@ -13,13 +13,7 @@ import { RouterLink } from '@angular/router';
   templateUrl: './register-page.component.html',
   styleUrls: ['./register-page.component.scss'],
   standalone: true,
-  imports: [
-    FormControlComponent,
-    ReactiveFormsModule,
-    AsyncPipe,
-    ButtonComponent,
-    RouterLink,
-  ],
+  imports: [FormControlComponent, ReactiveFormsModule, AsyncPipe, ButtonComponent, RouterLink],
 })
 export class RegisterPageComponent {
   private fb = inject(FormBuilder);

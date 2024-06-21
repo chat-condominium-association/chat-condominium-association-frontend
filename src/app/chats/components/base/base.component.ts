@@ -12,12 +12,7 @@ import { AsideControlComponent } from '@chats/components/aside-control/aside-con
   templateUrl: './base.component.html',
   styleUrls: ['./base.component.scss'],
   standalone: true,
-  imports: [
-    PagesNavComponent,
-    RouterOutlet,
-    MainInfoNavComponent,
-    AsideControlComponent,
-  ],
+  imports: [PagesNavComponent, RouterOutlet, MainInfoNavComponent, AsideControlComponent],
 })
 export class BaseComponent implements OnInit {
   private store = inject(Store<StoreState>);

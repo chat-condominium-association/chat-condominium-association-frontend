@@ -15,14 +15,7 @@ import { ToArrayPipe } from '@shared/pipes/to-array.pipe';
   styleUrls: ['./main-chats-nav.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
-  imports: [
-    RouterLink,
-    UserInfoComponent,
-    AsyncPipe,
-    ToArrayPipe,
-    NgForOf,
-    RouterLinkActive,
-  ],
+  imports: [RouterLink, UserInfoComponent, AsyncPipe, ToArrayPipe, NgForOf, RouterLinkActive],
 })
 export class MainInfoNavComponent {
   private store = inject(Store<StoreState>);

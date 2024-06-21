@@ -9,11 +9,7 @@ import { ButtonComponent } from '@shared/components/button/button.component';
   templateUrl: './reset-code.component.html',
   styleUrls: ['./reset-code.component.scss'],
   standalone: true,
-  imports: [
-    ReactiveFormsModule,
-    FormControlComponent,
-    ButtonComponent,
-  ],
+  imports: [ReactiveFormsModule, FormControlComponent, ButtonComponent],
 })
 export class ResetCodeComponent {
   private fb = inject(FormBuilder);

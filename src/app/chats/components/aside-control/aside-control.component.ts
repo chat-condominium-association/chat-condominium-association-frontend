@@ -1,4 +1,11 @@
-import { ChangeDetectionStrategy, Component, HostBinding, inject, OnDestroy, TemplateRef } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  HostBinding,
+  inject,
+  OnDestroy,
+  TemplateRef,
+} from '@angular/core';
 import { FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { UserService } from '@chats/services/user.service';

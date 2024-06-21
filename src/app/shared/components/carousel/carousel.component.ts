@@ -1,4 +1,11 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  Input,
+  OnInit,
+  Output,
+} from '@angular/core';
 import { transition, trigger, useAnimation } from '@angular/animations';
 import { AnimationType, slideIn, slideOut } from './carousel.animations';
 import { NgForOf, NgIf } from '@angular/common';
@@ -15,10 +22,7 @@ import { NgForOf, NgIf } from '@angular/common';
     ]),
   ],
   standalone: true,
-  imports: [
-    NgForOf,
-    NgIf,
-  ],
+  imports: [NgForOf, NgIf],
 })
 export class CarouselComponent implements OnInit {
   @Input() images: [string, string][] = []; // first el of images is imageID, second imageUrl

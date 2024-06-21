@@ -9,9 +9,7 @@ import { PagesLayoutComponent } from '@chats/components/pages-layout/pages-layou
   templateUrl: './members-page.component.html',
   styleUrls: ['./members-page.component.scss'],
   standalone: true,
-  imports: [
-    PagesLayoutComponent,
-  ],
+  imports: [PagesLayoutComponent],
 })
 export class MembersPageComponent {
   private store = inject(Store);

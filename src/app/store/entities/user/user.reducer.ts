@@ -115,5 +115,4 @@ const reducer = createReducer(
   })
 );
 
-export const userReducer: ActionReducer<UserState> = (state, action) =>
-  reducer(state, action);
+export const userReducer: ActionReducer<UserState> = (state, action) => reducer(state, action);

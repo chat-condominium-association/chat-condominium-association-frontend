@@ -7,9 +7,7 @@ import { RouterLink } from '@angular/router';
   templateUrl: './start-page.component.html',
   styleUrls: ['./start-page.component.scss'],
   standalone: true,
-  imports: [
-    RouterLink,
-  ],
+  imports: [RouterLink],
 })
 export class StartPageComponent {
   protected readonly REGISTRATION_PAGE_ROUTE = AppRoutes.REGISTRATION_PAGE_ROUTE;

@@ -9,11 +9,7 @@ import { ButtonComponent } from '@shared/components/button/button.component';
   templateUrl: './forgot-password.component.html',
   styleUrls: ['./forgot-password.component.scss'],
   standalone: true,
-  imports: [
-    ReactiveFormsModule,
-    FormControlComponent,
-    ButtonComponent,
-  ],
+  imports: [ReactiveFormsModule, FormControlComponent, ButtonComponent],
 })
 export class ForgotPasswordComponent {
   private fb = inject(FormBuilder);

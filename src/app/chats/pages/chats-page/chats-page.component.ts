@@ -3,7 +3,10 @@ import { Router } from '@angular/router';
 import { AppRoutes } from '@core/enums/routes.enum';
 import { Store } from '@ngrx/store';
 import { StoreState } from '@store/app.state.interface';
-import { firstRoomIDSelector, roomsDataLoadingSelector } from '@store/entities/roomsByID/roomsByID.selectors';
+import {
+  firstRoomIDSelector,
+  roomsDataLoadingSelector,
+} from '@store/entities/roomsByID/roomsByID.selectors';
 import { filter, switchMap, take } from 'rxjs';
 
 @Component({
