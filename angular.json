@@ -67,10 +67,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "chat-condominium-association:build:production"
+              "buildTarget": "chat-condominium-association:build:production"
             },
             "development": {
-              "browserTarget": "chat-condominium-association:build:development"
+              "buildTarget": "chat-condominium-association:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -78,7 +78,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "chat-condominium-association:build"
+            "buildTarget": "chat-condominium-association:build"
           }
         },
         "test": {

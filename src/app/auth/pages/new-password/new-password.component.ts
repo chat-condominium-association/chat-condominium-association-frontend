@@ -1,11 +1,15 @@
 import { Component, inject } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { AppRoutes } from '@core/enums/routes.enum';
+import { FormControlComponent } from '@shared/components/form-control/form-control.component';
+import { ButtonComponent } from '@shared/components/button/button.component';
 
 @Component({
   selector: 'app-new-password',
   templateUrl: './new-password.component.html',
   styleUrls: ['./new-password.component.scss'],
+  standalone: true,
+  imports: [ReactiveFormsModule, FormControlComponent, ButtonComponent],
 })
 export class NewPasswordComponent {
   private fb = inject(FormBuilder);

@@ -2,16 +2,16 @@ import {
   ChangeDetectionStrategy,
   Component,
   HostBinding,
+  inject,
   OnDestroy,
   TemplateRef,
-  inject,
 } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { UserService } from '@chats/services/user.service';
 import { ApiMessages } from '@core/enums/api-messages.enum';
 import { ApiHandleService } from '@core/services/api-handle.service';
-import { Store, select } from '@ngrx/store';
+import { select, Store } from '@ngrx/store';
 import { avatars } from '@shared/data/avatars.images';
 import { chats } from '@shared/data/chats.imges';
 import { AsidePanel } from '@shared/enums/aside-panel-states.enum';
@@ -19,12 +19,38 @@ import { Icons } from '@shared/enums/icons.enum';
 import { StoreState } from '@store/app.state.interface';
 import { asideStateSelector } from '@store/ui/components/components.selectors';
 import { Observable, Subject, take, takeUntil, withLatestFrom } from 'rxjs';
+import { ButtonComponent } from '@shared/components/button/button.component';
+import { SvgIconComponent } from '@shared/components/svg-icon/svg-icon.component';
+import { ModalComponent } from '@shared/components/modal/modal.component';
+import { ErrorMessageComponent } from '@shared/components/error-message/error-message.component';
+import { UserInfoComponent } from '@chats/components/user-info/user-info.component';
+import { FormControlComponent } from '@shared/components/form-control/form-control.component';
+import { CarouselComponent } from '@shared/components/carousel/carousel.component';
+import { AsyncPipe, NgIf, NgSwitch, NgSwitchCase } from '@angular/common';
 
 @Component({
   selector: 'app-aside-control',
   templateUrl: './aside-control.component.html',
   styleUrls: ['./aside-control.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [
+    ButtonComponent,
+    SvgIconComponent,
+    SvgIconComponent,
+    ModalComponent,
+    ErrorMessageComponent,
+    SvgIconComponent,
+    UserInfoComponent,
+    SvgIconComponent,
+    FormControlComponent,
+    CarouselComponent,
+    AsyncPipe,
+    ReactiveFormsModule,
+    NgSwitch,
+    NgSwitchCase,
+    NgIf,
+  ],
 })
 export class AsideControlComponent implements OnDestroy {
   private store = inject(Store<StoreState>);

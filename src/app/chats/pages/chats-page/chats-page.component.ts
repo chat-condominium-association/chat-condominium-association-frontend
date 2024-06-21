@@ -1,20 +1,19 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AppRoutes } from '@core/enums/routes.enum';
 import { Store } from '@ngrx/store';
 import { StoreState } from '@store/app.state.interface';
-import { Rooms } from '@store/entities/roomsByID/roomsByID.interface';
 import {
   firstRoomIDSelector,
   roomsDataLoadingSelector,
 } from '@store/entities/roomsByID/roomsByID.selectors';
-import { setAsideStateAction } from '@store/ui/components/components.actions';
-import { Observable, combineLatest, filter, switchMap, take, withLatestFrom } from 'rxjs';
+import { filter, switchMap, take } from 'rxjs';
 
 @Component({
   selector: 'app-chats-page',
   templateUrl: './chats-page.component.html',
   styleUrls: ['./chats-page.component.scss'],
+  standalone: true,
 })
 export class ChatsPageComponent implements OnInit {
   private router = inject(Router);

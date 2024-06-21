@@ -7,8 +7,12 @@ import { map, tap } from 'rxjs';
 export const authmoduleGuard: CanActivateFn = () => {
   const authService = inject(AuthService);
   const router = inject(Router);
+  console.log('auth');
+
   return authService.isLoggedIn().pipe(
     map(loggedIn => {
+      console.log('auth logged', loggedIn);
+
       if (!loggedIn) {
         return true;
       }

@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable, inject } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { UserApiInterface } from '@chats/model/user.interface';
 import { environment } from '@environment/environment';
 import { Observable } from 'rxjs';
@@ -30,7 +30,9 @@ export class UserApiService {
 
   getUserInfo(): Observable<UserApiInterface> {
     const url = `${this.USER_API_URL}${this.USER_GET_INFO_URL}`;
-    return this.http.get<UserApiInterface>(url);
+    console.log('get');
+
+    return this.http.get<UserApiInterface>(url, { withCredentials: true });
   }
 
   logout(): Observable<null> {

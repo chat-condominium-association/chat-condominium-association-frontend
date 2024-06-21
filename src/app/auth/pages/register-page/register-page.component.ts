@@ -1,13 +1,19 @@
 import { Component, inject } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { AdminAuthService } from '@auth/services/admin-auth.service';
 import { AppRoutes } from '@core/enums/routes.enum';
 import { matchValidator } from '@shared/validators/match.validator';
+import { FormControlComponent } from '@shared/components/form-control/form-control.component';
+import { AsyncPipe } from '@angular/common';
+import { ButtonComponent } from '@shared/components/button/button.component';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-register-page',
   templateUrl: './register-page.component.html',
   styleUrls: ['./register-page.component.scss'],
+  standalone: true,
+  imports: [FormControlComponent, ReactiveFormsModule, AsyncPipe, ButtonComponent, RouterLink],
 })
 export class RegisterPageComponent {
   private fb = inject(FormBuilder);

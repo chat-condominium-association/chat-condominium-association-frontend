@@ -1,16 +1,20 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
-import { AbstractControl } from '@angular/forms';
-import { Observable, map } from 'rxjs';
+import { AbstractControl, ReactiveFormsModule } from '@angular/forms';
+import { map, Observable } from 'rxjs';
 import { InputType } from '@shared/models/input.interface';
 import { LengthErrorMessage, PatternErrorMessage } from '@shared/models/validator.interface';
 import { errorMessages } from '@shared/validators/validator-messages';
 import { Icons } from '@shared/enums/icons.enum';
+import { AsyncPipe, NgClass, NgForOf, NgIf } from '@angular/common';
+import { SvgIconComponent } from '@shared/components/svg-icon/svg-icon.component';
 
 @Component({
   selector: 'app-form-control',
   templateUrl: './form-control.component.html',
   styleUrls: ['./form-control.component.scss'],
+  standalone: true,
+  imports: [ReactiveFormsModule, NgClass, AsyncPipe, SvgIconComponent, NgForOf, NgIf],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FormControlComponent implements InputType, OnInit {
@@ -58,7 +62,6 @@ export class FormControlComponent implements InputType, OnInit {
     if (this.control?.errors) {
       Object.entries(this.control.errors).forEach(([key, value]) => {
         const errorMessage = this.getErrorMessage(key, value);
-        console.log(errorMessage);
         errorMessages.push(errorMessage);
       });
     }

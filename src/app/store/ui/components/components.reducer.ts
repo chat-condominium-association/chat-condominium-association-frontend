@@ -1,4 +1,4 @@
-import { Action, ActionReducer, createReducer, on } from '@ngrx/store';
+import { ActionReducer, createReducer, on } from '@ngrx/store';
 import { ComponetsState } from './components.interface';
 import { AsidePanel } from '@shared/enums/aside-panel-states.enum';
 import { setAsideStateAction } from './components.actions';
@@ -22,5 +22,5 @@ const reducer = createReducer(
   )
 );
 
-export const componentsReducer: ActionReducer<ComponetsState, Action> = (state, action) =>
+export const componentsReducer: ActionReducer<ComponetsState> = (state, action) =>
   reducer(state, action);

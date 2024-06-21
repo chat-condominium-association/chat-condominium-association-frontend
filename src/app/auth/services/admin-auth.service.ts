@@ -1,4 +1,4 @@
-import { Injectable, inject } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { AdminAuthApiService } from './admin-auth-api.service';
 import { FormGroup } from '@angular/forms';
 import { BehaviorSubject, finalize, take } from 'rxjs';
@@ -49,6 +49,7 @@ export class AdminAuthService {
             buttonText: 'Почати роботу з Чатом',
             showSubmitBtn: true,
             handleSubmit: () => {
+              console.log('handle');
               this.router.navigateByUrl(this.PROFILE_PAGE_ROUTE);
               this.dialog.closeAll();
             },
@@ -81,8 +82,8 @@ export class AdminAuthService {
       });
   }
 
-  handleError(error: ApiError, buttonText: string): void {
-    const errorMessage = error?.error?.detail || 'Виникла помилка';
+  handleError(apiError: ApiError, buttonText: string): void {
+    const errorMessage = apiError?.error?.detail || 'Виникла помилка';
     this.backendErrors$.next([errorMessage]);
 
     this.modalService.openModal({

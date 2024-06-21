@@ -1,0 +1,8 @@
+{
+  "my_info": {
+    "username": "username",
+    "email": "email",
+    "image_id": 1,
+    "is_admin": false
+  }
+}
