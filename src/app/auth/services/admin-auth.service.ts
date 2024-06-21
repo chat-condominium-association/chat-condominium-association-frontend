@@ -49,6 +49,7 @@ export class AdminAuthService {
             buttonText: 'Почати роботу з Чатом',
             showSubmitBtn: true,
             handleSubmit: () => {
+              console.log('handle');
               this.router.navigateByUrl(this.PROFILE_PAGE_ROUTE);
               this.dialog.closeAll();
             },

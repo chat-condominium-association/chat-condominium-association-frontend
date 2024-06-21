@@ -30,7 +30,9 @@ export class UserApiService {
 
   getUserInfo(): Observable<UserApiInterface> {
     const url = `${this.USER_API_URL}${this.USER_GET_INFO_URL}`;
-    return this.http.get<UserApiInterface>(url);
+    console.log('get');
+
+    return this.http.get<UserApiInterface>(url, { withCredentials: true });
   }
 
   logout(): Observable<null> {

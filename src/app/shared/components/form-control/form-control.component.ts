@@ -14,14 +14,7 @@ import { SvgIconComponent } from '@shared/components/svg-icon/svg-icon.component
   templateUrl: './form-control.component.html',
   styleUrls: ['./form-control.component.scss'],
   standalone: true,
-  imports: [
-    ReactiveFormsModule,
-    NgClass,
-    AsyncPipe,
-    SvgIconComponent,
-    NgForOf,
-    NgIf,
-  ],
+  imports: [ReactiveFormsModule, NgClass, AsyncPipe, SvgIconComponent, NgForOf, NgIf],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FormControlComponent implements InputType, OnInit {
@@ -69,7 +62,6 @@ export class FormControlComponent implements InputType, OnInit {
     if (this.control?.errors) {
       Object.entries(this.control.errors).forEach(([key, value]) => {
         const errorMessage = this.getErrorMessage(key, value);
-        console.log(errorMessage);
         errorMessages.push(errorMessage);
       });
     }

@@ -30,6 +30,17 @@ const routeConfig: Routes = [
     canActivate: [loggedInGuard],
     // canActivateChild: [loggedInGuard],
     component: BaseComponent,
+    children: [
+      { path: AppRoutes.PROFILE_PAGE_ROUTE, component: ProfilePageComponent },
+      { path: AppRoutes.CHATS_PAGE_ROUTE, component: ChatsPageComponent },
+      {
+        path: AppRoutes.MEMBERS_PAGE_ROUTE,
+        canActivate: [adminRoleGuard],
+        component: MembersPageComponent,
+      },
+      { path: AppRoutes.CHAT_PAGE_ROUTE, component: ChatPageComponent },
+      { path: AppRoutes.COMMENTS_PAGE_ROUTE, component: CommentsPageComponent },
+    ],
   },
 
   { path: AppRoutes.REGISTRATION_PAGE_ROUTE, component: RegisterPageComponent },
@@ -38,12 +49,6 @@ const routeConfig: Routes = [
   { path: AppRoutes.RESET_CODE_PAGE_ROUTE, component: ResetCodeComponent },
   { path: AppRoutes.NEW_PASSWORD_PAGE_ROUTE, component: NewPasswordComponent },
   { path: AppRoutes.SUCCESS_NEW_PASSWORD_PAGE_ROUTE, component: SuccesNewPasswordComponent },
-
-  { path: AppRoutes.PROFILE_PAGE_ROUTE, component: ProfilePageComponent, },
-  { path: AppRoutes.CHATS_PAGE_ROUTE, component: ChatsPageComponent, },
-  { path: AppRoutes.MEMBERS_PAGE_ROUTE, canActivate: [adminRoleGuard], component: MembersPageComponent, },
-  { path: AppRoutes.CHAT_PAGE_ROUTE, component: ChatPageComponent, },
-  { path: AppRoutes.COMMENTS_PAGE_ROUTE, component: CommentsPageComponent, },
 
   { path: '**', component: NotFoundPageComponent },
 ];
