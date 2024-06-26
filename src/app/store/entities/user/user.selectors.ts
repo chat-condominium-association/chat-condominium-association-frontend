@@ -13,9 +13,9 @@ export const userLoggedInSelector = createSelector(selectUser, userState => !!us
 
 export const userErrorSelector = createSelector(selectUser, userState => userState.error);
 export const isUserLoadingSelector = createSelector(selectUser, userState => userState.isLoading);
-export const isUserNameSelector = createSelector(
+export const isUserEditLoadedSelector = createSelector(
   selectUser,
-  userState => userState.isUserNameLoading
+  userState => userState.isEditUserLoading
 );
 
 export const userNameErrorSelector = createSelector(

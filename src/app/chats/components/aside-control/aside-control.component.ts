@@ -34,6 +34,8 @@ export class AsideControlComponent implements OnDestroy {
 
   protected asideState$: Observable<AsidePanel>;
   protected userAvatarID$: Observable<string> = this.userServise.userAvatarID$;
+  protected isEditUserLoaded$: Observable<boolean> = this.userServise.isEditUserLoaded$;
+
   private modalDestroyed = new Subject<void>();
   private destroy$ = new Subject<void>();
 

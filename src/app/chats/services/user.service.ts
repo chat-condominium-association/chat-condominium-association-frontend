@@ -9,6 +9,7 @@ import {
   logoutUserAction,
 } from '@store/entities/user/user.actions';
 import {
+  isUserEditLoadedSelector,
   isUserLoadingSelector,
   userAvatarIDSelector,
   userDataSelector,
@@ -25,6 +26,8 @@ export class UserService {
   private fb = inject(FormBuilder);
 
   userAvatarID$ = this.store.pipe(select(userAvatarIDSelector));
+  isEditUserLoaded$ = this.store.pipe(select(isUserEditLoadedSelector));
+
   userData$ = this.store.select(userDataSelector);
 
   buildEditUsernameForm(): FormGroup {
@@ -45,7 +48,7 @@ export class UserService {
     this.store.dispatch(changeUserNameAction({ username }));
   }
 
-  getLoadingState(): Observable<boolean> {
+  getEditUserLoadingState(): Observable<boolean> {
     return this.store.pipe(select(isUserLoadingSelector));
   }
 

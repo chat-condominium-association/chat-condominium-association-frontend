@@ -3,7 +3,7 @@ import { ApiError } from '@core/models/api.inetrface';
 
 export interface UserState {
   isLoading: boolean;
-  isUserNameLoading: boolean;
+  isEditUserLoading: boolean;
   userNameError: ApiError | null;
   error: ApiError | null;
   userData: UserData | null;

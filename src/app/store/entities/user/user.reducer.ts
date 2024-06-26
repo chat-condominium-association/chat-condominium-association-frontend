@@ -17,7 +17,7 @@ import {
 
 const initialState: UserState = {
   isLoading: false,
-  isUserNameLoading: false,
+  isEditUserLoading: false,
   error: null,
   userNameError: null,
   userData: null,
@@ -29,7 +29,6 @@ const reducer = createReducer(
   on(
     loadUserAction,
     logoutUserAction,
-    changeAvatarUserAction,
     (state): UserState => ({
       ...state,
       isLoading: true,
@@ -38,9 +37,10 @@ const reducer = createReducer(
   ),
   on(
     changeUserNameAction,
+    changeAvatarUserAction,
     (state): UserState => ({
       ...state,
-      isUserNameLoading: true,
+      isEditUserLoading: true,
       error: null,
     })
   ),
@@ -68,7 +68,7 @@ const reducer = createReducer(
         ...state.userData,
         image_id,
       },
-      isLoading: false,
+      isEditUserLoading: false,
       error: null,
     };
   }),
@@ -80,7 +80,7 @@ const reducer = createReducer(
         ...state.userData,
         username,
       },
-      isUserNameLoading: false,
+      isEditUserLoading: false,
       userNameError: null,
     };
   }),
@@ -93,17 +93,17 @@ const reducer = createReducer(
       error: null,
     };
   }),
-  on(loadUserActionFailed, changeAvatarActionFailed, (state, action): UserState => {
+  on(loadUserActionFailed, (state, action): UserState => {
     return {
       ...state,
       isLoading: false,
       error: action.error,
     };
   }),
-  on(changeUserNameFailed, (state, action): UserState => {
+  on(changeUserNameFailed, changeAvatarActionFailed, (state, action): UserState => {
     return {
       ...state,
-      isUserNameLoading: false,
+      isEditUserLoading: false,
       userNameError: action.error,
     };
   })
