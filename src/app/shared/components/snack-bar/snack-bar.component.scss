@@ -1,0 +1,14 @@
+@import 'variables';
+
+:host {
+  display: flex;
+  border: 1px solid black;
+  background-color: $snackBarColor !important;
+  width: 100%;
+  border-radius: $secondaryBorderRadius;
+  padding-right: 8px;
+}
+
+.text {
+  color: black;
+}
