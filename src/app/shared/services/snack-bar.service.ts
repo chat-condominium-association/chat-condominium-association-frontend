@@ -10,12 +10,14 @@ export class SnackBarService {
 
   showSnackbar(
     message = 'Oops... Temporary Server Error :(',
-    // style = NotifyStyles.Success,
+    isSuccess = true,
     duration = 2000
   ): void {
     this.snackBar.openFromComponent(SnackBarComponent, {
-      // duration: 1000,
-      data: { message: message },
+      duration,
+      data: { message, isSuccess },
+      horizontalPosition: 'right',
+      verticalPosition: 'bottom',
     });
   }
 }

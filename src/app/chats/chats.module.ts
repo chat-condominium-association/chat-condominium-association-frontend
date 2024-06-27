@@ -16,6 +16,7 @@ import { SharedModule } from '@shared/shared.module';
 import { PagesLayoutComponent } from './components/pages-layout/pages-layout.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ProgressBarComponent } from '@shared/components/progress-bar/progress-bar.component';
+import { SvgIconComponent } from '@shared/components/svg-icon/svg-icon.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { ProgressBarComponent } from '@shared/components/progress-bar/progress-b
     SharedModule,
     ReactiveFormsModule,
     ProgressBarComponent,
+    SvgIconComponent,
   ],
 })
 export class ChatsModule {}

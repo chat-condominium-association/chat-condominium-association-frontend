@@ -1,6 +1,16 @@
+<ng-container *ngIf="data.isSuccess; else failedIcon">
+  <app-svg-icon customSize="20" [iconId]="icons.Success"></app-svg-icon>
+</ng-container>
+
+<ng-template #failedIcon>
+  <app-svg-icon customSize="18" [iconId]="icons.AlertExclamation"></app-svg-icon>
+</ng-template>
 <span class="text" matSnackBarLabel>
   {{ data.message }}
 </span>
-<span matSnackBarActions>
-  <button matSnackBarAction (click)="snackBarRef.dismissWithAction()">#</button>
+
+<span matSnackBarActions class="btn">
+  <app-button matSnackBarAction (click)="snackBarRef.dismissWithAction()">
+    <app-svg-icon customSize="18" [iconId]="icons.Close"></app-svg-icon>
+  </app-button>
 </span>

@@ -4,12 +4,10 @@ import { MatDialog } from '@angular/material/dialog';
 import { RoomsService } from '@chats/services/rooms.service';
 import { ApiMessages } from '@core/enums/api-messages.enum';
 import { UserRole } from '@core/enums/user.roles.enum';
-import { ApiHandleService } from '@core/services/api-handle.service';
 import { AuthService } from '@core/services/auth.service';
 import { Store } from '@ngrx/store';
 import { AsidePanel } from '@shared/enums/aside-panel-states.enum';
 import { Icons } from '@shared/enums/icons.enum';
-import { SnackBarService } from '@shared/services/snack-bar.service';
 import { Rooms } from '@store/entities/roomsByID/roomsByID.interface';
 import { setAsideStateAction } from '@store/ui/components/components.actions';
 import { Observable, Subject, takeUntil, take, withLatestFrom } from 'rxjs';
@@ -23,9 +21,7 @@ export class ProfilePageComponent {
   private dialog = inject(MatDialog);
   protected authService = inject(AuthService);
   private roomsService = inject(RoomsService);
-  private apiHandleService = inject(ApiHandleService);
   private store = inject(Store);
-  private snackBarService = inject(SnackBarService);
 
   protected icons = Icons;
 
@@ -40,8 +36,6 @@ export class ProfilePageComponent {
   protected editRoomForm: FormGroup;
 
   constructor() {
-    this.snackBarService.showSnackbar();
-
     this.store.dispatch(setAsideStateAction({ state: AsidePanel.Profile }));
     this.editRoomForm = this.roomsService.buildEditRoomForm();
   }
@@ -87,8 +81,8 @@ export class ProfilePageComponent {
             this.selectedRoomId = null;
             this.roomError = null;
             this.isRoomLoading = false;
-            this.apiHandleService.handleSuccess(ApiMessages.SuccesSavedtText);
           } else if (!isLoading && error) {
+            this.isRoomLoading = false;
             this.roomError = error?.error?.detail || ApiMessages.ErrorDefaultText;
           }
         });
