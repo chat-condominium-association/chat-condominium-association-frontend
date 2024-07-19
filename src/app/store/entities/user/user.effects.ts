@@ -18,12 +18,14 @@ import {
   logoutUserActionSuccess,
 } from './user.actions';
 import { Router } from '@angular/router';
+import { SnackBarService } from '@shared/services/snack-bar.service';
 
 @Injectable()
 export class UserEffects {
   private actions$ = inject(Actions);
   private userApiService = inject(UserApiService);
   private router = inject(Router);
+  private snackBar = inject(SnackBarService);
 
   loadUserInfo$ = createEffect(() =>
     this.actions$.pipe(
@@ -31,11 +33,13 @@ export class UserEffects {
       switchMap(() => {
         return this.userApiService.getUserInfo().pipe(
           map(response => {
+            this.snackBar.showSnackbar('Дані про користувача успішно заванатажені');
             return loadUserActionSuccess({
               user: response,
             });
           }),
           catchError((error: HttpErrorResponse) => {
+            this.snackBar.showSnackbar(`Виникла помилка: ${error.message}`, false);
             return of(loadUserActionFailed({ error: error.error }));
           })
         );
@@ -50,9 +54,11 @@ export class UserEffects {
         return this.userApiService.logout().pipe(
           map(() => {
             this.router.navigate(['/']);
+            this.snackBar.showSnackbar('Вихід з системи');
             return logoutUserActionSuccess();
           }),
           catchError((error: HttpErrorResponse) => {
+            this.snackBar.showSnackbar(`Виникла помилка: ${error.message}`, false);
             return of(logoutUserActionFailed({ error: error.error }));
           })
         );
@@ -66,11 +72,13 @@ export class UserEffects {
       switchMap(({ avatarID }) => {
         return this.userApiService.changeAvatar(avatarID).pipe(
           map(response => {
+            this.snackBar.showSnackbar('Зміна аватару пройшла успішно');
             return changeAvatarUserActionSuccess({
               user: response,
             });
           }),
           catchError((error: HttpErrorResponse) => {
+            this.snackBar.showSnackbar(`Виникла помилка: ${error.message}`, false);
             return of(changeAvatarActionFailed({ error: error.error }));
           })
         );
@@ -84,11 +92,13 @@ export class UserEffects {
       switchMap(({ username }) => {
         return this.userApiService.changeUsername(username).pipe(
           map(response => {
+            this.snackBar.showSnackbar(`Зміна ім'я пройшла успішно`);
             return changeUserNameActionSuccess({
               user: response,
             });
           }),
           catchError((error: HttpErrorResponse) => {
+            this.snackBar.showSnackbar(`Виникла помилка: ${error.message}`, false);
             return of(changeUserNameFailed({ error: error.error }));
           })
         );

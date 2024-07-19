@@ -13,7 +13,7 @@ export class ChatsApiService {
   private readonly ROOMS_API_URL = `${environment.apiUrl}rooms/`;
   // private readonly CHAT_API_URL = `${environment.apiUrl}user/`;
 
-  private readonly ROOM_EDIT_URL = 'admin/edit_room/';
+  private readonly ROOM_EDIT_URL = 'admin/edit_room_name/';
   private readonly ROOMS_INFO_URL = 'info_rooms';
 
   getRooms(): Observable<RoomInfo[]> {

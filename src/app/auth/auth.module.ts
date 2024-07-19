@@ -12,6 +12,7 @@ import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password
 import { ResetCodeComponent } from './pages/reset-code/reset-code.component';
 import { NewPasswordComponent } from './pages/new-password/new-password.component';
 import { SuccesNewPasswordComponent } from './pages/succes-new-password/succes-new-password.component';
+import { ProgressBarComponent } from '@shared/components/progress-bar/progress-bar.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,13 @@ import { SuccesNewPasswordComponent } from './pages/succes-new-password/succes-n
     NewPasswordComponent,
     SuccesNewPasswordComponent,
   ],
-  imports: [CommonModule, AuthRoutingModule, RouterModule, ReactiveFormsModule, SharedModule],
+  imports: [
+    CommonModule,
+    AuthRoutingModule,
+    RouterModule,
+    ReactiveFormsModule,
+    SharedModule,
+    ProgressBarComponent,
+  ],
 })
 export class AuthModule {}

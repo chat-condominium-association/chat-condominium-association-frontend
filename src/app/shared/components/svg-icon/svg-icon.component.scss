@@ -57,6 +57,10 @@ $iconsStroke: (
   height: $default-icon-size;
 }
 
+.icon-small {
+  width: 10px;
+  height: 10px;
+}
 @each $name, $dimensions in $iconsDimensions {
   .icon-#{$name} {
     width: map-get($dimensions, width);

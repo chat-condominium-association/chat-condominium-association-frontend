@@ -4,7 +4,6 @@ import { MatDialog } from '@angular/material/dialog';
 import { RoomsService } from '@chats/services/rooms.service';
 import { ApiMessages } from '@core/enums/api-messages.enum';
 import { UserRole } from '@core/enums/user.roles.enum';
-import { ApiHandleService } from '@core/services/api-handle.service';
 import { AuthService } from '@core/services/auth.service';
 import { Store } from '@ngrx/store';
 import { AsidePanel } from '@shared/enums/aside-panel-states.enum';
@@ -22,7 +21,6 @@ export class ProfilePageComponent {
   private dialog = inject(MatDialog);
   protected authService = inject(AuthService);
   private roomsService = inject(RoomsService);
-  private apiHandleService = inject(ApiHandleService);
   private store = inject(Store);
 
   protected icons = Icons;
@@ -33,6 +31,7 @@ export class ProfilePageComponent {
 
   private selectedRoomId: number | null = null;
   protected roomError: string | null = null;
+  protected isRoomLoading = false;
 
   protected editRoomForm: FormGroup;
 
@@ -69,19 +68,21 @@ export class ProfilePageComponent {
     if (name && roomID !== null) {
       this.roomsService.editRoom(roomID, name);
 
-      const roomLoading$ = this.roomsService.getLoadingState(roomID);
+      const roomLoading$ = this.roomsService.getRoomLoadingState(roomID);
       const roomError$ = this.roomsService.getErrorState(roomID);
 
       roomLoading$
         .pipe(withLatestFrom(roomError$), takeUntil(this.modalDestroyed))
         .subscribe(([isLoading, error]) => {
+          this.isRoomLoading = true;
           if (!isLoading && !error) {
             this.editRoomForm.reset();
             this.dialog.closeAll();
             this.selectedRoomId = null;
             this.roomError = null;
-            this.apiHandleService.handleSuccess(ApiMessages.SuccesSavedtText);
+            this.isRoomLoading = false;
           } else if (!isLoading && error) {
+            this.isRoomLoading = false;
             this.roomError = error?.error?.detail || ApiMessages.ErrorDefaultText;
           }
         });

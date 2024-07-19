@@ -11,11 +11,13 @@ import {
   loadRoomsInfoActionSuccess,
 } from './roomsByID.actions';
 import { ChatsApiService } from '@chats/services/chats-api.service';
+import { SnackBarService } from '@shared/services/snack-bar.service';
 
 @Injectable()
 export class RommsByIDEffects {
   private actions$ = inject(Actions);
   private chatsApiService = inject(ChatsApiService);
+  private snackBar = inject(SnackBarService);
 
   loadRoomsInfo$ = createEffect(() =>
     this.actions$.pipe(
@@ -41,11 +43,13 @@ export class RommsByIDEffects {
       switchMap(({ roomID, editData }) => {
         return this.chatsApiService.editRoom(roomID, editData).pipe(
           map(room => {
+            this.snackBar.showSnackbar('Назву кімнати змінено');
             return editRoomActionSuccess({
               room,
             });
           }),
           catchError((error: HttpErrorResponse) => {
+            this.snackBar.showSnackbar(`Виникла помилка: ${error.message}`, false);
             return of(editRoomActionFailed({ roomID, error: error.error }));
           })
         );

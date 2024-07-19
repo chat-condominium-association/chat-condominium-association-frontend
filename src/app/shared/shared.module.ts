@@ -20,7 +20,6 @@ import { GetImageUrlPipe } from './pipes/get-image-url.pipe';
     ToArrayPipe,
     ErrorMessageComponent,
     CarouselComponent,
-    SvgIconComponent,
     GetImageUrlPipe,
   ],
   exports: [
@@ -31,9 +30,8 @@ import { GetImageUrlPipe } from './pipes/get-image-url.pipe';
     ToArrayPipe,
     ErrorMessageComponent,
     CarouselComponent,
-    SvgIconComponent,
     GetImageUrlPipe,
   ],
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [CommonModule, ReactiveFormsModule, SvgIconComponent],
 })
 export class SharedModule {}
