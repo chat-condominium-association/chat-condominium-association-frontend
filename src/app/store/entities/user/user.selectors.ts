@@ -4,21 +4,18 @@ import { createSelector } from '@ngrx/store';
 
 const selectUser = (state: StoreState): UserState => state.entities.user;
 
-export const userDataSelector = createSelector(selectUser, userState => userState.userData);
-export const userAvatarIDSelector = createSelector(selectUser, userState =>
+export const selectUserData = createSelector(selectUser, userState => userState.userData);
+export const selectUserAvatarID = createSelector(selectUser, userState =>
   String(userState.userData?.image_id)
 );
-export const userRoleSelector = createSelector(selectUser, userState => userState.role);
-export const userLoggedInSelector = createSelector(selectUser, userState => !!userState.userData);
+export const selectUserRole = createSelector(selectUser, userState => userState.role);
+export const selectUserLoggedIn = createSelector(selectUser, userState => !!userState.userData);
 
-export const userErrorSelector = createSelector(selectUser, userState => userState.error);
-export const isUserLoadingSelector = createSelector(selectUser, userState => userState.isLoading);
-export const isUserEditLoadedSelector = createSelector(
+export const selectUserError = createSelector(selectUser, userState => userState.error);
+export const selectIsUserLoading = createSelector(selectUser, userState => userState.isLoading);
+export const selectIsUserEditLoaded = createSelector(
   selectUser,
   userState => userState.isEditUserLoading
 );
 
-export const userNameErrorSelector = createSelector(
-  selectUser,
-  userState => userState.userNameError
-);
+export const selectUserNameError = createSelector(selectUser, userState => userState.userNameError);

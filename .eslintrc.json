@@ -6,15 +6,6 @@
   "overrides": [
     {
       "files": [
-        "*.effects.ts"
-      ],
-      "extends": ["@ngrx/recommended"],
-      "rules": {
-        "@ngrx/prefer-effect-callback-in-block-statement": "off"
-      }
-    },
-    {
-      "files": [
         "*.ts"
       ],
       "extends": [
@@ -48,6 +39,18 @@
             "style": "kebab-case"
           }
         ]
+      }
+    },
+    {
+      "files": [
+        "*.effects.ts",
+        "*.selectors.ts"
+      ],
+      "extends": ["plugin:@ngrx/recommended", "plugin:@typescript-eslint/recommended"],
+      "rules": {
+        "@ngrx/prefer-effect-callback-in-block-statement": "off",
+        "@ngrx/no-typed-global-store": "off",
+        "@typescript-eslint/explicit-function-return-type": "off"
       }
     },
     {

@@ -30,7 +30,7 @@ export class CarouselComponent implements OnInit {
   currentSlideIndex = 0;
   slides: [string, string][][] = [];
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.slides = this.chunkSlides(); //generate slodes chunks, f.e 3 images in one slide
   }
 
@@ -38,11 +38,11 @@ export class CarouselComponent implements OnInit {
     this.imageClicked.emit(imageId);
   }
 
-  onPreviousClick() {
+  onPreviousClick(): void {
     this.currentSlideIndex = Math.max(0, this.currentSlideIndex - 1);
   }
 
-  onNextClick() {
+  onNextClick(): void {
     this.currentSlideIndex = Math.min(this.slides.length - 1, this.currentSlideIndex + 1);
   }
 

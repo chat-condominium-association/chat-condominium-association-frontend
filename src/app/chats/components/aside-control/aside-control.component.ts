@@ -11,13 +11,12 @@ import { MatDialog } from '@angular/material/dialog';
 import { UserService } from '@chats/services/user.service';
 import { ApiMessages } from '@core/enums/api-messages.enum';
 import { ApiHandleService } from '@core/services/api-handle.service';
-import { Store, select } from '@ngrx/store';
+import { Store } from '@ngrx/store';
 import { avatars } from '@shared/data/avatars.images';
 import { chats } from '@shared/data/chats.imges';
 import { AsidePanel } from '@shared/enums/aside-panel-states.enum';
 import { Icons } from '@shared/enums/icons.enum';
-import { StoreState } from '@store/app.state.interface';
-import { asideStateSelector } from '@store/ui/components/components.selectors';
+import { selectAsideState } from '@store/ui/components/components.selectors';
 import { Observable, Subject, take, takeUntil, withLatestFrom } from 'rxjs';
 
 @Component({
@@ -27,7 +26,7 @@ import { Observable, Subject, take, takeUntil, withLatestFrom } from 'rxjs';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AsideControlComponent implements OnDestroy {
-  private store = inject(Store<StoreState>);
+  private store = inject(Store);
   private dialog = inject(MatDialog);
   protected userServise = inject(UserService);
   private apiHandleService = inject(ApiHandleService);
@@ -51,7 +50,7 @@ export class AsideControlComponent implements OnDestroy {
   @HostBinding('class.hidden') isAsideHidden = false;
 
   constructor() {
-    this.asideState$ = this.store.pipe(select(asideStateSelector));
+    this.asideState$ = this.store.select(selectAsideState);
     this.asideState$.pipe(takeUntil(this.destroy$)).subscribe(state => {
       this.isAsideHidden = state === AsidePanel.Hidden;
     });

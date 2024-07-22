@@ -19,8 +19,8 @@ export class RommsByIDEffects {
   private chatsApiService = inject(ChatsApiService);
   private snackBar = inject(SnackBarService);
 
-  loadRoomsInfo$ = createEffect(() =>
-    this.actions$.pipe(
+  loadRoomsInfo$ = createEffect(() => {
+    return this.actions$.pipe(
       ofType(loadRoomsInfoAction),
       switchMap(() => {
         return this.chatsApiService.getRooms().pipe(
@@ -34,11 +34,11 @@ export class RommsByIDEffects {
           })
         );
       })
-    )
-  );
+    );
+  });
 
-  editRoom$ = createEffect(() =>
-    this.actions$.pipe(
+  editRoom$ = createEffect(() => {
+    return this.actions$.pipe(
       ofType(editRoomAction),
       switchMap(({ roomID, editData }) => {
         return this.chatsApiService.editRoom(roomID, editData).pipe(
@@ -54,6 +54,6 @@ export class RommsByIDEffects {
           })
         );
       })
-    )
-  );
+    );
+  });
 }

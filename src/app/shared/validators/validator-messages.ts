@@ -1,8 +1,4 @@
-import {
-  ErrorMessages,
-  LengthErrorMessage,
-  PatternErrorMessage,
-} from '@shared/models/validator.interface';
+import { ErrorMessages, LengthErrorMessage } from '@shared/models/validator.interface';
 
 export const errorMessages = (name: string): ErrorMessages => {
   return {
@@ -14,7 +10,7 @@ export const errorMessages = (name: string): ErrorMessages => {
     email: () => `Поле має бути в форматі mail@mail.com`,
     mismatch: () =>
       name === 'confirmPassword' ? `Паролі не співпадають.` : `Поля не співпадають.`,
-    pattern: message => {
+    pattern: (): string => {
       if (name === 'password') {
         return `Пароль має містити одну велику, одну маленьку букву, цифру та спеціальний символ.`;
       } else if (name === 'email') {

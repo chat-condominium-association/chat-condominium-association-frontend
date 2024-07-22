@@ -4,25 +4,25 @@ import { RommsByIDState, RoomByID, Rooms } from './roomsByID.interface';
 
 const selectRooms = (state: StoreState): RommsByIDState => state.entities.rommsByID;
 
-export const firstRoomIDSelector = createSelector(selectRooms, (rooms: RommsByIDState) => {
+export const selectFirstRoomID = createSelector(selectRooms, (rooms: RommsByIDState) => {
   return Object.values(rooms.roomsByID)[0].id;
 });
 
-export const roomsDataSelector = createSelector(
+export const selectRoomsData = createSelector(
   selectRooms,
   rommsByIDState => rommsByIDState.roomsByID
 );
 
-export const roomsDataLoadingSelector = createSelector(
+export const selectRoomsDataLoading = createSelector(
   selectRooms,
   rommsByIDState => rommsByIDState.isLoading
 );
 
-export const roomByIDSelector = (roomID: number) =>
-  createSelector(roomsDataSelector, (rooms: Rooms) => rooms[roomID]);
+export const selectRoomByID = (roomID: number) =>
+  createSelector(selectRoomsData, (rooms: Rooms) => rooms[roomID]);
 
-export const roomLoadingByIDSelector = (roomID: number) =>
-  createSelector(roomByIDSelector(roomID), (room: RoomByID) => room.isLoading);
+export const selectRoomLoadingByID = (roomID: number) =>
+  createSelector(selectRoomByID(roomID), (room: RoomByID) => room.isLoading);
 
-export const roomErrorByIDSelector = (roomID: number) =>
-  createSelector(roomByIDSelector(roomID), (room: RoomByID) => room.error);
+export const selectRoomErrorByID = (roomID: number) =>
+  createSelector(selectRoomByID(roomID), (room: RoomByID) => room.error);

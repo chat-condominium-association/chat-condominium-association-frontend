@@ -1,7 +1,6 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { AsidePanel } from '@shared/enums/aside-panel-states.enum';
-import { StoreState } from '@store/app.state.interface';
 import { setAsideStateAction } from '@store/ui/components/components.actions';
 
 @Component({
@@ -10,7 +9,7 @@ import { setAsideStateAction } from '@store/ui/components/components.actions';
   styleUrls: ['./comments-page.component.scss'],
 })
 export class CommentsPageComponent {
-  private store = inject(Store<StoreState>);
+  private store = inject(Store);
 
   constructor() {
     this.store.dispatch(setAsideStateAction({ state: AsidePanel.Hidden }));

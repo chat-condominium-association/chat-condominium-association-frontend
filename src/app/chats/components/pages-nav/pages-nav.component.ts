@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { UserRole } from '@core/enums/user.roles.enum';
 import { AuthService } from '@core/services/auth.service';
 import { Icons } from '@shared/enums/icons.enum';

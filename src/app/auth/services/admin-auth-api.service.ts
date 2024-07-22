@@ -1,4 +1,4 @@
-import { HttpBackend, HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpBackend, HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 import { AuthInterface } from '@auth/models/auth.interface';
 import { environment } from '@environment/environment';

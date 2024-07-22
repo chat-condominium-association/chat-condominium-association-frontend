@@ -1,20 +1,19 @@
 import { Injectable, inject } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ApiError } from '@core/models/api.inetrface';
-import { Store, select } from '@ngrx/store';
-import { StoreState } from '@store/app.state.interface';
+import { Store } from '@ngrx/store';
 import {
   changeAvatarUserAction,
   changeUserNameAction,
   logoutUserAction,
 } from '@store/entities/user/user.actions';
 import {
-  isUserEditLoadedSelector,
-  isUserLoadingSelector,
-  userAvatarIDSelector,
-  userDataSelector,
-  userErrorSelector,
-  userNameErrorSelector,
+  selectUserData,
+  selectUserAvatarID,
+  selectIsUserEditLoaded,
+  selectIsUserLoading,
+  selectUserNameError,
+  selectUserError,
 } from '@store/entities/user/user.selectors';
 import { Observable } from 'rxjs';
 
@@ -22,13 +21,13 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class UserService {
-  private store = inject(Store<StoreState>);
+  private store = inject(Store);
   private fb = inject(FormBuilder);
 
-  userAvatarID$ = this.store.pipe(select(userAvatarIDSelector));
-  isEditUserLoaded$ = this.store.pipe(select(isUserEditLoadedSelector));
+  userAvatarID$ = this.store.select(selectUserAvatarID);
+  isEditUserLoaded$ = this.store.select(selectIsUserEditLoaded);
 
-  userData$ = this.store.select(userDataSelector);
+  userData$ = this.store.select(selectUserData);
 
   buildEditUsernameForm(): FormGroup {
     return this.fb.group({
@@ -48,19 +47,15 @@ export class UserService {
     this.store.dispatch(changeUserNameAction({ username }));
   }
 
-  getEditUserLoadingState(): Observable<boolean> {
-    return this.store.pipe(select(isUserLoadingSelector));
-  }
-
   getUsernameLoadingState(): Observable<boolean> {
-    return this.store.pipe(select(isUserLoadingSelector));
+    return this.store.select(selectIsUserLoading);
   }
 
   getUsernameErrorState(): Observable<ApiError | null> {
-    return this.store.pipe(select(userNameErrorSelector));
+    return this.store.select(selectUserNameError);
   }
 
   getErrorState(): Observable<ApiError | null> {
-    return this.store.pipe(select(userErrorSelector));
+    return this.store.select(selectUserError);
   }
 }
