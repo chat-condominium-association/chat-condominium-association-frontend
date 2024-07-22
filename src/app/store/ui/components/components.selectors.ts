@@ -4,7 +4,7 @@ import { createSelector } from '@ngrx/store';
 
 const selectComponents = (state: StoreState): ComponetsState => state.ui.components;
 
-export const asideStateSelector = createSelector(
+export const selectAsideState = createSelector(
   selectComponents,
   ComponetsState => ComponetsState.asidePanel.state
 );

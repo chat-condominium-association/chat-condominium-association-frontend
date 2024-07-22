@@ -27,8 +27,8 @@ export class UserEffects {
   private router = inject(Router);
   private snackBar = inject(SnackBarService);
 
-  loadUserInfo$ = createEffect(() =>
-    this.actions$.pipe(
+  loadUserInfo$ = createEffect(() => {
+    return this.actions$.pipe(
       ofType(loadUserAction),
       switchMap(() => {
         return this.userApiService.getUserInfo().pipe(
@@ -44,11 +44,11 @@ export class UserEffects {
           })
         );
       })
-    )
-  );
+    );
+  });
 
-  logout$ = createEffect(() =>
-    this.actions$.pipe(
+  logout$ = createEffect(() => {
+    return this.actions$.pipe(
       ofType(logoutUserAction),
       switchMap(() => {
         return this.userApiService.logout().pipe(
@@ -63,11 +63,11 @@ export class UserEffects {
           })
         );
       })
-    )
-  );
+    );
+  });
 
-  changeAvatar$ = createEffect(() =>
-    this.actions$.pipe(
+  changeAvatar$ = createEffect(() => {
+    return this.actions$.pipe(
       ofType(changeAvatarUserAction),
       switchMap(({ avatarID }) => {
         return this.userApiService.changeAvatar(avatarID).pipe(
@@ -83,11 +83,11 @@ export class UserEffects {
           })
         );
       })
-    )
-  );
+    );
+  });
 
-  changeUserName$ = createEffect(() =>
-    this.actions$.pipe(
+  changeUserName$ = createEffect(() => {
+    return this.actions$.pipe(
       ofType(changeUserNameAction),
       switchMap(({ username }) => {
         return this.userApiService.changeUsername(username).pipe(
@@ -103,6 +103,6 @@ export class UserEffects {
           })
         );
       })
-    )
-  );
+    );
+  });
 }

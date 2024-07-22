@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { NotFoundPageComponent } from '@core/components/not-found-page/not-found-page.component';
-import { AppRoutes } from '@core/enums/routes.enum';
 import { authmoduleGuard } from '@core/guards/authmodule.guard';
 import { loggedInGuard } from '@core/guards/logged-in.guard';
 

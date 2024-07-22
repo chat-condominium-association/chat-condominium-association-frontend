@@ -1,14 +1,13 @@
 import { Injectable, inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ApiError } from '@core/models/api.inetrface';
-import { Store, select } from '@ngrx/store';
-import { StoreState } from '@store/app.state.interface';
+import { Store } from '@ngrx/store';
 import { editRoomAction } from '@store/entities/roomsByID/roomsByID.actions';
 import { Rooms } from '@store/entities/roomsByID/roomsByID.interface';
 import {
-  roomErrorByIDSelector,
-  roomLoadingByIDSelector,
-  roomsDataSelector,
+  selectRoomErrorByID,
+  selectRoomLoadingByID,
+  selectRoomsData,
 } from '@store/entities/roomsByID/roomsByID.selectors';
 import { Observable } from 'rxjs';
 
@@ -16,10 +15,10 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class RoomsService {
-  private store = inject(Store<StoreState>);
+  private store = inject(Store);
   private fb = inject(FormBuilder);
 
-  roomsData$: Observable<Rooms> = this.store.pipe(select(roomsDataSelector));
+  roomsData$: Observable<Rooms> = this.store.select(selectRoomsData);
 
   buildEditRoomForm(): FormGroup {
     return this.fb.group({
@@ -32,10 +31,10 @@ export class RoomsService {
   }
 
   getRoomLoadingState(roomID: number): Observable<boolean> {
-    return this.store.pipe(select(roomLoadingByIDSelector(roomID)));
+    return this.store.select(selectRoomLoadingByID(roomID));
   }
 
   getErrorState(roomID: number): Observable<ApiError | null> {
-    return this.store.pipe(select(roomErrorByIDSelector(roomID)));
+    return this.store.select(selectRoomErrorByID(roomID));
   }
 }

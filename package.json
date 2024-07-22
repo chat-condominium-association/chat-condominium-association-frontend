@@ -14,7 +14,6 @@
     "prepare": "husky install",
     "generate:sprite": "svg-sprite --config=svg-sprite.config.json --dest=./src/assets src/assets/icons/*.svg src/assets/iconsWithoutFill/*.svg",
     "optimize-svg": "svgo src/assets/iconsWithoutFill/ --config svgo.config.mjs"
-
   },
   "lint-staged": {
     "*.{ts,scss,html}": [
@@ -42,11 +41,11 @@
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^16.2.6",
-    "@angular-eslint/builder": "16.3.1",
-    "@angular-eslint/eslint-plugin": "16.3.1",
-    "@angular-eslint/eslint-plugin-template": "16.3.1",
-    "@angular-eslint/schematics": "16.3.1",
-    "@angular-eslint/template-parser": "16.3.1",
+    "@angular-eslint/builder": "^16.3.1",
+    "@angular-eslint/eslint-plugin": "^16.3.1",
+    "@angular-eslint/eslint-plugin-template": "^16.3.1",
+    "@angular-eslint/schematics": "^16.3.1",
+    "@angular-eslint/template-parser": "^16.3.1",
     "@angular/cli": "^16.2.6",
     "@angular/compiler-cli": "^16.2.0",
     "@ngrx/eslint-plugin": "^16.3.0",

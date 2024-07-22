@@ -1,8 +1,7 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
-import { Store, select } from '@ngrx/store';
-import { StoreState } from '@store/app.state.interface';
+import { Store } from '@ngrx/store';
 import { Rooms } from '@store/entities/roomsByID/roomsByID.interface';
-import { roomsDataSelector } from '@store/entities/roomsByID/roomsByID.selectors';
+import { selectRoomsData } from '@store/entities/roomsByID/roomsByID.selectors';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -12,10 +11,10 @@ import { Observable } from 'rxjs';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MainInfoNavComponent {
-  private store = inject(Store<StoreState>);
+  private store = inject(Store);
   protected roomsData$: Observable<Rooms>;
 
   constructor() {
-    this.roomsData$ = this.store.pipe(select(roomsDataSelector));
+    this.roomsData$ = this.store.select(selectRoomsData);
   }
 }
